@@ -33,10 +33,17 @@ class AnswerSerializer(serializers.ModelSerializer):
                   'given', 'positive_feedback', 'negative_feedback')
 
 
-class ActivityImportExportSerializer(serializers.ModelSerializer):
+class ActivityExportSerializer(serializers.ModelSerializer):
     data = serializers.JSONField()
     expected = serializers.JSONField(required=False)
 
     class Meta:
         model = Activity
-        exclude = ('id', 'unit',)
+        exclude = ('id', 'unit', )
+
+
+class ActivityImportSerializer(ActivityExportSerializer):
+
+    class Meta:
+        model = Activity
+        exclude = ('id', 'unit', )
