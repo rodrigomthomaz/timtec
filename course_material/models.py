@@ -15,7 +15,9 @@ class CourseMaterial(models.Model):
 
 
 def get_upload_path(instance, filename):
-    return '{0}/{1}'.format(instance.course_material.course.slug, filename)
+    filename, fileextension = filename.split(".", 2)
+    filename = slugify(filename.split("/", 2)[-1])
+    return '{0}/course_materials/{1}.{2}'.format(instance.course_material.course.slug, filename, fileextension)
 
 
 class File(models.Model):
