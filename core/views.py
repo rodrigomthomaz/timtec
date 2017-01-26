@@ -489,7 +489,7 @@ class CertificateTemplateViewSet(LoginRequiredMixin, viewsets.ModelViewSet):
 
     def update(self, request, **kwargs):
         instance = self.get_object()
-        serializer = self.get_serializer(instance, data=request.DATA)
+        serializer = self.get_serializer(instance, data=request.data)
         if serializer.is_valid():
             serializer.save()
         return Response(serializer.data)
@@ -500,6 +500,7 @@ class CertificateTemplateImageViewSet(viewsets.ModelViewSet):
     lookup_field = 'course'
     serializer_class = CertificateTemplateImageSerializer
     permission_classes = (IsProfessorCoordinatorOrAdminPermissionOrReadOnly, )
+    queryset = CertificateTemplate.objects.all()
 
     def post(self, request, **kwargs):
         certificate_template = self.get_object()
