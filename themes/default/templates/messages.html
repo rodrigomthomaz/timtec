@@ -170,7 +170,7 @@ wrapper-course-lesson
                         <div ng-class="{subject: message.users_that_read.indexOf(USER_ID) === -1, 'body': true}">
                             <span class='label label-default' ng-show="message.users_that_read.indexOf(USER_ID) > -1"><i class='fa fa-envelope-open'></i></span>
                             <span class='label label-primary' ng-show="message.users_that_read.indexOf(USER_ID) === -1"><i class='fa fa-envelope'></i></span>
-                            {{ message.subject }} {{ message.users_that_read.indexOf(USER_ID) === -1 }}
+                            {{ message.subject }}
                         </div>
                         {% endverbatim %}
                         <div class="body">
