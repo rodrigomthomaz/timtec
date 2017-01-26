@@ -340,6 +340,7 @@ class CourseStudent(models.Model):
         subject = Template(et.subject).render(Context({'subject': _("Welcome to course: %s") % self.course.name}))
         message = Template(et.template).render(Context({'message': markdown(self.course.welcome_email)}))
         email = EmailMessage(subject, message, settings.DEFAULT_FROM_EMAIL, [self.user.email])
+        email.content_subtype = "html"
         return email.send()
 
     @property
