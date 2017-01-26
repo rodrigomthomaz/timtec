@@ -2,6 +2,8 @@
 {% load i18n %}
  
 {% block title %}{% trans "An error ocurred or you don't have to see this page." %}{% endblock %}
+
+{% block body_attrs %}class="static-page-body" ng-app='header'{% endblock %}
  
 {% block content %}
 
@@ -14,7 +16,7 @@
             </div>
         </div>
     </header>
-    
+
     <section id="course-content" class="container">
         <div class='row'>
             <div class='col-xs-12 col-md-1'>
