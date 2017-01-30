@@ -305,16 +305,13 @@
                             question.hidden_to_user = false;
                             question.hidden = false;
                         });
-                        $scope.questions.unshift(new_question);
-                        $scope.totalItems = $scope.questions.length;
-                        // Back to first page
-                        $scope.query.page = 1;
-                        $scope.changePageHandler(1);
+
                         $scope.new_question_title = undefined;
                         $scope.new_text = undefined;
                         angular.element(document.querySelector('#wmd-preview')).html('');
                         $scope.question_title_validation = '';
                         $scope.question_text_validation = '';
+                        get_questions();
 
                     } else {
                         if ($scope.new_question_title === undefined  || $scope.new_question_title === ''){
