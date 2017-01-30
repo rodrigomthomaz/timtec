@@ -97,7 +97,9 @@ class AbstractTimtecUser(AbstractBaseUser, PermissionsMixin):
 
     def get_certificates(self):
         from core.models import CourseCertification
-        return CourseCertification.objects.filter(course_student__user=self)
+        certs = CourseCertification.objects.filter(course_student__user=self)
+        certs_ids = [item.id for item in certs if item.course_student.can_emmit_receipt()]
+        return CourseCertification.objects.filter(id__in=certs_ids)
 
     def get_current_courses(self):
         ended = [item.course for item in self.get_certificates()]
