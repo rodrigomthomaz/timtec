@@ -83,7 +83,7 @@
                         <li><a href="{% url 'user_courses' %}">{% trans "My Courses" %}</a></li>
                         <li><a href="{% url 'user_notes' %}">{% trans "My Notes" %}</a></li>
                         <li class='divider'></li>
-                        <li><a href="{% url 'timtec_logout' %}?next={{ request.path }}">{% trans "Logout" %}</a></li>
+                        <li><a href="{% url 'timtec_logout' %}">{% trans "Logout" %}</a></li>
                     </ul>
                 	{% endblock %}
                 </li>
