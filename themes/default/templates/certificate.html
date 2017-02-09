@@ -84,7 +84,7 @@ wrapper-course-lesson
             <div class='row phone'>
                 <div class='col-sm-12'>
                     <p>
-                        Clique no botão abaixo para fazer o download do seu certificado.
+                        Clique no botão abaixo para fazer o download do seu {% if object.type == 'receipt' %}comprovante{% else %}certificado{% endif %}.
                     </p>
                     <a href="{% url 'certificate-download' object.link_hash %}"
                        class="btn btn-primary btn-lg">
