@@ -123,6 +123,7 @@ class Course(models.Model):
     home_thumbnail = models.ImageField(_('Home thumbnail'), upload_to=hash_name('home_thumbnails', 'name'), null=True, blank=True)
     home_position = models.IntegerField(null=True, blank=True)
     welcome_email = models.TextField(_('Welcome Email'), blank=True)
+    total_hours = models.IntegerField(_('Total hours'), default=0, null=True)
     start_date = models.DateField(_('Start date'), default=None, blank=True,
                                   null=True)
     home_published = models.BooleanField(default=False)
