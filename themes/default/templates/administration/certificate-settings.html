@@ -92,7 +92,7 @@ wrapper-course-lesson
                         <!-- TODO add course info -->
                         <p class="student">Nome do(a) concluinte, RG ___________________</p>
                         <p class="text-muted">
-                          Concluiu o curso <strong>{{ course.name }}</strong>, com <strong>40</strong> horas, em _______________________.
+                          Concluiu o curso <strong>{{ course.name }}</strong>, com <strong>__</strong> horas, em _______________________.
                         </p>
                         <p class="text-muted">
                             <strong>_____________</strong>, <strong>__</strong> de <strong>__________</strong> de 20<strong>__</strong>.
@@ -129,7 +129,7 @@ wrapper-course-lesson
                         <p class="text-uppercase student-name">(Nome do(a) concluinte, RG _________)</p>
                     {%   endblock %}
                   <p>Concluiu o curso online <em>{{ course.name }}</em> com carga
-                    horária estimada de (40) horas em (data da conclusão).</p>
+                    horária estimada de ({{course.total_hours}}) horas em (data da conclusão).</p>
                   <section class="coordinator-section">
                     <p class="editable editable-text coordinator-name">
                       <input type="text" ng-model="ct.name" placeholder="Digite o nome">
