@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-30 01:40-0200\n"
-"PO-Revision-Date: 2017-01-30 01:41-0200\n"
+"POT-Creation-Date: 2017-02-09 18:19-0200\n"
+"PO-Revision-Date: 2017-02-09 18:20-0200\n"
 "Last-Translator: Administrador TIMTec <timtectimtec@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -58,7 +58,7 @@ msgstr "Senha"
 msgid "Password (again)"
 msgstr "Senha (novamente)"
 
-#: accounts/forms.py:31 accounts/forms.py:76 accounts/models.py:155
+#: accounts/forms.py:31 accounts/forms.py:76 accounts/models.py:157
 #: themes/default/templates/profile-edit.html:137
 msgid "Province"
 msgstr "Estado"
@@ -110,7 +110,7 @@ msgstr "Complemento para \"Como você conheceu a plataforma TIM Tec?\""
 #: themes/default/templates/course-evaluations.html:278
 #: themes/default/templates/evaluations.html:207
 #: themes/default/templates/message.html:41
-#: themes/default/templates/messages.html:119
+#: themes/default/templates/messages.html:118
 #: themes/default/templates/profile-edit.html:196
 msgid "Username"
 msgstr "Nome de usuário"
@@ -136,7 +136,7 @@ msgstr "Sobrenome"
 msgid "Staff status"
 msgstr "Situação"
 
-#: accounts/models.py:28 core/models.py:806
+#: accounts/models.py:28 core/models.py:808
 #: themes/default/templates/administration/users.html:89
 msgid "Active"
 msgstr "Ativo"
@@ -145,7 +145,7 @@ msgstr "Ativo"
 msgid "Date joined"
 msgstr "Data de inscrição"
 
-#: accounts/models.py:31 core/models.py:481 core/models.py:534
+#: accounts/models.py:31 core/models.py:482 core/models.py:535
 msgid "Picture"
 msgstr "Estrutura"
 
@@ -158,7 +158,7 @@ msgstr "Ocupação"
 msgid "Site"
 msgstr "Página"
 
-#: accounts/models.py:35 core/models.py:479 core/models.py:533
+#: accounts/models.py:35 core/models.py:480 core/models.py:534
 #: themes/default/templates/_course_professors_modal.html:77
 #: themes/default/templates/_course_professors_modal.html:78
 msgid "Biography"
@@ -185,39 +185,39 @@ msgstr "usuários"
 msgid "Invalid attribute: %s"
 msgstr "Atributo inválido: %s"
 
-#: accounts/models.py:123
+#: accounts/models.py:125
 msgid "Facebook"
 msgstr "Conectar com Facebook"
 
-#: accounts/models.py:124
+#: accounts/models.py:126
 msgid "Instagram"
 msgstr "Instagram"
 
-#: accounts/models.py:125
+#: accounts/models.py:127
 msgid "Snapchat"
 msgstr "Snapchat"
 
-#: accounts/models.py:126
+#: accounts/models.py:128
 msgid "Celular/Whatsapp"
 msgstr ""
 
-#: accounts/models.py:127
+#: accounts/models.py:129
 msgid "Twitter"
 msgstr "Twitter"
 
-#: accounts/models.py:129
+#: accounts/models.py:131
 msgid "Youtube"
 msgstr "Youtube"
 
-#: accounts/models.py:133
+#: accounts/models.py:135
 msgid "social media"
 msgstr "Rede social"
 
-#: accounts/models.py:134
+#: accounts/models.py:136
 msgid "nickname"
 msgstr "Usuário na rede"
 
-#: accounts/models.py:154
+#: accounts/models.py:156
 msgid "Email address"
 msgstr "Endereço de Email"
 
@@ -233,24 +233,24 @@ msgstr "Dado"
 msgid "Expected answer"
 msgstr "Resposta esperada"
 
-#: activities/models.py:29 core/models.py:690 core/models.py:701
-#: themes/default/templates/administration/lesson.html:81
+#: activities/models.py:29 core/models.py:692 core/models.py:703
+#: themes/default/templates/administration/lesson.html:99
 #: themes/default/templates/lesson.html:107
 msgid "Unit"
 msgstr "Unidade"
 
 #: activities/models.py:30
-#: themes/default/templates/administration/lesson.html:189
+#: themes/default/templates/administration/lesson.html:225
 msgid "Comment"
 msgstr "Comentar"
 
 #: activities/models.py:31
-#: themes/default/templates/administration/lesson.html:196
+#: themes/default/templates/administration/lesson.html:232
 msgid "Positive Feedback"
 msgstr "Feedback positivo"
 
 #: activities/models.py:32
-#: themes/default/templates/administration/lesson.html:203
+#: themes/default/templates/administration/lesson.html:239
 msgid "Negative Feedback"
 msgstr "Feedback negativo"
 
@@ -259,7 +259,7 @@ msgid "Image"
 msgstr "Imagem"
 
 #: activities/models.py:36 activities/models.py:56
-#: themes/default/templates/administration/lesson.html:98
+#: themes/default/templates/administration/lesson.html:120
 msgid "Activity"
 msgstr "Atividade"
 
@@ -267,8 +267,8 @@ msgstr "Atividade"
 msgid "Activities"
 msgstr "Atividades"
 
-#: activities/models.py:57 core/models.py:300 core/models.py:700
-#: core/models.py:787
+#: activities/models.py:57 core/models.py:301 core/models.py:702
+#: core/models.py:789
 msgid "Student"
 msgstr "Estudante"
 
@@ -285,13 +285,13 @@ msgstr "Resposta"
 msgid "Answers"
 msgstr "Respostas"
 
-#: core/forms.py:16 core/models.py:572
-#: themes/default/templates/messages.html:84
+#: core/forms.py:16 core/models.py:573
+#: themes/default/templates/messages.html:83
 msgid "Subject"
 msgstr "Assunto"
 
-#: core/forms.py:17 core/models.py:109 core/models.py:482 core/models.py:535
-#: core/models.py:628 core/models.py:838
+#: core/forms.py:17 core/models.py:109 core/models.py:483 core/models.py:536
+#: core/models.py:629 core/models.py:840
 #: themes/default/templates/_course_authors_inline.html:19
 #: themes/default/templates/_course_authors_inline.html:42
 #: themes/default/templates/_course_professors_modal.html:69
@@ -308,18 +308,19 @@ msgstr "Nome"
 #: themes/default/templates/course-evaluations.html:279
 #: themes/default/templates/evaluations.html:208
 #: themes/default/templates/message.html:40
-#: themes/default/templates/messages.html:118
+#: themes/default/templates/messages.html:117
 msgid "Email"
 msgstr "Email"
 
-#: core/forms.py:19 core/models.py:573 themes/default/templates/message.html:5
-#: themes/default/templates/messages.html:92
+#: core/forms.py:19 core/models.py:574 themes/default/templates/message.html:5
+#: themes/default/templates/messages.html:91
 msgid "Message"
 msgstr "Mensagem"
 
-#: core/models.py:32 core/models.py:682
-#: themes/default/templates/administration/lesson.html:94
+#: core/models.py:32 core/models.py:683
+#: themes/default/templates/administration/lesson.html:112
 #: themes/default/templates/course.html:89
+#: themes/default/templates/lesson.html:118
 msgid "Video"
 msgstr "Video"
 
@@ -327,12 +328,12 @@ msgstr "Video"
 msgid "Videos"
 msgstr "Videos"
 
-#: core/models.py:47 core/models.py:473
+#: core/models.py:47 core/models.py:474
 msgid "Assistant"
 msgstr "Assistente"
 
-#: core/models.py:52 core/models.py:145 core/models.py:301 core/models.py:478
-#: core/models.py:532 core/models.py:575 core/models.py:626 core/models.py:829
+#: core/models.py:52 core/models.py:146 core/models.py:302 core/models.py:479
+#: core/models.py:533 core/models.py:576 core/models.py:627 core/models.py:831
 #: forum/models.py:20 themes/default/templates/_admin_header_inline.html:34
 #: themes/default/templates/ifs/signup-completion.html:117
 #: themes/default/templates/ifs/signup-completion.html:119
@@ -347,7 +348,7 @@ msgstr "Certificação"
 msgid "Certification Allowed Even Without Progress"
 msgstr "Habilitar certificação mesmo sem o progresso mínimo requerido?"
 
-#: core/models.py:104 core/models.py:622
+#: core/models.py:104 core/models.py:623
 #: themes/default/templates/administration/courses.html:113
 #: themes/default/templates/administration/courses.html:153
 #: themes/default/templates/administration/courses.html:199
@@ -363,7 +364,7 @@ msgstr "Habilitar certificação mesmo sem o progresso mínimo requerido?"
 msgid "Draft"
 msgstr "Rascunho"
 
-#: core/models.py:105 core/models.py:623
+#: core/models.py:105 core/models.py:624
 #: themes/default/templates/administration/courses.html:112
 #: themes/default/templates/administration/courses.html:154
 #: themes/default/templates/administration/courses.html:198
@@ -379,7 +380,7 @@ msgstr "Rascunho"
 msgid "Published"
 msgstr "Público"
 
-#: core/models.py:108 core/models.py:631 forum/models.py:16
+#: core/models.py:108 core/models.py:632 forum/models.py:16
 msgid "Slug"
 msgstr "Slug"
 
@@ -397,8 +398,8 @@ msgstr "Requisitos"
 
 #: core/models.py:114 themes/default/templates/course.html:265
 #: themes/default/templates/course.html:269
-#: themes/default/templates/course.html:584
-#: themes/default/templates/course.html:589
+#: themes/default/templates/course.html:596
+#: themes/default/templates/course.html:601
 msgid "Abstract"
 msgstr "Resumo"
 
@@ -406,15 +407,15 @@ msgstr "Resumo"
 msgid "Structure"
 msgstr "Estrutura"
 
-#: core/models.py:116 core/models.py:729
+#: core/models.py:116 core/models.py:731
 msgid "Workload"
 msgstr "Carga horária"
 
-#: core/models.py:117 core/models.py:863
+#: core/models.py:117 core/models.py:865
 msgid "Pronatec"
 msgstr "Pronatec"
 
-#: core/models.py:118 core/models.py:632
+#: core/models.py:118 core/models.py:633
 #: themes/default/templates/administration/courses.html:126
 msgid "Status"
 msgstr "Situação"
@@ -429,26 +430,31 @@ msgstr "Thumbnail"
 msgid "Home thumbnail"
 msgstr "Home thumbnail"
 
-#: core/models.py:125 themes/default/templates/course.html:599
-#: themes/default/templates/course.html:602
+#: core/models.py:125 themes/default/templates/course.html:611
+#: themes/default/templates/course.html:614
 msgid "Welcome Email"
 msgstr "Email de boas vindas"
 
-#: core/models.py:126 themes/default/templates/administration/courses.html:125
+#: core/models.py:126 themes/default/templates/course.html:576
+#| msgid "Total units"
+msgid "Total hours"
+msgstr "Total de horas"
+
+#: core/models.py:127 themes/default/templates/administration/courses.html:125
 #: themes/default/templates/course.html:569
-#: themes/default/templates/course.html:576
+#: themes/default/templates/course.html:583
 msgid "Start date"
 msgstr "Data de início"
 
-#: core/models.py:129
+#: core/models.py:130
 msgid "Default Class"
 msgstr "Turma padrão"
 
-#: core/models.py:138
+#: core/models.py:139
 msgid "groups"
 msgstr "Grupos"
 
-#: core/models.py:140
+#: core/models.py:141
 msgid ""
 "The Groups that can have access to this forum. If empty, there are no group "
 "restrictions."
@@ -456,147 +462,152 @@ msgstr ""
 "Os grupos que possuem acesso a este fórum. Se estiver vazio, não há "
 "restrições de grupos."
 
-#: core/models.py:146 themes/default/templates/administration/courses.html:96
+#: core/models.py:147 themes/default/templates/administration/courses.html:96
 #: themes/default/templates/courses.html:31
 #: themes/default/templates/header.html:26
 #: themes/default/templates/header.html:66
 msgid "Courses"
 msgstr "Cursos"
 
-#: core/models.py:303
+#: core/models.py:304
 msgid "is active?"
 msgstr "Ativo?"
 
-#: core/models.py:340
+#: core/models.py:341
 #, python-format
 msgid "Welcome to course: %s"
 msgstr "Bem vindo ao curso: %s"
 
-#: core/models.py:472
+#: core/models.py:473
 msgid "Instructor"
 msgstr "Instrutor"
 
-#: core/models.py:474
+#: core/models.py:475
 msgid "Professor Coordinator"
 msgstr "Professor Coordenador"
 
-#: core/models.py:477 core/models.py:527 core/models.py:570
+#: core/models.py:478 core/models.py:528 core/models.py:571
 msgid "Professor"
 msgstr "Professor"
 
-#: core/models.py:480 core/models.py:830
+#: core/models.py:481 core/models.py:832
 #: themes/default/templates/administration/permissions.html:58
 msgid "Role"
 msgstr "Papel"
 
-#: core/models.py:487
+#: core/models.py:488
 msgid "Course Professor"
 msgstr "Professor do curso"
 
-#: core/models.py:488
+#: core/models.py:489
 msgid "Course Professors"
 msgstr "Professores do curso"
 
-#: core/models.py:540
+#: core/models.py:541
 msgid "Course Author"
 msgstr "Estrutura"
 
-#: core/models.py:541
+#: core/models.py:542
 msgid "Course Authors"
 msgstr "Relatórios de curso"
 
-#: core/models.py:574
+#: core/models.py:575
 msgid "Date"
 msgstr "Data"
 
-#: core/models.py:627
+#: core/models.py:628
 msgid "Description"
 msgstr "Descrição"
 
-#: core/models.py:629 themes/default/templates/notes.html:51
+#: core/models.py:630 themes/default/templates/notes.html:51
 msgid "Notes"
 msgstr "Anotações"
 
-#: core/models.py:642 core/models.py:681 forum/models.py:21
+#: core/models.py:643 core/models.py:682 forum/models.py:21
 msgid "Lesson"
 msgstr "Aula"
 
-#: core/models.py:643 themes/default/templates/administration/stats.html:101
+#: core/models.py:644 themes/default/templates/administration/stats.html:101
 #: themes/default/templates/course.html:349
 #: themes/default/templates/course.html:460
 msgid "Lessons"
 msgstr "Aulas"
 
-#: core/models.py:680 forum/models.py:14
+#: core/models.py:681 forum/models.py:14
 msgid "Title"
 msgstr "Título"
 
-#: core/models.py:683
+#: core/models.py:684
+#| msgid "Contact"
+msgid "Content"
+msgstr "Conteúdo"
+
+#: core/models.py:685
 msgid "Side notes"
 msgstr "Anotações"
 
-#: core/models.py:691
+#: core/models.py:693
 msgid "Units"
 msgstr "Unidades"
 
-#: core/models.py:708
+#: core/models.py:710
 msgid "Student Progress"
 msgstr "Progresso do Estudante"
 
-#: core/models.py:717
+#: core/models.py:719
 msgid "Receipt"
 msgstr "Comprovante"
 
-#: core/models.py:718 core/models.py:757 core/models.py:791
+#: core/models.py:720 core/models.py:759 core/models.py:793
 #: themes/default/templates/class_edit.html:183
 msgid "Certificate"
 msgstr "Certificado"
 
-#: core/models.py:721
+#: core/models.py:723
 msgid "Certificate Type"
 msgstr "Tipo de Certificação"
 
-#: core/models.py:723
+#: core/models.py:725
 msgid "Enrollment"
 msgstr "Envolvimento"
 
-#: core/models.py:724 core/models.py:793
+#: core/models.py:726 core/models.py:795
 msgid "Created"
 msgstr "Criado"
 
-#: core/models.py:725
+#: core/models.py:727
 msgid "Last modified"
 msgstr "Última alteração"
 
-#: core/models.py:727
+#: core/models.py:729
 msgid "Certificate is valid"
 msgstr "Certificado é valido"
 
-#: core/models.py:730
+#: core/models.py:732
 msgid "Total units"
 msgstr "Total de unidades"
 
-#: core/models.py:732
+#: core/models.py:734
 msgid "Hash"
 msgstr "Código"
 
-#: core/models.py:767
+#: core/models.py:769
 msgid "Evaluation grade needed"
 msgstr "Nota mínima"
 
-#: core/models.py:768
+#: core/models.py:770
 msgid "Evaluation date"
 msgstr "Data da avaliação"
 
-#: core/models.py:769
+#: core/models.py:771
 msgid "Evaluation results date"
 msgstr "Data da divulgação do resultado da avaliação"
 
-#: core/models.py:771 core/models.py:792
+#: core/models.py:773 core/models.py:794
 msgid "Comments"
 msgstr "Comentários"
 
-#: core/models.py:772 core/models.py:803
+#: core/models.py:774 core/models.py:805
 #: themes/default/templates/_course-details-inline.html:16
 #: themes/default/templates/course-evaluations.html:59
 #: themes/default/templates/course-evaluations.html:432
@@ -606,7 +617,7 @@ msgstr "Comentários"
 msgid "Class"
 msgstr "Turma"
 
-#: core/models.py:775 core/models.py:799
+#: core/models.py:777 core/models.py:801
 #: themes/default/templates/course-evaluations.html:238
 #: themes/default/templates/course-evaluations.html:256
 #: themes/default/templates/evaluations.html:167
@@ -614,39 +625,39 @@ msgstr "Turma"
 msgid "Evaluation"
 msgstr "Avaliação"
 
-#: core/models.py:795
+#: core/models.py:797
 msgid "Evaluation grade"
 msgstr "Nota da avaliação"
 
-#: core/models.py:796
+#: core/models.py:798
 msgid "Approved"
 msgstr "Aprovado"
 
-#: core/models.py:797
+#: core/models.py:799
 msgid "No show"
 msgstr "Não compareceu"
 
-#: core/models.py:817
+#: core/models.py:819
 msgid "Certification Process"
 msgstr "Processo de Certificação"
 
-#: core/models.py:831
+#: core/models.py:833
 msgid "Signature Name"
 msgstr "Nome de Assinatura"
 
-#: core/models.py:834 core/models.py:836
+#: core/models.py:836 core/models.py:838
 msgid "Logo"
 msgstr "Logo"
 
-#: core/models.py:841
+#: core/models.py:843
 msgid "Certificate Template"
 msgstr "Model de Certificado"
 
-#: core/models.py:864
+#: core/models.py:866
 msgid "MEC"
 msgstr "MEC"
 
-#: core/models.py:867
+#: core/models.py:869
 msgid "IF Certificate Template"
 msgstr "Modelo de certificação dos IFs"
 
@@ -780,7 +791,7 @@ msgstr "Ferramentas"
 #: themes/default/templates/_admin_header_inline.html:54
 #: themes/default/templates/_course-header-inline.html:26
 #: themes/default/templates/header.html:31
-#: themes/default/templates/messages.html:64
+#: themes/default/templates/messages.html:63
 msgid "Messages"
 msgstr "Mensagens"
 
@@ -874,7 +885,7 @@ msgstr "Organizar instrutores"
 #: themes/default/templates/evaluations.html:345
 #: themes/default/templates/footer.html:23
 #: themes/default/templates/footer.html:51
-#: themes/default/templates/messages.html:134
+#: themes/default/templates/messages.html:133
 msgid "Close"
 msgstr "Fechar"
 
@@ -885,7 +896,7 @@ msgstr "Fechar"
 #: themes/default/templates/account/password_reset_from_key.html:31
 #: themes/default/templates/account/password_reset_from_key.html:69
 #: themes/default/templates/administration/certificate-settings.html:51
-#: themes/default/templates/administration/lesson.html:37
+#: themes/default/templates/administration/lesson.html:55
 #: themes/default/templates/administration/permissions.html:33
 #: themes/default/templates/class_edit.html:68
 #: themes/default/templates/course.html:49
@@ -919,7 +930,7 @@ msgstr "Busque e selecione um usuário para defini-lo como professor do curso"
 #: themes/default/templates/_course_professors_modal.html:25
 #: themes/default/templates/administration/permissions.html:94
 #: themes/default/templates/class_edit.html:136
-#: themes/default/templates/messages.html:107
+#: themes/default/templates/messages.html:106
 msgid "Type the name, email or user name of the professor to search..."
 msgstr ""
 "Digite um nome, email ou nome de usuário do professor para pesquisar..."
@@ -950,7 +961,7 @@ msgstr "Usar biografia do perfil do usuário"
 #: themes/default/templates/administration/certificate-settings.html:50
 #: themes/default/templates/administration/courses.html:40
 #: themes/default/templates/administration/courses.html:70
-#: themes/default/templates/administration/lesson.html:139
+#: themes/default/templates/administration/lesson.html:161
 #: themes/default/templates/administration/permissions.html:32
 #: themes/default/templates/course.html:119
 #: themes/default/templates/course.html:163
@@ -994,7 +1005,7 @@ msgstr "Editar resposta"
 #: themes/default/templates/evaluations.html:303
 #: themes/default/templates/evaluations.html:347
 #: themes/default/templates/footer.html:44
-#: themes/default/templates/messages.html:135
+#: themes/default/templates/messages.html:134
 #: themes/default/templates/question.html:145
 msgid "Send"
 msgstr "Enviar"
@@ -1548,35 +1559,40 @@ msgstr "Nenhum curso encontrado"
 msgid "Loading courses..."
 msgstr "Carregando cursos..."
 
-#: themes/default/templates/administration/lesson.html:36
+#: themes/default/templates/administration/lesson.html:54
 #: themes/default/templates/course.html:56
 msgid "Delete"
 msgstr "Apagar"
 
-#: themes/default/templates/administration/lesson.html:38
+#: themes/default/templates/administration/lesson.html:56
 msgid "Publish"
 msgstr "Publicar"
 
-#: themes/default/templates/administration/lesson.html:67
+#: themes/default/templates/administration/lesson.html:85
 #: themes/default/templates/course.html:365
 #: themes/default/templates/course.html:420
 msgid "Lesson name"
 msgstr "Nome da aula"
 
-#: themes/default/templates/administration/lesson.html:69
-#: themes/default/templates/administration/lesson.html:83
+#: themes/default/templates/administration/lesson.html:87
+#: themes/default/templates/administration/lesson.html:101
 msgid "Lesson description"
 msgstr "Descrição da aula"
 
-#: themes/default/templates/administration/lesson.html:85
+#: themes/default/templates/administration/lesson.html:103
 msgid "Delete this unit"
 msgstr "Apagar esta unidade"
 
-#: themes/default/templates/administration/lesson.html:132
+#: themes/default/templates/administration/lesson.html:116
+#| msgid "Image"
+msgid "Text/Image"
+msgstr "Texto/Imagem"
+
+#: themes/default/templates/administration/lesson.html:154
 msgid "Unit video"
 msgstr "Vídeo da unidade"
 
-#: themes/default/templates/administration/lesson.html:142
+#: themes/default/templates/administration/lesson.html:164
 #: themes/default/templates/course.html:122
 #: themes/default/templates/course.html:166
 #: themes/default/templates/course.html:231
@@ -1584,12 +1600,17 @@ msgstr "Vídeo da unidade"
 msgid "Add"
 msgstr "Adicionar"
 
-#: themes/default/templates/administration/lesson.html:159
+#: themes/default/templates/administration/lesson.html:181
 #: themes/default/templates/course.html:211
 msgid "Change video"
 msgstr "Trocar vídeo"
 
-#: themes/default/templates/administration/lesson.html:188
+#: themes/default/templates/administration/lesson.html:198
+#| msgid "Fill the question content."
+msgid "Fill with your content"
+msgstr "Preencha com o conteúdo"
+
+#: themes/default/templates/administration/lesson.html:224
 msgid ""
 "The text bellow will be shown to students when they correctly finish this "
 "activity."
@@ -1597,7 +1618,7 @@ msgstr ""
 "O texto abaixo é um comentário que será exibido após o estudante responder "
 "corretamente a atividade."
 
-#: themes/default/templates/administration/lesson.html:193
+#: themes/default/templates/administration/lesson.html:229
 msgid ""
 "The text bellow will be shown to students when they send a correctly answer "
 "to this activity."
@@ -1605,14 +1626,14 @@ msgstr ""
 "O texto abaixo é um comentário que será exibido quando o estudante responder"
 " corretamente a atividade."
 
-#: themes/default/templates/administration/lesson.html:194
-#: themes/default/templates/administration/lesson.html:201
+#: themes/default/templates/administration/lesson.html:230
+#: themes/default/templates/administration/lesson.html:237
 msgid "If you don't fill this field, it will appear a default message."
 msgstr ""
 "Se você não preencher este campo, aparecerá uma mensagem padrão pré-definida"
 " pelo sistema."
 
-#: themes/default/templates/administration/lesson.html:200
+#: themes/default/templates/administration/lesson.html:236
 msgid ""
 "The text bellow will be shown to students when they send a wrong answer to "
 "this activity."
@@ -1620,13 +1641,13 @@ msgstr ""
 "O texto abaixo é um comentário que será exibido quando estudante responder "
 "incorretamente a atividade."
 
-#: themes/default/templates/administration/lesson.html:211
+#: themes/default/templates/administration/lesson.html:247
 msgid "Unit activity"
 msgstr "Atividade da unidade"
 
-#: themes/default/templates/administration/lesson.html:231
-#: themes/default/templates/administration/lesson.html:232
-#: themes/default/templates/lesson.html:173
+#: themes/default/templates/administration/lesson.html:267
+#: themes/default/templates/administration/lesson.html:268
+#: themes/default/templates/lesson.html:180
 msgid "Addicional materials"
 msgstr "Materiais adicionais"
 
@@ -1644,7 +1665,7 @@ msgstr "Adicionar usuário"
 #: themes/default/templates/evaluations.html:206
 #: themes/default/templates/evaluations.html:309
 #: themes/default/templates/message.html:39
-#: themes/default/templates/messages.html:117
+#: themes/default/templates/messages.html:116
 msgid "Full name"
 msgstr "Nome"
 
@@ -1655,7 +1676,7 @@ msgstr "Nome"
 #: themes/default/templates/classes.html:67
 #: themes/default/templates/course-evaluations.html:280
 #: themes/default/templates/evaluations.html:209
-#: themes/default/templates/messages.html:120
+#: themes/default/templates/messages.html:119
 #: themes/default/templates/profile-edit.html:255
 msgid "Actions"
 msgstr "Ações"
@@ -1763,10 +1784,12 @@ msgid "Last"
 msgstr "ùltimo"
 
 #: themes/default/templates/certificate.html:60
+#: themes/default/templates/certificate.html:93
 msgid "Baixar Comprovante"
 msgstr ""
 
 #: themes/default/templates/certificate.html:62
+#: themes/default/templates/certificate.html:95
 msgid "Baixar Certificado"
 msgstr ""
 
@@ -2057,6 +2080,11 @@ msgstr "Adicionar aula"
 msgid "Progresso necessario para certificado"
 msgstr ""
 
+#: themes/default/templates/course.html:588
+#| msgid "Total units"
+msgid "Total Hours"
+msgstr "Total de Horas"
+
 #: themes/default/templates/courses.html:65
 #: themes/default/templates/home.html:108
 msgid "Soon"
@@ -2184,19 +2212,23 @@ msgstr "Matrícula"
 msgid "Chapters"
 msgstr "Capítulos"
 
-#: themes/default/templates/lesson.html:130
+#: themes/default/templates/lesson.html:121
+msgid "Text"
+msgstr "Texto"
+
+#: themes/default/templates/lesson.html:137
 msgid "Professor comment"
 msgstr "Anotações do professor"
 
-#: themes/default/templates/lesson.html:136
+#: themes/default/templates/lesson.html:143
 msgid "Continue"
 msgstr "Continuar"
 
-#: themes/default/templates/lesson.html:157
+#: themes/default/templates/lesson.html:164
 msgid "My Annotations"
 msgstr "Minhas Anotações"
 
-#: themes/default/templates/lesson.html:176
+#: themes/default/templates/lesson.html:183
 msgid "This unit has no addicional materials"
 msgstr "Esta unidade não possui material adicional"
 
@@ -2212,29 +2244,29 @@ msgstr "Esconder destinatários"
 msgid "Recipients"
 msgstr "Destinatários"
 
-#: themes/default/templates/messages.html:69
-#: themes/default/templates/messages.html:74
+#: themes/default/templates/messages.html:68
+#: themes/default/templates/messages.html:73
 msgid "New Message"
 msgstr "Nova mensagem"
 
-#: themes/default/templates/messages.html:79
+#: themes/default/templates/messages.html:78
 msgid "Fill the message subject"
 msgstr "Preencha o assunto"
 
-#: themes/default/templates/messages.html:80
+#: themes/default/templates/messages.html:79
 msgid "Fill the message body"
 msgstr "Preencha o corpo do email"
 
-#: themes/default/templates/messages.html:95
+#: themes/default/templates/messages.html:94
 msgid "Loading classes..."
 msgstr "Carregando turmas..."
 
-#: themes/default/templates/messages.html:99
+#: themes/default/templates/messages.html:98
 msgid "Send to all classes"
 msgstr "Enviar para todas as turmas"
 
-#: themes/default/templates/messages.html:183
-#: themes/default/templates/messages.html:185
+#: themes/default/templates/messages.html:182
+#: themes/default/templates/messages.html:184
 msgid "Details"
 msgstr "Detalhes"
 
