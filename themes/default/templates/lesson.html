@@ -114,6 +114,12 @@ wrapper-course-lesson
 
                 <div class="col-lg-8 col-md-8 col-sm-10 col-xs-12">
                     {% block lesson_video %}
+                    <button class='btn btn-default' ng-show="currentUnit.video && currentUnit.content" ng-click="section = 'video'">
+                        {% trans 'Video' %}
+                    </button>
+                    <button class='btn btn-default' ng-show="currentUnit.video && currentUnit.content" ng-click="section = 'content'">
+                        {% trans 'Text' %}
+                    </button>
                     <!--
                     this class exists to circunvent a flash + youtube api error
                     in which if the video div is really hidden the api breaks
@@ -121,6 +127,7 @@ wrapper-course-lesson
                     <div ng-class="{hidder: section!='video'}" class="video embed-responsive embed-responsive-16by9">
                         <div class="embed-responsive-item" id="youtube-player" youtube-player></div>
                     </div>
+                    <div ng-show="section=='content'" class="course-content" ng-bind-html="currentUnit.content"></div>
                     <div ng-show="section=='activity'" class="course-activity">
                         <ng:include src="activityTemplateUrl"></ng:include>
                     </div>

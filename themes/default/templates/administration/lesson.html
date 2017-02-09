@@ -1,21 +1,39 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load compress %}
 {% load i18n %}
 
-{% block js %} {{block.super}}
-<script type="text/javascript" src="{% static 'app/admin.lesson.app.js' %}"></script>
-<script type="text/javascript" src="{% static 'app/controllers/admin.lesson.controllers.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/core-services.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/new-course/directives.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/filters/text.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/directives/alertPopup.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/directives/waiting-screen.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/directives/contenteditable.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/directives/fixedBar.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/directives/markdowneditor.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/directives/codemirror.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/directives/sortable.js' %}"></script>
+{% block js %}
+    {{block.super}}
+    <script type="text/javascript" src="{% static 'tinymce-dist/tinymce.js' %}"></script>
+    <script type="text/javascript" src="{% static 'tinymce-dist/plugins/textcolor/plugin.js' %}"></script>
+    <script type="text/javascript" src="{% static 'tinymce-dist/plugins/link/plugin.js' %}"></script>
+    <script type="text/javascript" src="{% static 'tinymce-dist/themes/modern/theme.js' %}"></script>
+    <script type="text/javascript" src="{% static 'angular-ui-tinymce/src/tinymce.js' %}"></script>
+    <script type="text/javascript" src="{% static 'app/admin.lesson.app.js' %}"></script>
+    <script type="text/javascript" src="{% static 'app/controllers/admin.lesson.controllers.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/core-services.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/new-course/directives.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/filters/text.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/directives/alertPopup.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/directives/waiting-screen.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/directives/contenteditable.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/directives/fixedBar.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/directives/markdowneditor.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/directives/codemirror.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/directives/sortable.js' %}"></script>
 {% endblock %}
+
+{% block css %}
+    {{block.super}}
+    {% compress css %}
+        <link rel="stylesheet" href="{% static 'tinymce-dist/skins/lightgray/skin.min.css' %}" type="text/css" />
+        <link rel="stylesheet" href="{% static 'tinymce-dist/skins/lightgray/skin.ie7.min.css' %}" type="text/css" />
+        <link rel="stylesheet" href="{% static 'tinymce-dist/skins/lightgray/content.min.css' %}" type="text/css" />
+    {% endcompress %}
+
+{% endblock %}
+
 
 {% block body_attrs %}
 ng-app="admin.lesson"
@@ -75,7 +93,7 @@ wrapper-course-lesson
         <!-- ROW -->
         <div class="row">
 
-            <div class="add-content" ng-init="section='video'">
+            <div class="add-content">
                 <div class="col-xs-12">
                     <div class="secondary-header">
                         <div class="unit">{% trans 'Unit' %}:</div>
@@ -92,6 +110,10 @@ wrapper-course-lesson
                         <button class="btn btn-default uppercase"
                                 ng-class="{'btn-info': section === 'video'}"
                                 ng-click="section ='video'">{% trans 'Video' %}</button>
+
+                        <button class="btn btn-default uppercase"
+                                ng-class="{'btn-info': section === 'content'}"
+                                ng-click="section ='content'">{% trans 'Text/Image' %}</button>
 
                         <button class="btn btn-default uppercase"
                                 ng-class="{'btn-info': section === 'activity'}"
@@ -164,6 +186,20 @@ wrapper-course-lesson
 
             </div>
             <!-- END VIDEO SECTION -->
+
+            <!-- CONTENT SECTION -->
+            <div class="video col-sm-8" ng-class="{'hidder': section !== 'content'}">
+
+                <textarea
+                    class="form-control"
+                    rows="10"
+                    ng-model="currentUnit.content"
+                    ui-tinymce="tinymceOptions"
+                    placeholder="{% trans 'Fill with your content' %}">
+                </textarea>
+
+            </div>
+            <!-- END CONTENT SECTION -->
 
             <!-- ACTIVITIES SECTION -->
             <div class="activity col-sm-8" ng-show="section==='activity'">

@@ -20,9 +20,13 @@
 
             $scope.selectUnit = function(unit) {
                 $scope.currentUnit = unit;
-                if(unit.video) {
-                    $scope.section = 'video';
-                    $scope.play(unit.video.youtube_id);
+                if(unit.video || unit.content) {
+                    if(unit.video) {
+                        $scope.section = 'video';
+                        $scope.play(unit.video.youtube_id);
+                    } else {
+                        $scope.section = 'content';
+                    }
                 } else {
                     $scope.section = 'activity';
                 }
@@ -63,7 +67,11 @@
                             player.cueVideoById(youtube_id);
                     });
                 } else {
-                    $scope.section = 'activity';
+                    if($scope.currentUnit.content) {
+                        $scope.section = 'content';
+                    } else {
+                        $scope.section = 'activity';
+                    }
                 }
             };
 

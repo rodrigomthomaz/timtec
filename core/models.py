@@ -680,6 +680,7 @@ class Unit(PositionedModel):
     title = models.CharField(_('Title'), max_length=128, blank=True)
     lesson = models.ForeignKey(Lesson, verbose_name=_('Lesson'), related_name='units')
     video = models.ForeignKey(Video, verbose_name=_('Video'), related_name='unit', null=True, blank=True)
+    content = models.TextField(_('Content'), blank=True, null=True)
     side_notes = models.TextField(_('Side notes'), blank=True)
     position = models.IntegerField(default=0)
     notes = GenericRelation(Note)

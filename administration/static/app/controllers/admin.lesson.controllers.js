@@ -20,6 +20,18 @@
                 '404': 'Este curso não existe!'
             };
 
+            // box default that will appear
+            $scope.section = 'video';
+
+            $scope.tinymceOptions = {
+                resize: false,
+                menubar:false,
+                statusbar: false,
+
+                plugins: 'textcolor link',
+                toolbar: "undo redo styleselect bold italic forecolor backcolor link",
+            };
+
             // load youtube
             $scope.playerReady = false;
             youtubePlayerApi.loadPlayer().then(function(p){
@@ -152,9 +164,13 @@
             };
 
             $scope.selectUnit = function(u) {
+                $scope.section = 'video';
                 $scope.currentUnit = u;
                 if(u.video && u.video.youtube_id){
                     $scope.play(u.video.youtube_id);
+                }
+                if(u.content && !u.video) {
+                    $scope.section = 'content';
                 }
                 if($scope.currentUnit.activities) {
                     $scope.currentActivity = $scope.currentUnit.activities[0];
@@ -192,6 +208,7 @@
 
             $scope.setCurrentUnitVideo = function() {
                 var youtube_id = $scope.currentUnit.intended_youtube_id;
+                delete $scope.currentUnit.intended_youtube_id;
 
                 //
                 // support pasting both long and short urls from youtube
