@@ -49,7 +49,7 @@ wrapper-course-lesson
         {% endif %}
     {% endif %}
     <section id="certificate-content" class="container">
-        <div>
+        <div class='hidden-xs hidden-sm'>
             {% if object.course_student.user.is_profile_filled %}
                 <div class="row">
                     <div class="container">
@@ -78,6 +78,25 @@ wrapper-course-lesson
                 {% endif %}
             </div>
             {% endif %}
+        </div>
+
+        <div class='hidden-md hidden-lg'>
+            <div class='row phone'>
+                <div class='col-sm-12'>
+                    <p>
+                        Clique no botão abaixo para fazer o download do seu certificado.
+                    </p>
+                    <a href="{% url 'certificate-download' object.link_hash %}"
+                       class="btn btn-primary btn-lg">
+                        <i class="glyphicon glyphicon-download"></i>
+                        {% if object.type == 'receipt' %}
+                            {% trans 'Baixar Comprovante' %}
+                        {% else %}
+                            {% trans 'Baixar Certificado' %}
+                        {% endif %}
+                    </a>
+                </div>
+            </div>
         </div>
     </section>
 </div>
