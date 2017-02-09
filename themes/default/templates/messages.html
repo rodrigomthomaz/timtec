@@ -13,10 +13,10 @@ wrapper-course-lesson
 {% block css %}
     {{block.super}}
     {% compress css %}
-<link rel="stylesheet" href="{% static 'tinymce-dist/skins/lightgray/skin.min.css' %}" type="text/css" />
-<link rel="stylesheet" href="{% static 'tinymce-dist/skins/lightgray/skin.ie7.min.css' %}" type="text/css" />
-<link rel="stylesheet" href="{% static 'tinymce-dist/skins/lightgray/content.min.css' %}" type="text/css" />
-{% endcompress %}
+        <link rel="stylesheet" href="{% static 'tinymce-dist/skins/lightgray/skin.min.css' %}" type="text/css" />
+        <link rel="stylesheet" href="{% static 'tinymce-dist/skins/lightgray/skin.ie7.min.css' %}" type="text/css" />
+        <link rel="stylesheet" href="{% static 'tinymce-dist/skins/lightgray/content.min.css' %}" type="text/css" />
+    {% endcompress %}
 
 {% endblock %}
 
@@ -27,20 +27,19 @@ wrapper-course-lesson
         window.course_slug = '{{ course.slug }}';
     </script>
     {% compress js %}
-<script type="text/javascript" src="{% static 'tinymce-dist/tinymce.js' %}"></script>
-<script type="text/javascript" src="{% static 'tinymce-dist/plugins/textcolor/plugin.js' %}"></script>
-<script type="text/javascript" src="{% static 'tinymce-dist/plugins/link/plugin.js' %}"></script>
-<script type="text/javascript" src="{% static 'tinymce-dist/themes/modern/theme.js' %}"></script>
-<script type="text/javascript" src="{% static 'angular-ui-tinymce/src/tinymce.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/messages/app.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/messages/controllers.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/messages/services.js' %}"></script>
-<script type="text/javascript" src="{% static 'checklist-model/checklist-model.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/markdown/app.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/markdown/filters.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/factories/timtec-models.js' %}"></script>
-{% endcompress %}
-
+        <script type="text/javascript" src="{% static 'tinymce-dist/tinymce.js' %}"></script>
+        <script type="text/javascript" src="{% static 'tinymce-dist/plugins/textcolor/plugin.js' %}"></script>
+        <script type="text/javascript" src="{% static 'tinymce-dist/plugins/link/plugin.js' %}"></script>
+        <script type="text/javascript" src="{% static 'tinymce-dist/themes/modern/theme.js' %}"></script>
+        <script type="text/javascript" src="{% static 'angular-ui-tinymce/src/tinymce.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/messages/app.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/messages/controllers.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/messages/services.js' %}"></script>
+        <script type="text/javascript" src="{% static 'checklist-model/checklist-model.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/markdown/app.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/markdown/filters.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/factories/timtec-models.js' %}"></script>
+    {% endcompress %}
 {% endblock %}
 
 {% block body_attrs %}ng-app='messages'{% endblock %}
