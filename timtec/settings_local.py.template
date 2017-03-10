@@ -8,8 +8,18 @@ DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 SITE_ID = 1
 
+INSTALLED_APPS += (
+    'if_theme',
+)
+
+YOUTUBE_API_KEY = ''
+
 # TODO: change this to the theme you want to use ######
-TIMTEC_THEME = 'ifs-colors'
+TIMTEC_THEME = 'if_theme'
+
+COMPRESS_PRECOMPILERS = (
+    ('text/less', '%s/node_modules/less/bin/lessc {infile} {outfile} --include-path="%s/bower_components/bootstrap:%s/themes/default/static:%s/themes/default/static/less:%s/bower_components"' % (PROJECT_ROOT, PROJECT_ROOT, PROJECT_ROOT, PROJECT_ROOT, PROJECT_ROOT)),
+)
 
 # TODO: Remove this block if you don't want to use ifs app ######
 # INSTALLED_APPS = list(INSTALLED_APPS)
@@ -50,17 +60,6 @@ CONTACT_RECIPIENT_LIST = ['contato@' + DOMAIN_NAME, ]
 
 SITE_NAME = 'IF'
 EMAIL_SUBJECT_PREFIX = '[if-sysadmin]'
-
-# TODO: uncomment and change to get openid working with your provider ######
-# SOCIALACCOUNT_PROVIDERS['openid'] = {
-#         'SERVERS': [
-#             {
-#                 'id': 'moodle',
-#                 'name': 'Moodle',
-#                 'openid_url': 'http://192.168.0.102/local/openid_idp/'
-#             },
-#         ]
-#     }
 
 if DEBUG:
     INSTALLED_APPS += (
