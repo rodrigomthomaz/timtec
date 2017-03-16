@@ -31,6 +31,5 @@ class Migration(migrations.Migration):
                 model_name='coursestudent',
                 name='start_date',
                 field=models.DateTimeField(default=django.utils.timezone.now),
-            ),
-            migrations.RunPython(change_link_hash_duplicate),
+            )
     ]
