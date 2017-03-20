@@ -8,14 +8,15 @@ DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 SITE_ID = 1
 
-INSTALLED_APPS += (
-    'if_theme',
-)
-
 YOUTUBE_API_KEY = ''
 
 # TODO: change this to the theme you want to use ######
-TIMTEC_THEME = 'if_theme'
+INSTALLED_APPS += (
+  'if_theme',        # Use this to IF theme
+  # 'timtec_theme',  # Use this to Timtec theme
+)
+TIMTEC_THEME = 'if_theme'  # Use this to IF theme
+# TIMTEC_THEME = 'timtec_theme'  # Use this to Timtec theme
 
 COMPRESS_PRECOMPILERS = (
     ('text/less', '%s/node_modules/less/bin/lessc {infile} {outfile} --include-path="%s/bower_components/bootstrap:%s/themes/default/static:%s/themes/default/static/less:%s/bower_components"' % (PROJECT_ROOT, PROJECT_ROOT, PROJECT_ROOT, PROJECT_ROOT, PROJECT_ROOT)),
