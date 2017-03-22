@@ -15,8 +15,6 @@ Com o seu virtualenv ativado e seu cursor localizado dentro do diretório raiz d
 bash ./scripts/prepare-to-migrate-from-3.3-to-4.1.sh
 ```
 
-Feito isso, pode continuar com sua migração normalmente!
-
 Configurações locais
 --------------------
 
@@ -43,4 +41,12 @@ INSTALLED_APPS += (
   # 'timtec_theme',  # Use this to Timtec theme
 )
 TIMTEC_THEME = 'if_theme'
+```
+
+Realizando a migração
+---------------------
+
+Levando em conta os dois pontos levantados acima, faça sua migração executando o comando (dentro do diretório raiz):
+```
+make update
 ```
