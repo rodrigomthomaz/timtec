@@ -38,7 +38,7 @@ root@server# apt-get install git
 root@server# apt-get install build-essential python-dev gettext python-virtualenv
 ```
 
-* Instale algumas **bibliotecas de processamento de imagem**
+* Instale algumas **BIBLIOTECAS DE PROCESSAMENTO DE IMAGENS**
 
 ```
 root@server# apt-get install libpq-dev libjpeg-dev libpng12-dev 
