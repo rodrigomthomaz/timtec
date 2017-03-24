@@ -1,8 +1,8 @@
-Essa é a documentação básica de instalação (deploy) timtec. Para informações sobre requisitos e dependências, veja o [README.md](https://github.com/hacklabr/timtec/blob/master/README.md).
+> **ATENÇÃO 0:** Essa é a documentação básica de instalação (deploy) timtec. Para informações sobre requisitos e dependências, veja o [README.md](https://github.com/hacklabr/timtec/blob/master/README.md).
 
-> ATENÇÃO 1: execute os comandos na sequencia em que são apresentados aqui.
+> **ATENÇÃO 1:** execute os comandos na sequencia em que são apresentados aqui.
 
-> ATENÇÃO 2: quando o comando precisar ser executado como **root** ele virá precedido desta indicação **root@server#**. Quando o comando precisar ser executado como **usuário da aplicação** ele virá precedido desta indicação **user@server$**. 
+> **ATENÇÃO 2:** quando o comando precisar ser executado como **root** ele virá precedido desta indicação **root@server#**. Quando o comando precisar ser executado como **usuário da aplicação** ele virá precedido desta indicação **user@server$**. 
 
 
 ## Prepare o servidor
