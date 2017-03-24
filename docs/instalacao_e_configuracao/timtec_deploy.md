@@ -143,6 +143,17 @@ timtec-production@server$ cd ~/timtec
 timtec-production@server$ make install
 ```
 
+* Insira o endereço (url) de sua instância 
+
+```
+timtec-production@server$ vi timtec/timtec/settings_local.py
+```
+Edite este trecho:
+```
+# TODO: you NEED to change this to your domain name ######
+DOMAIN_NAME = 'suaurl.com.br'
+```
+
 > **ATENÇÃO 6:** Se ocorrer algum erro, tente rodar o comando make novamente, pois falhas podem ocorrer devido a problemas com a internet.
 
 ### Criando ambiente virtual manualmente
