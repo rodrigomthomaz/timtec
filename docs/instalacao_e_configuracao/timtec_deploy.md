@@ -165,7 +165,7 @@ timtec-production@server$ source /home/timtec-production/env/bin/activate
 * Na pasta timtec/scripts/conf temos exemplo de arquivos de configuração. Copie os mesmos para seus locais e edite-os confore sua necessidade:
 
 ```
-root@server# cp ~/timtec/scripts/conf/timtec-production.ini /etc/uwsgi/apps-available
+root@server# cp /home/timtec-production/timtec/scripts/conf/timtec-production.ini /etc/uwsgi/apps-available
 ```
 
 * Nas configurações do UWSGI, crie um link simbólico de apps-available para apps-enable
@@ -183,7 +183,7 @@ root@server# service uwsgi start
 * Copie os scritps de configuração da instância timtec-production para os sites available do nginx
 
 ```
-root@server# cp ~/timtec/scripts/conf/nginx-timtec-production /etc/nginx/sites-available/timtec-production
+root@server# cp /home/timtec-production/timtec/scripts/conf/nginx-timtec-production /etc/nginx/sites-available/timtec-production
 
 ```
 * Edite o arquivo de configuração do nginx para colocar seu domínio
