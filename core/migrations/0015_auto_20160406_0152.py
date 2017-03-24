@@ -21,5 +21,10 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
+        migrations.AddField(
+            model_name='class',
+            name='user_can_certificate_even_without_progress',
+            field=models.BooleanField(default=False, verbose_name='Certification Allowed Even Without Progress'),
+        ),
         migrations.RunPython(create_certificate_templates),
     ]

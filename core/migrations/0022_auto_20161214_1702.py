@@ -8,7 +8,7 @@ from django.conf import settings
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('core', '0021_auto_20161214_1700'),
+        ('core', '0020_professormessage_users_that_read'),
     ]
 
     operations = [
