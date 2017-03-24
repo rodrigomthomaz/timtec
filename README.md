@@ -1,4 +1,4 @@
-[![Stories in Ready](https://badge.waffle.io/institutotim/timtec.png?label=ready&title=Ready)](https://waffle.io/institutotim/timtec)
+[![Stories in Ready](https://badge.waffle.io/institutotim/timtec.png?label=ready&title=Ready)](https://waffle.io/institutotim/timtec) [![Coverage](https://coveralls.io/repos/hacklabr/timtec/badge.png)](https://coveralls.io/r/hacklabr/timtec)
 
 # TIM Tec
 
@@ -53,9 +53,6 @@ Para acessar a documentação completa, veja a pasta [docs](docs) na raiz da apl
     You should have received a copy of the GNU Affero General Public License
     along with this program.  If not, see LICENSE file here or
     [AGPLv3](http://www.gnu.org/licenses).
-
-[![Build Status](https://drone.io/github.com/hacklabr/timtec/status.png)](https://drone.io/github.com/hacklabr/timtec/latest)
-[![Coverage](https://coveralls.io/repos/hacklabr/timtec/badge.png)](https://coveralls.io/r/hacklabr/timtec)
 
 ## Requisitos de instalação
 
