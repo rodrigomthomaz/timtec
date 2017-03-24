@@ -13,58 +13,68 @@ Você precisa de um servidor com algum dos seguintes sistemas operacionais:
 * Ubuntu 16.04 
 * Debian 8.0
 
-```
-É possível instalar em outras distribuições, no entanto não fizemos os testes de 
-deploy que recobrem esses procedimentos. 
-```
+> ** ATENÇÃO 3:** É possível instalar em outras distribuições, no entanto não fizemos os testes de 
+deploy que recobrem esses procedimentos. Você pode fazer estes testes e construir uma documentação com base em outros servidores. Se fizer isso, mande um pullrequest para a gente que incluiremos a documentação neste repositório oficial. 
 
-Certifique-se de ter a senha ssh deste servidor para começar o processo e de ter permissão de sudo(root) na máquina em questão. 
+> ** ATENÇÃO 4:** Certifique-se de ter a senha ssh deste servidor para começar o processo e de ter permissão de sudo(root) na máquina em questão. 
 
 ## Dependências
 
-* Atualize o índice de pacotes e instale o git
+* Atualize o **ÍNDICE DE PACOTES** de seu servidor
 
 ```
 root@server# apt-get update
+```
+
+* Instale a ferramenta **GIT**
+
+```
 root@server# apt-get install git
 ```
-* Instale os pacotes do Python
+
+* Instale os pacotes do **PYTHON**
 
 ```
-root@server# apt-get install -y libpq-dev libjpeg-dev libpng12-dev build-essential python-dev gettext python-virtualenv
+root@server# apt-get install build-essential python-dev gettext python-virtualenv
 ```
 
-* Instale o nodejs
+* Instale algumas **bibliotecas de processamento de imagem**
 
-Escolha o jeito de instalar de acordo com seu servidor. 
+```
+root@server# apt-get install libpq-dev libjpeg-dev libpng12-dev 
+```
 
-* Nodejs no Ubuntu
+* Instale o **NODEJS**
+
+> ** ATENÇÃO 5:**  Você pode instalar o nodejs no Debian ou no Ubuntu, mas o procedimento é diferente em cada um deles. Veja abaixo e escolha de acordo com sua distribuição. 
+
+* Nodejs no **Ubuntu**
 Diferente de todas as outras distribuições, o ubuntu usa o comando node para o nodejs por padrão, então vamos fazer isso.
 
 ```
-root@server#  apt-get install -y nodejs npm
+root@server#  apt-get install nodejs npm
 root@server# update-alternatives --install /usr/bin/node node /usr/bin/nodejs 10
 ```
 
-* Nodejs no Debian
+* Nodejs no **DEBIAN**
 
 ```
 root@server# apt-get install curl
 root@server# curl -sL https://deb.nodesource.com/setup | bash -
 root@server# apt-get install nodejs
 ```
-* Instalando o Potgres
+* Instalando o **POSTGRES**
 
 Recomendamos o postgreSQL, mas o django suporta outros bancos de dados relacionais.
 
 ```
-root@server# apt-get install -y postgresql
+root@server# apt-get install postgresql
 ```
 
-* Instale o servidor web (nginx) e o servidor de aplicação (uwsgi):
+* Instale o servidor web **nginx** e o servidor de aplicação **UWSGI**
 
 ```
-root@server# apt-get install -y nginx uwsgi uwsgi-plugin-python
+root@server# apt-get install nginx uwsgi uwsgi-plugin-python
 ```
 
 ## Crie o usuário da aplicação
