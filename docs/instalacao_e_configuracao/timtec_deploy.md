@@ -1,13 +1,71 @@
 Essa é a documentação básica de instalação (deploy) timtec. Para informações sobre requisitos e dependências, veja o [README.md](https://github.com/hacklabr/timtec/blob/master/README.md).
 
+> ATENÇÃO 1: execute os comandos na sequencia em que são apresentados aqui.
+
+> ATENÇÃO 2: quando o comando precisar ser executado como **root** ele virá precedido desta indicação **root@server#**. Quando o comando precisar ser executado como **usuário da aplicação** ele virá precedido desta indicação **user@server$**. 
+
+
 ## Prepare o servidor
 
 Você precisa de um servidor com algum dos seguintes sistemas operacionais:
 
-* Ubuntu 14.04, 16.04 
+* Ubuntu 14.04
+* Ubuntu 16.04 
 * Debian 8.0
 
+```
+É possível instalar em outras distribuições, no entanto não fizemos os testes de 
+deploy que recobrem esses procedimentos. 
+```
+
 Certifique-se de ter a senha ssh deste servidor para começar o processo e de ter permissão de sudo(root) na máquina em questão. 
+
+## Dependências
+
+* Atualize o índice de pacotes e instale o git
+
+```
+root@server# apt-get update
+root@server# apt-get install git
+```
+* Instale os pacotes do Python
+
+```
+root@server# apt-get install -y libpq-dev libjpeg-dev libpng12-dev build-essential python-dev gettext python-virtualenv
+```
+
+* Instale o nodejs
+
+Escolha o jeito de instalar de acordo com seu servidor. 
+
+* Nodejs no Ubuntu
+Diferente de todas as outras distribuições, o ubuntu usa o comando node para o nodejs por padrão, então vamos fazer isso.
+
+```
+root@server#  apt-get install -y nodejs npm
+root@server# update-alternatives --install /usr/bin/node node /usr/bin/nodejs 10
+```
+
+* Nodejs no Debian
+
+```
+root@server# apt-get install curl
+root@server# curl -sL https://deb.nodesource.com/setup | bash -
+root@server# apt-get install nodejs
+```
+* Instalando o Potgres
+
+Recomendamos o postgreSQL, mas o django suporta outros bancos de dados relacionais.
+
+```
+root@server# apt-get install -y postgresql
+```
+
+* Instale o servidor web (nginx) e o servidor de aplicação (uwsgi):
+
+```
+root@server# apt-get install -y nginx uwsgi uwsgi-plugin-python
+```
 
 ## Crie o usuário da aplicação
 
@@ -59,12 +117,7 @@ Se você estiver usando Debian, pode acontecer do sistema criar uma instância d
 
      timtec:x:1001:1001::/home/timtec:/bin/bash
 
-* Atualize o índice de pacotes e instale o git
 
-```
-root@server# apt-get update
-root@server# apt-get install git
-```
 
 * Com usuário da aplicação - no nosso caso timtec-production - faça a clonagem do repositório:
 
@@ -80,47 +133,9 @@ timtec-production@server$ git checkout <tag-da-versão>
 
 Substitua a tag da versão por uma tag do git válida. Ex: `git checkout v4.0`
 
-## Dependências
-Primeiro, vamos instalar as dependências:
-
-```
-root@server# apt-get update
-root@server# apt-get install -y libpq-dev libjpeg-dev libpng12-dev build-essential python-dev gettext python-virtualenv
-```
-
-### Instalando o nodejs
-
-#### Ubuntu
-```
-root@server#  apt-get install -y nodejs npm
-```
-
-Diferente de todas as outras distribuições, o ubuntu usa o comando node para o nodejs por padrão, então vamos fazer isso:
-```
-root@server# update-alternatives --install /usr/bin/node node /usr/bin/nodejs 10
-```
-
-#### Debian
-<<<<<<< HEAD:docs/instalacao_e_configuracao/timtec_deploy.md
-```
-root@server# apt-get install curl
-root@server# curl -sL https://deb.nodesource.com/setup | bash -
-root@server# apt-get install nodejs
-```
-=======
-
-    # TODO: atualizar este endereço
-    sudo apt-get install curl
-    sudo curl -sL https://deb.nodesource.com/setup | bash -
-    sudo apt-get install nodejs
->>>>>>> 4.0-dev:docs/instalacao_e_configuracao/Instalação.md
-
-Mais informações [neste link](https://github.com/joyent/node/wiki/installing-node.js-via-package-manager#debian-and-ubuntu-based-linux-distributions)
 
 ### Banco de dados
-Recomendamos o postgreSQL, mas o django suporta outros bancos de dados relacionais.
 ```
-root@server# apt-get install -y postgresql
 root@server# sudo su - postgres -c "createuser -d timtec-production"
 ```
 
@@ -170,9 +185,7 @@ Se ocorrer algum erro, tente rodar o comando make novamente, pois falhas podem o
 
 ### Servidor web e de aplicação
 
-Instale o servidor web (nginx) e o servidor de aplicação (uwsgi):
 
-    $ sudo apt-get install -y nginx uwsgi uwsgi-plugin-python
 
 Na pasta timtec/scripts/conf temos exemplo de arquivos de configuração. Copie os mesmos para seus locais e edite-os confore sua necessidade:
 
