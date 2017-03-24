@@ -60,7 +60,7 @@ root@server# update-alternatives --install /usr/bin/node node /usr/bin/nodejs 10
 
 ```
 root@server# apt-get install curl
-root@server# curl -sL https://deb.nodesource.com/setup | bash -
+root@server# curl -sL https://deb.nodesource.com/setup_6.x | bash -
 root@server# apt-get install nodejs
 ```
 * Instalando o **POSTGRES**
