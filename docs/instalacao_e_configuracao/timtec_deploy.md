@@ -13,10 +13,10 @@ Você precisa de um servidor com algum dos seguintes sistemas operacionais:
 * Ubuntu 16.04 
 * Debian 8.0
 
-> ** ATENÇÃO 3:** É possível instalar em outras distribuições, no entanto não fizemos os testes de 
+> **ATENÇÃO 3:** É possível instalar em outras distribuições, no entanto não fizemos os testes de 
 deploy que recobrem esses procedimentos. Você pode fazer estes testes e construir uma documentação com base em outros servidores. Se fizer isso, mande um pullrequest para a gente que incluiremos a documentação neste repositório oficial. 
 
-> ** ATENÇÃO 4:** Certifique-se de ter a senha ssh deste servidor para começar o processo e de ter permissão de sudo(root) na máquina em questão. 
+> **ATENÇÃO 4:** Certifique-se de ter a senha ssh deste servidor para começar o processo e de ter permissão de sudo(root) na máquina em questão. 
 
 ## Dependências
 
@@ -46,7 +46,7 @@ root@server# apt-get install libpq-dev libjpeg-dev libpng12-dev
 
 * Instale o **NODEJS**
 
-> ** ATENÇÃO 5:**  Você pode instalar o nodejs no Debian ou no Ubuntu, mas o procedimento é diferente em cada um deles. Veja abaixo e escolha de acordo com sua distribuição. 
+> **ATENÇÃO 5:**  Você pode instalar o nodejs no Debian ou no Ubuntu, mas o procedimento é diferente em cada um deles. Veja abaixo e escolha de acordo com sua distribuição. 
 
 * Nodejs no **Ubuntu**
 Diferente de todas as outras distribuições, o ubuntu usa o comando node para o nodejs por padrão, então vamos fazer isso.
