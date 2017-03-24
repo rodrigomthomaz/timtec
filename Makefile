@@ -48,7 +48,7 @@ install:
 	~/env/bin/python manage.py migrate --noinput
 	~/env/bin/python manage.py loaddata initial
 	~/env/bin/python manage.py collectstatic --noinput
-	~/env/bin/python manage.py compress
+	# ~/env/bin/python manage.py compress
 	~/env/bin/python manage.py compilemessages
 
 docker-update:
