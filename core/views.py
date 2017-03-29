@@ -33,7 +33,7 @@ from .serializers import (CourseSerializer, CourseProfessorSerializer,
                           CourseCertificationSerializer,
                           CertificationProcessSerializer, UserMessageSerializer,
                           EvaluationSerializer, ProfileSerializer, ProfessorMessageUserDetailsSerializer,
-                          IfCertificateTemplateSerializer, CertificateTemplateImageSerializer)
+                          IfCertificateTemplateSerializer, CertificateTemplateImageSerializer, LessonThumbSerializer)
 
 from .models import (Course, CourseProfessor, Lesson, StudentProgress,
                      Unit, ProfessorMessage, CourseStudent, Class,
@@ -626,6 +626,24 @@ class CourseThumbViewSet(viewsets.ModelViewSet):
     def post(self, request, **kwargs):
         course = self.get_object()
         serializer = CourseThumbSerializer(course, request.FILES)
+
+        if serializer.is_valid():
+            serializer.save()
+            return Response(status=200)
+        else:
+            return Response(serializer.errors, status=400)
+
+
+class LessonThumbViewSet(viewsets.ModelViewSet):
+    queryset = Lesson.objects.all()
+    model = Lesson
+    lookup_field = 'id'
+    serializer_class = LessonThumbSerializer
+    permission_classes = (IsProfessorCoordinatorOrAdminPermissionOrReadOnly, )
+
+    def post(self, request, **kwargs):
+        course = self.get_object()
+        serializer = LessonThumbSerializer(course, request.FILES)
 
         if serializer.is_valid():
             serializer.save()

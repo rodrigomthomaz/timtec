@@ -631,6 +631,8 @@ class Lesson(PositionedModel):
     position = models.IntegerField(default=0)
     slug = AutoSlugField(_('Slug'), populate_from='name', max_length=128, editable=False, unique=True)
     status = models.CharField(_('Status'), choices=STATES, default=STATES[0][0], max_length=64)
+    custom_thumbnail = models.ImageField(_('Thumbnail'), null=True, blank=True,
+                                  upload_to=hash_name('lesson_thumbnails', 'name'))
 
     collection_name = 'course'
 
@@ -649,6 +651,8 @@ class Lesson(PositionedModel):
 
     @property
     def thumbnail(self):
+        if self.custom_thumbnail:
+            return staticfiles_storage.url(self.custom_thumbnail.url)
         try:
             first_vid_unit = self.units.exclude(video=None).order_by('position')[0]
             thumbnail = 'http://i1.ytimg.com/vi/' + first_vid_unit.video.youtube_id + '/hqdefault.jpg'

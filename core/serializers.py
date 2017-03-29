@@ -306,6 +306,13 @@ class CourseThumbSerializer(serializers.ModelSerializer):
         fields = ("id", "thumbnail", "home_thumbnail")
 
 
+class LessonThumbSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Lesson
+        fields = ("id", "custom_thumbnail")
+
+
 class StudentProgressSerializer(serializers.ModelSerializer):
     complete = serializers.DateTimeField(required=False)
     user = TimtecUserSerializer(read_only=True, required=False)
