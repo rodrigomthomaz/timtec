@@ -118,6 +118,10 @@ wrapper-course-lesson
                         <button class="btn btn-default uppercase"
                                 ng-class="{'btn-info': section === 'activity'}"
                                 ng-click="section ='activity'">{% trans 'Activity' %}</button>
+
+                        <button class="btn btn-default uppercase"
+                                ng-class="{'btn-info': section === 'thumbnail'}"
+                                ng-click="section ='thumbnail'">{% trans 'Thumbnail' %}</button>
                     </div>
                 </div>
             </div>
@@ -260,7 +264,50 @@ wrapper-course-lesson
             </div>
             <!-- END ACTIVITIES SECTION -->
 
+            <!-- ACTIVITIES SECTION -->
+            <div class="thumbnail col-sm-8" ng-show="section==='thumbnail'">
+
+                <div class="row" ng-show="addThumb" ng-init="addThumb=(thumbnail=='/static/img/lesson-default.png')">
+
+                    <div class="add-thumbnail col-sm-12 col-lg-12 textcenter">
+                        <div class="centered">
+                            <div class="form-group">
+                                <i class="fa fa-picture-o fa-4x"></i>
+                                <h1 class="bottom top">{% trans 'Thumbnail' %}</h1>
+                                <p></p>
+
+                                <file ng-model="thumbnail" name="thumbnail" class="form-control"></file>
+                            </div>
+
+                            <p>
+                                <br>
+                                <button class="btn btn-danger btn-lg uppercase"
+                                        ng-click="thumbnail=null">{% trans 'Cancel' %}</button>
+
+                                <button class="btn btn-success btn-lg uppercase"
+                                        ng-click="addThumb=(thumbnail===null); saveThumb()">{% trans 'Add' %}</button>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" ng-show="!addThumb">
+                    <div class="add-thumbnail col-sm-12 col-lg-12 textcenter">
+                        <div class="centered">
+                            <img preview-image ng-model="thumbnail" class="img-thumbnail" />
+                            {% verbatim %}
+                                <img ng-src="{{ lesson.thumbnail }}" class="img-thumbnail" ng-show="!thumbnail"/>
+                            {% endverbatim %}
+                            <p><button class="btn btn-success btn-edit-thumbnail uppercase"
+                                ng-click="addThumb=true">{% trans 'Change thumbnail' %}</button>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            </div>
         </div>
+
         <div class="row">
             <div class="col-lg-8 col-sm-10 col-lg-offset-1 col-sm-offset-1">
                 <div id="side-notes">

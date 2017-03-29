@@ -11,8 +11,9 @@
         'youtubePlayerApi',
         'MarkdownDirective',
         'waitingScreen',
+        'FormUpload',
         function($scope,Course, CourseProfessor, Lesson, VideoData, youtubePlayerApi,
-                 MarkdownDirective,waitingScreen) {
+                 MarkdownDirective,waitingScreen, FormUpload) {
             $scope.errors = {};
             var httpErrors = {
                 '400': 'Os campos não foram preenchidos corretamente.',
@@ -115,9 +116,29 @@
                 }
             };
 
+            $scope.saveThumb = function() {
+                if(! $scope.thumbnail) {
+                    return;
+                }
+
+                if ($scope.lesson.id) {
+                    var fu = new FormUpload();
+                    fu.addField('custom_thumbnail', $scope.thumbnail);
+                    // return a new promise that file will be uploaded
+                    return fu.sendTo('/api/lessonthumbs/' + $scope.lesson.id)
+                        .then(function(){
+                            $scope.alert.success('A imagem atualizada.');
+                        });
+                }
+            };
+
             $scope.saveLesson = function() {
                 var unitIndex = $scope.lesson.units.indexOf($scope.currentUnit);
                 var activityIndex = $scope.currentUnit.activities.indexOf($scope.currentActivity);
+
+                if($scope.thumbnail) {
+                    $scope.lesson.custom_thumbnail = $scope.thumbnail;
+                }
 
                 $scope.lesson.saveOrUpdate()
                     .then(function(){
@@ -129,6 +150,8 @@
 
                         // remove pop-up that confirm if user go without save changes
                         window.onbeforeunload = function(){};
+
+                        $scope.saveThumb();
 
                     })['catch'](function(resp){
                         $scope.alert.error(httpErrors[resp.status.toString()]);
