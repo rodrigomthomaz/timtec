@@ -165,6 +165,15 @@ class StudentSearchView(LoginRequiredMixin, generics.ListAPIView):
                                        Q(email__icontains=query))
         return queryset
 
+    def get_serializer_class(self):
+        if self.request.user.get_user_type() in ['professors', 'superuser']:
+            TimtecUserSerializer.Meta.fields.append('email')
+            return super(StudentSearchView, self).get_serializer_class()
+
+        if 'email' in TimtecUserSerializer.Meta.fields:
+            TimtecUserSerializer.Meta.fields.remove('email')
+        return super(StudentSearchView, self).get_serializer_class()
+
 
 class AcceptTermsView(FormView):
     template_name = 'accept-terms.html'
