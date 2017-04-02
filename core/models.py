@@ -639,7 +639,9 @@ class Lesson(PositionedModel):
     @property
     def is_course_last_lesson(self):
         lessons = list(self.course.public_lessons)
-        return lessons and self == lessons[-1]
+        if lessons and self == lessons[-1]:
+            return True
+        return False
 
     class Meta:
         verbose_name = _('Lesson')
