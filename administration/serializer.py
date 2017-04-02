@@ -74,7 +74,7 @@ class LessonExportSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Lesson
-        exclude = ('id', 'course',)
+        exclude = ('id', 'course', 'custom_thumbnail', )
 
 
 class LessonImportSerializer(LessonExportSerializer):
