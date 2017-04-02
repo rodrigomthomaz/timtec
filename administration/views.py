@@ -221,8 +221,13 @@ class ImportCourseView(APIView):
         except Course.DoesNotExist:
             course = None
 
-        course_thumbnail_path = course_data.pop('thumbnail').replace("/media/", "", 1)
-        course_home_thumbnail_path = course_data.pop('home_thumbnail').replace("/media/", "", 1)
+        course_thumbnail_path = course_data.pop('thumbnail')
+        if course_thumbnail_path:
+            course_thumbnail_path = course_thumbnail_path.replace("/media/", "", 1)
+
+        course_home_thumbnail_path = course_data.pop('home_thumbnail')
+        if course_home_thumbnail_path:
+            course_home_thumbnail_path = course_home_thumbnail_path.replace("/media/", "", 1)
 
         # Save course professor images
         course_author_pictures = {}
@@ -277,11 +282,13 @@ class ImportCourseView(APIView):
             course_material_files_list = []
             for course_material_file in course_material_files:
                 course_material_file_path = course_material_file.get('file').replace("/media/", "", 1)  # remove unnecessary "media" path, if any
-                course_material_file_obj = import_file.extractfile(course_material_file_path)
-                course_material_files_list.append(TimtecFile(file=DjangoFile(course_material_file_obj)))
+                try:
+                    course_material_file_obj = import_file.extractfile(course_material_file_path)
+                    course_material_files_list.append(TimtecFile(file=DjangoFile(course_material_file_obj)))
+                except KeyError:
+                    pass
             course_obj.course_material.files = course_material_files_list
             course_obj.course_material.text = course_material['text']
-            import pdb; pdb.set_trace()
             course_obj.course_material.save()
 
             # If the course has authors, save save their pictures, if any

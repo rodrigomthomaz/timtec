@@ -7,9 +7,9 @@ from rest_framework import serializers
 
 
 class CourseAuthorsExportSerializer(serializers.ModelSerializer):
-    name = serializers.Field(source='get_name')
-    biography = serializers.Field(source='get_biography')
-    picture = serializers.Field(source='get_picture_url')
+    name = serializers.ReadOnlyField(source='get_name')
+    biography = serializers.ReadOnlyField(source='get_biography')
+    picture = serializers.ReadOnlyField(source='get_picture_url')
 
     class Meta:
         model = CourseAuthor
@@ -110,7 +110,7 @@ class CourseExportSerializer(serializers.ModelSerializer):
 
 class CourseImportSerializer(serializers.ModelSerializer):
     lessons = LessonImportSerializer(many=True)
-    # course_authors = CourseAuthorsImportSerializer(many=True, read_only=True)
+    course_authors = CourseAuthorsImportSerializer(many=True)
     intro_video = VideoSerializer(required=False, allow_null=True)
     # course_material = CourseMaterialImportExportSerializer()
 
@@ -123,6 +123,7 @@ class CourseImportSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         lesson_data = validated_data.pop('lessons')
         video_data = validated_data.pop('intro_video')
+        course_authors_data = validated_data.pop('course_authors')
 
         new_course = super(CourseImportSerializer, self).create(validated_data)
 
@@ -139,5 +140,11 @@ class CourseImportSerializer(serializers.ModelSerializer):
         if video_ser.is_valid():
             video = video_ser.save()
             new_course.intro_video = video
+
+        # Create course authors
+        for course_author in course_authors_data:
+            course_author = CourseAuthor(**course_author)
+            course_author.course = new_course
+            course_author.save()
 
         return new_course
