@@ -356,6 +356,14 @@ class LessonSerializer(serializers.ModelSerializer):
                         if activity not in new_activities:
                             activity.delete()
 
+        # reorganizing positions if is needed
+        position = 0
+        for unit in instance.units.all().order_by('position'):
+            if not unit.position == position:
+                unit.position = position
+                unit.save()
+            position += 1
+
         validated_data.pop('units')
         return super(LessonSerializer, self).update(instance, validated_data)
 
