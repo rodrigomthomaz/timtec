@@ -231,7 +231,9 @@ class ImportCourseView(APIView):
 
         # Save course professor images
         course_author_pictures = {}
-        for course_author in course_data.get('course_authors'):
+        for key, course_author in enumerate(course_data.get('course_authors')):
+            # fix to truncate course author name to size 30 (why size 30?????)
+            course_data['course_authors'][key]['name'] = course_data['course_authors'][key]['name'][:30]
             author_name = course_author.get('name')
             picture_path = course_author.pop('picture')
             if picture_path and author_name:
