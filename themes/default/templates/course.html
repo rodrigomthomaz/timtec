@@ -438,7 +438,11 @@ wrapper-course-intro
                                 </div>
                                 <!--  END HIDDEN-XS  -->
 
-                                        <p><i class="fa fa-youtube-play"></i> <small>{% verbatim %}{{ lesson.countVideos() }}{% endverbatim %} {% trans 'videos' %}</small> | <i class="fa fa-list"></i> <small>{% verbatim %}{{ lesson.countActivities() }}{% endverbatim %} {% trans 'activities' %}</small></p>
+                                        <p>
+                                            <i class="fa fa-youtube-play"></i> <small>{% verbatim %}{{ lesson.countVideos() }}{% endverbatim %} {% trans 'videos' %}</small> |
+                                            <i class="fa fa-list"></i> <small>{% verbatim %}{{ lesson.countActivities() }}{% endverbatim %} {% trans 'activities' %}</small> |
+                                            <i class="fa fa-file-text-o"></i> <small>{% verbatim %}{{ lesson.countContent() }}{% endverbatim %} {% trans 'text/image' %}</small>
+                                        </p>
 
                             </div>
                             <!--  END COL-LG-9  -->

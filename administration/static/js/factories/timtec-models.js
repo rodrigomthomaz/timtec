@@ -200,6 +200,11 @@
                 return u.video ? c + 1 : c;
             }, 0);
         };
+        Lesson.prototype.countContent = function() {
+            return (this.units || []).reduce(function(c, u){
+                return u.content ? c + 1 : c;
+            }, 0);
+        };
         Lesson.prototype.countActivities = function() {
             return (this.units || []).reduce(function(c, u){
                 return u.activities ? c + u.activities.length : c;
