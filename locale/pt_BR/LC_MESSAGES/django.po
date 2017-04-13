@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-10 16:23-0300\n"
-"PO-Revision-Date: 2017-04-10 16:24-0300\n"
+"POT-Creation-Date: 2017-04-13 17:57-0300\n"
+"PO-Revision-Date: 2017-04-13 19:03-0300\n"
 "Last-Translator: Administrador TIMTec <timtectimtec@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -358,9 +358,9 @@ msgstr "Habilitar certificação mesmo sem o progresso mínimo requerido?"
 #: themes/default/templates/course.html:381
 #: themes/default/templates/course.html:553
 #: themes/default/templates/course.html:557
-#: themes/default/templates/user-courses.html:255
-#: themes/default/templates/user-courses.html:338
-#: themes/default/templates/user-courses.html:383
+#: themes/default/templates/user-courses.html:254
+#: themes/default/templates/user-courses.html:337
+#: themes/default/templates/user-courses.html:382
 msgid "Draft"
 msgstr "Rascunho"
 
@@ -374,9 +374,9 @@ msgstr "Rascunho"
 #: themes/default/templates/course.html:389
 #: themes/default/templates/course.html:550
 #: themes/default/templates/course.html:556
-#: themes/default/templates/user-courses.html:256
-#: themes/default/templates/user-courses.html:339
-#: themes/default/templates/user-courses.html:382
+#: themes/default/templates/user-courses.html:255
+#: themes/default/templates/user-courses.html:338
+#: themes/default/templates/user-courses.html:381
 msgid "Published"
 msgstr "Público"
 
@@ -672,7 +672,7 @@ msgid "Question"
 msgstr "Descrição"
 
 #: course_material/models.py:33
-#: themes/default/templates/administration/course-material-admin.html:89
+#: themes/default/templates/administration/course-material-admin.html:91
 #: themes/default/templates/course-material.html:36
 msgid "Files"
 msgstr "Arquivos"
@@ -858,7 +858,7 @@ msgstr "Avaliações"
 
 #: themes/default/templates/_course-header-inline.html:36
 msgid "Go out course"
-msgstr "Sair do curso"
+msgstr "Desmatricular-se do curso"
 
 #: themes/default/templates/_course_authors_inline.html:8
 #: themes/default/templates/_course_authors_inline.html:59
@@ -1451,25 +1451,25 @@ msgstr "Editar certificado"
 msgid "Edit receipt text"
 msgstr "Editar texto do comprovante"
 
-#: themes/default/templates/administration/course-material-admin.html:56
-#: themes/default/templates/administration/course-material-admin.html:69
+#: themes/default/templates/administration/course-material-admin.html:58
+#: themes/default/templates/administration/course-material-admin.html:71
 #: themes/default/templates/course-material.html:23
 msgid "Course Material"
 msgstr "Material didático"
 
-#: themes/default/templates/administration/course-material-admin.html:80
+#: themes/default/templates/administration/course-material-admin.html:82
 msgid "Drop"
 msgstr "Solte"
 
-#: themes/default/templates/administration/course-material-admin.html:80
+#: themes/default/templates/administration/course-material-admin.html:82
 msgid "files to upload"
 msgstr "arquivos para upload"
 
-#: themes/default/templates/administration/course-material-admin.html:80
+#: themes/default/templates/administration/course-material-admin.html:82
 msgid "(or click)"
 msgstr "(ou clique)"
 
-#: themes/default/templates/administration/course-material-admin.html:87
+#: themes/default/templates/administration/course-material-admin.html:89
 msgid "No files in course material"
 msgstr "Nenhum arquivo no material didático"
 
@@ -1519,37 +1519,37 @@ msgstr "Inverter"
 
 #: themes/default/templates/administration/courses.html:157
 #: themes/default/templates/administration/stats.html:141
-#: themes/default/templates/user-courses.html:342
+#: themes/default/templates/user-courses.html:341
 msgid "Show lessons"
 msgstr "Mostrar aulas"
 
 #: themes/default/templates/administration/courses.html:158
-#: themes/default/templates/user-courses.html:343
+#: themes/default/templates/user-courses.html:342
 msgid "Hide lessons"
 msgstr "Ocultar aulas"
 
 #: themes/default/templates/administration/courses.html:168
-#: themes/default/templates/user-courses.html:275
-#: themes/default/templates/user-courses.html:352
+#: themes/default/templates/user-courses.html:274
+#: themes/default/templates/user-courses.html:351
 msgid "Started in"
 msgstr "Começou em"
 
 #: themes/default/templates/administration/courses.html:174
-#: themes/default/templates/user-courses.html:281
-#: themes/default/templates/user-courses.html:358
+#: themes/default/templates/user-courses.html:280
+#: themes/default/templates/user-courses.html:357
 msgid "Starts in"
 msgstr "Começa em"
 
 #: themes/default/templates/administration/courses.html:180
-#: themes/default/templates/user-courses.html:287
-#: themes/default/templates/user-courses.html:364
+#: themes/default/templates/user-courses.html:286
+#: themes/default/templates/user-courses.html:363
 msgid "No start date"
 msgstr "Sem data de início"
 
 #: themes/default/templates/administration/courses.html:188
 #: themes/default/templates/administration/courses.html:191
-#: themes/default/templates/user-courses.html:372
-#: themes/default/templates/user-courses.html:375
+#: themes/default/templates/user-courses.html:371
+#: themes/default/templates/user-courses.html:374
 msgid "Loading lessons list"
 msgstr "Carregando lista de aulas"
 
@@ -2075,7 +2075,6 @@ msgid "activities"
 msgstr "atividades"
 
 #: themes/default/templates/course.html:444
-#| msgid "Text/Image"
 msgid "text/image"
 msgstr "Texto/Imagem"
 
@@ -2454,27 +2453,28 @@ msgid "Request certificate"
 msgstr "Pedir certificado"
 
 #: themes/default/templates/user-courses.html:187
-msgid "Conclusion receipts"
-msgstr "Comprovante de conclusão"
+#| msgid "Conclusion receipts"
+msgid "You don't have receipts"
+msgstr "Você não tem comprovantes de conclusão"
 
-#: themes/default/templates/user-courses.html:259
+#: themes/default/templates/user-courses.html:258
 msgid "Show classes"
 msgstr "Mostrar turmas"
 
-#: themes/default/templates/user-courses.html:260
+#: themes/default/templates/user-courses.html:259
 msgid "Hide classes"
 msgstr "Adicionar turma"
 
-#: themes/default/templates/user-courses.html:267
+#: themes/default/templates/user-courses.html:266
 msgid "Create class"
 msgstr "Criar turma"
 
-#: themes/default/templates/user-courses.html:269
-#: themes/default/templates/user-courses.html:298
+#: themes/default/templates/user-courses.html:268
+#: themes/default/templates/user-courses.html:297
 msgid "You don't have any class in this course"
 msgstr "Você não tem nenhuma turma neste curso"
 
-#: themes/default/templates/user-courses.html:295
+#: themes/default/templates/user-courses.html:294
 msgid "Loading classes list"
 msgstr "Carregando lista de turmas"
 

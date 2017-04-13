@@ -60,7 +60,7 @@
             if(!items) return;
             var filtered = [];
             for(var i = 0; i < items.length; i++){
-                if(items[i].certificate != null && items[i].certificate.type == 'receipt') {
+                if(items[i].certificate != null && items[i].certificate.type == 'receipt' && items[i].can_emmit_receipt) {
                     filtered.push(items[i]);
                 }
             }
