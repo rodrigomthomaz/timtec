@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-13 17:57-0300\n"
-"PO-Revision-Date: 2017-04-13 19:03-0300\n"
+"POT-Creation-Date: 2017-04-19 14:01-0300\n"
+"PO-Revision-Date: 2017-04-19 14:01-0300\n"
 "Last-Translator: Administrador TIMTec <timtectimtec@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -857,6 +857,10 @@ msgid "Evaluations"
 msgstr "Avaliações"
 
 #: themes/default/templates/_course-header-inline.html:36
+msgid "Do you really want to disenroll from this course?"
+msgstr "Deseja realmente se desmatricular deste curso?"
+
+#: themes/default/templates/_course-header-inline.html:37
 msgid "Go out course"
 msgstr "Desmatricular-se do curso"
 
@@ -1439,15 +1443,15 @@ msgstr "Confirmação de senha"
 msgid "Validation email sent"
 msgstr "Email de validação enviado"
 
-#: themes/default/templates/administration/certificate-settings.html:64
+#: themes/default/templates/administration/certificate-settings.html:65
 msgid "Certificate Settings"
 msgstr "Opções do certificado"
 
-#: themes/default/templates/administration/certificate-settings.html:72
+#: themes/default/templates/administration/certificate-settings.html:74
 msgid "Edit certificate"
 msgstr "Editar certificado"
 
-#: themes/default/templates/administration/certificate-settings.html:73
+#: themes/default/templates/administration/certificate-settings.html:75
 msgid "Edit receipt text"
 msgstr "Editar texto do comprovante"
 
@@ -2453,7 +2457,6 @@ msgid "Request certificate"
 msgstr "Pedir certificado"
 
 #: themes/default/templates/user-courses.html:187
-#| msgid "Conclusion receipts"
 msgid "You don't have receipts"
 msgstr "Você não tem comprovantes de conclusão"
 

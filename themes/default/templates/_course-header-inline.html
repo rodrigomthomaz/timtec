@@ -2,7 +2,7 @@
 {% load is_assistant_or_coordinator %}
 {% load is_course_coordinator %}
 <header class="main-header">
-    <div class="page-header container">
+    <div class="page-header container" ng-controller="CourseHeaderCtrl">
         <div class="row">
             <div class="col-lg-8 col-sm-7">
                 <h1 class="course-name bottom top">
@@ -33,7 +33,8 @@
                             </ul>
                         </div>
                     {% endif %}
-                    <a href="{% url 'go_out_course' course.slug %}" class="has-tooltip fa fa-sign-out" data-toggle="tooltip" data-placement="top" data-original-title="{%  trans 'Go out course' %}"></a>
+                    <a ng-click="confirmUrl('{% url 'go_out_course' course.slug %}', '{% trans 'Do you really want to disenroll from this course?' %}')"
+                        class="has-tooltip fa fa-sign-out" data-toggle="tooltip" data-placement="top" data-original-title="{%  trans 'Go out course' %}"></a>
                 </nav>
                 <!-- END COURSE-SECTION-NAV -->
             </div>
