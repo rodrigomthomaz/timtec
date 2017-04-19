@@ -1,3 +1,4 @@
+{% load i18n %}
 <div ng-controller="DiscussionActivityCtrl">
     <!-- special activity is not open yet -->
     <div class="open-activity closed" ng-if="!activity_open && !activity_expired">
@@ -23,7 +24,7 @@
             <!-- <a href="/discussion/#!/forum/{{new_topic.forum}}" class="btn btn-link jump-to">ver atividades dos colegas</a> |
             <a href="" class="btn btn-link jump-to">ver comentários</a> -->
 
-            <button class="btn btn-sm btn-primary next-activity pull-right" ng-click="nextStep(true)" ng-show="my_answer">próxima unidade</button>
+            <button class="btn btn-sm btn-primary next-activity pull-right" ng-click="nextStep(true)" ng-show="my_answer">{% trans 'next topic' %}</button>
         </div>
         <h2 class="title">Atividade</h2>
 

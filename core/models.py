@@ -36,7 +36,7 @@ class Video(models.Model):
         if self.unit.first():
             unit = self.unit.first()
             if unit.lesson:
-                return u'Aula: {0} | Unidade: {1} | id youtube: {2}'.format(
+                return _('Lesson: {0} | Topic: {1} | id youtube: {2}').format(
                     unit.lesson, unit, self.youtube_id)
         return self.youtube_id
 
@@ -695,8 +695,8 @@ class Unit(PositionedModel):
     collection_name = 'lesson'
 
     class Meta:
-        verbose_name = _('Unit')
-        verbose_name_plural = _('Units')
+        verbose_name = _('Topic')
+        verbose_name_plural = _('Topics')
         ordering = ['lesson', 'position']
 
     def __unicode__(self):
@@ -706,7 +706,7 @@ class Unit(PositionedModel):
 class StudentProgress(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL,
                              verbose_name=_('Student'))
-    unit = models.ForeignKey(Unit, verbose_name=_('Unit'),
+    unit = models.ForeignKey(Unit, verbose_name=_('Topic'),
                              related_name='progress')
     complete = models.DateTimeField(editable=True, null=True, blank=True)
     last_access = models.DateTimeField(auto_now=True, editable=False)
@@ -735,7 +735,7 @@ class CourseCertification(models.Model):
     is_valid = models.BooleanField(_('Certificate is valid'), default=False)
 
     course_workload = models.TextField(_('Workload'), blank=True)
-    course_total_units = models.IntegerField(_('Total units'), blank=True)
+    course_total_units = models.IntegerField(_('Total topics'), blank=True)
 
     link_hash = models.CharField(_('Hash'), max_length=255, unique=True)
 

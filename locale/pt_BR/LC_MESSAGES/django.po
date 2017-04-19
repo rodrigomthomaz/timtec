@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-19 14:01-0300\n"
-"PO-Revision-Date: 2017-04-19 14:01-0300\n"
+"POT-Creation-Date: 2017-04-19 15:00-0300\n"
+"PO-Revision-Date: 2017-04-19 15:02-0300\n"
 "Last-Translator: Administrador TIMTec <timtectimtec@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -235,9 +235,11 @@ msgstr "Resposta esperada"
 
 #: activities/models.py:29 core/models.py:698 core/models.py:709
 #: themes/default/templates/administration/lesson.html:99
+#: themes/default/templates/course.html:502
+#: themes/default/templates/course.html:511
 #: themes/default/templates/lesson.html:107
-msgid "Unit"
-msgstr "Unidade"
+msgid "Topic"
+msgstr "Capítulo"
 
 #: activities/models.py:30
 #: themes/default/templates/administration/lesson.html:229
@@ -285,6 +287,12 @@ msgstr "Resposta"
 msgid "Answers"
 msgstr "Respostas"
 
+#: activities/static/templates/activity_discussion.html:27
+#, fuzzy
+#| msgid "Total hours"
+msgid "next topic"
+msgstr "próximo capítulo"
+
 #: core/forms.py:16 core/models.py:573
 #: themes/default/templates/messages.html:83
 msgid "Subject"
@@ -327,6 +335,12 @@ msgstr "Video"
 #: core/models.py:33
 msgid "Videos"
 msgstr "Videos"
+
+#: core/models.py:39
+#, fuzzy, python-brace-format
+#| msgid "Class: {0} | Topic: {1} | id youtube: {2}"
+msgid "Lesson: {0} | Topic: {1} | id youtube: {2}"
+msgstr "Aula: {0} | Capítulo: {1} | id youtube: {2}"
 
 #: core/models.py:47 core/models.py:474
 msgid "Assistant"
@@ -548,8 +562,8 @@ msgid "Side notes"
 msgstr "Anotações"
 
 #: core/models.py:699
-msgid "Units"
-msgstr "Unidades"
+msgid "Topics"
+msgstr "Capítulos"
 
 #: core/models.py:716
 msgid "Student Progress"
@@ -585,8 +599,10 @@ msgid "Certificate is valid"
 msgstr "Certificado é valido"
 
 #: core/models.py:738
-msgid "Total units"
-msgstr "Total de unidades"
+#, fuzzy
+#| msgid "Total hours"
+msgid "Total topics"
+msgstr "Total de capítulos"
 
 #: core/models.py:740
 msgid "Hash"
@@ -1586,16 +1602,20 @@ msgid "Lesson description"
 msgstr "Descrição da aula"
 
 #: themes/default/templates/administration/lesson.html:103
-msgid "Delete this unit"
-msgstr "Apagar esta unidade"
+#, fuzzy
+#| msgid "Delete this unit"
+msgid "Delete this topic"
+msgstr "Apagar este capítulo"
 
 #: themes/default/templates/administration/lesson.html:116
 msgid "Text/Image"
 msgstr "Texto/Imagem"
 
 #: themes/default/templates/administration/lesson.html:158
-msgid "Unit video"
-msgstr "Vídeo da unidade"
+#, fuzzy
+#| msgid "Unit video"
+msgid "Topic video"
+msgstr "Vídeo do capítulo"
 
 #: themes/default/templates/administration/lesson.html:168
 #: themes/default/templates/administration/lesson.html:288
@@ -1647,8 +1667,10 @@ msgstr ""
 "incorretamente a atividade."
 
 #: themes/default/templates/administration/lesson.html:251
-msgid "Unit activity"
-msgstr "Atividade da unidade"
+#, fuzzy
+#| msgid "Unit activity"
+msgid "Topic activity"
+msgstr "Atividade do capítulo"
 
 #: themes/default/templates/administration/lesson.html:302
 #: themes/default/templates/course.html:139
@@ -1659,7 +1681,9 @@ msgstr "Trocar thumbnail"
 #: themes/default/templates/administration/lesson.html:314
 #: themes/default/templates/administration/lesson.html:315
 #: themes/default/templates/lesson.html:180
-msgid "Addicional materials"
+#, fuzzy
+#| msgid "Addicional materials"
+msgid "Additional materials"
 msgstr "Materiais adicionais"
 
 #: themes/default/templates/administration/permissions.html:49
@@ -2238,8 +2262,10 @@ msgid "My Annotations"
 msgstr "Minhas Anotações"
 
 #: themes/default/templates/lesson.html:183
-msgid "This unit has no addicional materials"
-msgstr "Esta unidade não possui material adicional"
+#, fuzzy
+#| msgid "This unit has no addicional materials"
+msgid "This topic has no additional materials"
+msgstr "Este capítulo não possui material adicional"
 
 #: themes/default/templates/message.html:31
 msgid "Show Recipient List"
@@ -2497,6 +2523,19 @@ msgstr "Espanhol"
 msgid "English"
 msgstr "Inglês"
 
+#, fuzzy
+#~ msgid "next unit"
+#~ msgstr "próxima"
+
+#~ msgid "Unit"
+#~ msgstr "Unidade"
+
+#~ msgid "Units"
+#~ msgstr "Unidades"
+
+#~ msgid "Total units"
+#~ msgstr "Total de unidades"
+
 #~ msgid "votes"
 #~ msgstr "votos"
 
@@ -2572,9 +2611,6 @@ msgstr "Inglês"
 
 #~ msgid "of"
 #~ msgstr "de"
-
-#~ msgid "next"
-#~ msgstr "próxima"
 
 #~ msgid "New"
 #~ msgstr "Novo"

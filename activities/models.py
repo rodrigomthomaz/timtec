@@ -26,7 +26,7 @@ class Activity(models.Model):
     type = models.CharField(_('Type'), max_length=255)
     data = JSONField(_('Data'), blank=True)
     expected = JSONField(_('Expected answer'), blank=True)
-    unit = models.ForeignKey(Unit, verbose_name=_('Unit'), null=True, blank=True, related_name='activities')
+    unit = models.ForeignKey(Unit, verbose_name=_('Topic'), null=True, blank=True, related_name='activities')
     comment = models.TextField(_('Comment'), blank=True, null=True)
     positive_feedback = models.TextField(_('Positive Feedback'), blank=True)
     negative_feedback = models.TextField(_('Negative Feedback'), blank=True)

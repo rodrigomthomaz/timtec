@@ -96,11 +96,11 @@ wrapper-course-lesson
             <div class="add-content">
                 <div class="col-xs-12">
                     <div class="secondary-header">
-                        <div class="unit">{% trans 'Unit' %}:</div>
+                        <div class="unit">{% trans 'Topic' %}:</div>
                         <div class="editable-text">
                             <input type="text" ng-model="currentUnit.title" placeholder="{% trans 'Lesson description' %}">
                         </div>
-                        <button class="btn btn-sm btn-danger delete" ng-click="removeCurrentUnit()" title="{% trans 'Delete this unit' %}">
+                        <button class="btn btn-sm btn-danger delete" ng-click="removeCurrentUnit()" title="{% trans 'Delete this topic' %}">
                             <i class="fa fa-trash-o"></i>
                         </button>
                     </div>
@@ -155,7 +155,7 @@ wrapper-course-lesson
                     <!-- CENTERED -->
                     <div class="centered">
                         <i class="fa fa-youtube-play fa-4x"></i>
-                        <h1 class="top">{% trans 'Unit video' %}</h1>
+                        <h1 class="top">{% trans 'Topic video' %}</h1>
                         <p class="form-group">
                             <input type="text" class="form-control"
                                    ng-model="currentUnit.intended_youtube_id"/>
@@ -248,7 +248,7 @@ wrapper-course-lesson
                         <!-- CENTERED -->
                         <div class="centered">
                             <i class="fa fa-pencil fa-4x"></i>
-                            <h1 class="top">{% trans 'Unit activity' %}</h1>
+                            <h1 class="top">{% trans 'Topic activity' %}</h1>
                             {% verbatim %}
                             <div class="col-md-4 col-sm-12" ng-repeat="type in activityTypes">
                                 <button class="activity-btn btn btn-default"
@@ -311,8 +311,8 @@ wrapper-course-lesson
         <div class="row">
             <div class="col-lg-8 col-sm-10 col-lg-offset-1 col-sm-offset-1">
                 <div id="side-notes">
-                    <h2>{% trans 'Addicional materials' %}</h2>
-                    <modalmarkdowneditor title="{% trans 'Addicional materials' %}" content="currentUnit.side_notes"></modalmarkdowneditor>
+                    <h2>{% trans 'Additional materials' %}</h2>
+                    <modalmarkdowneditor title="{% trans 'Additional materials' %}" content="currentUnit.side_notes"></modalmarkdowneditor>
                 </div>
             </div>
         </div>

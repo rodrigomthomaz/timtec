@@ -104,7 +104,7 @@ wrapper-course-lesson
                             <option ng-repeat="unit in lesson.units"
                                     ng-value="$index+1"
                                     ng-selected="unit==currentUnit"
-                                    value="{{$index+1}}">{% endverbatim %}{% trans 'Unit' %}{% verbatim %} {{ unit.position + 1 }}</option>
+                                    value="{{$index+1}}">{% endverbatim %}{% trans 'Topic' %}{% verbatim %} {{ unit.position + 1 }}</option>
                         </select>
                         {% endverbatim %}
                     </p>
@@ -177,10 +177,10 @@ wrapper-course-lesson
                     <!-- SIDENOTES -->
                     <div class="side-notes">
                         <div class="page-header-double">
-                            <h3><i class="fa fa-angle-double-right"></i> {% trans 'Addicional materials' %}</h3>
+                            <h3><i class="fa fa-angle-double-right"></i> {% trans 'Additional materials' %}</h3>
                         </div>
                         <span ng-bind-html="currentUnit.side_notes|markdown"></span>
-                        <p ng-if="!currentUnit.side_notes">{% trans 'This unit has no addicional materials' %}</p>
+                        <p ng-if="!currentUnit.side_notes">{% trans 'This topic has no additional materials' %}</p>
                     </div>
                     <!-- END SIDENOTES -->
                     {% endblock %}

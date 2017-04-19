@@ -64,7 +64,7 @@
                                 return;
                             }
                             else if (response.data.error == 'course_exists') {
-                                msg = 'O curso que você está tentando importar já existe. Você pode importar o curso mesmo assim, mas TODAS AS INFORMAÇÕES RELATIVAS ÀS UNIDADES COMPLETAS PELOS USUÁRIOS SERÃO PERDIDAS. Importar curso mesmo assim?';
+                                msg = 'O curso que você está tentando importar já existe. Você pode importar o curso mesmo assim, mas TODAS AS INFORMAÇÕES RELATIVAS AOS CAPÍTULOS COMPLETOS PELOS USUÁRIOS SERÃO PERDIDAS. Importar curso mesmo assim?';
                                 if (confirm(msg)){
                                     send_course_file(course_import_file, true);
                                 }

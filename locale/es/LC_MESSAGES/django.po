@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-19 14:01-0300\n"
+"POT-Creation-Date: 2017-04-19 15:00-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -234,8 +234,10 @@ msgstr ""
 
 #: activities/models.py:29 core/models.py:698 core/models.py:709
 #: themes/default/templates/administration/lesson.html:99
+#: themes/default/templates/course.html:502
+#: themes/default/templates/course.html:511
 #: themes/default/templates/lesson.html:107
-msgid "Unit"
+msgid "Topic"
 msgstr ""
 
 #: activities/models.py:30
@@ -284,6 +286,10 @@ msgstr ""
 msgid "Answers"
 msgstr ""
 
+#: activities/static/templates/activity_discussion.html:27
+msgid "next topic"
+msgstr ""
+
 #: core/forms.py:16 core/models.py:573
 #: themes/default/templates/messages.html:83
 msgid "Subject"
@@ -325,6 +331,11 @@ msgstr ""
 
 #: core/models.py:33
 msgid "Videos"
+msgstr ""
+
+#: core/models.py:39
+#, python-brace-format
+msgid "Lesson: {0} | Topic: {1} | id youtube: {2}"
 msgstr ""
 
 #: core/models.py:47 core/models.py:474
@@ -545,7 +556,7 @@ msgid "Side notes"
 msgstr ""
 
 #: core/models.py:699
-msgid "Units"
+msgid "Topics"
 msgstr ""
 
 #: core/models.py:716
@@ -582,7 +593,7 @@ msgid "Certificate is valid"
 msgstr ""
 
 #: core/models.py:738
-msgid "Total units"
+msgid "Total topics"
 msgstr ""
 
 #: core/models.py:740
@@ -1560,7 +1571,7 @@ msgid "Lesson description"
 msgstr ""
 
 #: themes/default/templates/administration/lesson.html:103
-msgid "Delete this unit"
+msgid "Delete this topic"
 msgstr ""
 
 #: themes/default/templates/administration/lesson.html:116
@@ -1568,7 +1579,7 @@ msgid "Text/Image"
 msgstr ""
 
 #: themes/default/templates/administration/lesson.html:158
-msgid "Unit video"
+msgid "Topic video"
 msgstr ""
 
 #: themes/default/templates/administration/lesson.html:168
@@ -1613,7 +1624,7 @@ msgid ""
 msgstr ""
 
 #: themes/default/templates/administration/lesson.html:251
-msgid "Unit activity"
+msgid "Topic activity"
 msgstr ""
 
 #: themes/default/templates/administration/lesson.html:302
@@ -1625,7 +1636,7 @@ msgstr ""
 #: themes/default/templates/administration/lesson.html:314
 #: themes/default/templates/administration/lesson.html:315
 #: themes/default/templates/lesson.html:180
-msgid "Addicional materials"
+msgid "Additional materials"
 msgstr ""
 
 #: themes/default/templates/administration/permissions.html:49
@@ -2201,7 +2212,7 @@ msgid "My Annotations"
 msgstr ""
 
 #: themes/default/templates/lesson.html:183
-msgid "This unit has no addicional materials"
+msgid "This topic has no additional materials"
 msgstr ""
 
 #: themes/default/templates/message.html:31

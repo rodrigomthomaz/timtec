@@ -225,7 +225,7 @@
 
             $scope.removeCurrentUnit = function() {
                 if(!$scope.lesson.units) return;
-                if(!confirm('Apagar unidade?')) return;
+                if(!confirm('Apagar capítulo?')) return;
                 var index = $scope.lesson.units.indexOf($scope.currentUnit);
                 $scope.lesson.units.splice(index,1);
 
