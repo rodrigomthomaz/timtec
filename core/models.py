@@ -533,7 +533,7 @@ class CourseAuthor(models.Model):
     course = models.ForeignKey(Course, verbose_name=_('Course'), related_name='course_authors')
     biography = models.TextField(_('Biography'), blank=True, null=True)
     picture = models.ImageField(_('Picture'), upload_to=hash_name('bio-pictures', 'name'), blank=True, null=True)
-    name = models.TextField(_('Name'), max_length=30, blank=True, null=True)
+    name = models.TextField(_('Name'), max_length=100, blank=True, null=True)
     position = models.IntegerField(default=100, null=True, blank=True)
 
     class Meta:

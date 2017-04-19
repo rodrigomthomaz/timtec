@@ -68,7 +68,7 @@
                         <div class="col-md-9">
                             <label>{% trans 'Name' %}
                                 <input class="form-control" ng-if="name_from_user_profile" ng-model="course_professor.user_info.name" ng-disabled="true" type="text">
-                                <input class="form-control" ng-if="!name_from_user_profile" ng-model="course_professor.name" type="text">
+                                <input class="form-control" ng-if="!name_from_user_profile" ng-model="course_professor.name" type="text" maxlength="100">
                             </label>
                             <label ng-show="linked_with_user"><input type="checkbox" ng-model="name_from_user_profile" ng-disabled="!course_professor.user"> {% trans 'Use name from  user profile' %}</label>
                         </div>
