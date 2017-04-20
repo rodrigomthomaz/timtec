@@ -144,5 +144,4 @@ Activate virtual env, then:
 
     make python_tests
 
-### Suporte
-[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/hacklabr/timtec?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+
