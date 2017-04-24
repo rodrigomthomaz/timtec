@@ -247,10 +247,10 @@
             $scope.courseComplete = function () {
                 var modalInstance = $uibModal.open({
                     templateUrl: 'courseCompleteModal.html',
-                    controller: ['$scope', '$uibModalInstance', 'course_slug', 'Student', 'CourseCertification',
+                    controller: ['$scope', '$uibModalInstance', 'course_id', 'Student', 'CourseCertification',
                         'CertificationProcess', CourseCompleteModalInstanceCtrl],
                     resolve: {
-                        course_slug: function () {
+                        course_id: function () {
                             return $scope.lesson.course;
                         }
                     }
@@ -260,13 +260,12 @@
                 });
             };
 
-            var CourseCompleteModalInstanceCtrl = function ($scope, $uibModalInstance, course_slug, Student,
+            var CourseCompleteModalInstanceCtrl = function ($scope, $uibModalInstance, course_id, Student,
                 CourseCertification, CertificationProcess) {
                 // Show spinner while creating the receipt
 
                 $scope.cs = false;
-
-                Student.query({'course__slug' : course_slug}, function(cs){
+                Student.query({'course__id' : course_id}, function(cs){
                     $scope.cs = cs.pop();
                     if($scope.cs.can_emmit_receipt){
                         CourseCertification.query({'course_student' : $scope.cs.id}, function(receipt){
@@ -279,7 +278,6 @@
                     if(!$scope.cs) return;
                     var cp = new CertificationProcess();
                     var cs = $scope.cs;
-
                     cp.student = cs.user.id;
                     cp.klass = cs.current_class.id;
                     if(!cs.certificate)
