@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-19 15:00-0300\n"
-"PO-Revision-Date: 2017-04-19 15:02-0300\n"
+"POT-Creation-Date: 2017-04-24 11:02-0300\n"
+"PO-Revision-Date: 2017-04-24 11:02-0300\n"
 "Last-Translator: Administrador TIMTec <timtectimtec@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -330,7 +330,7 @@ msgstr "Mensagem"
 #: themes/default/templates/course.html:89
 #: themes/default/templates/lesson.html:118
 msgid "Video"
-msgstr "Video"
+msgstr "Vídeo"
 
 #: core/models.py:33
 msgid "Videos"
@@ -745,8 +745,7 @@ msgstr "Uma questão que você segue possui novas respostas"
 #: forum/models.py:107
 #, python-format
 msgid ""
-"The question '%s' has a new answer. Please access the link below to see "
-"this."
+"The question '%s' has a new answer. Please access the link below to see this."
 msgstr ""
 "A questão '%s' possui uma nova resposta. Por favor, acesse o link abaixo "
 "para verificar."
@@ -757,8 +756,7 @@ msgstr "Anotação"
 
 #: themes/default/templates/403.html:4 themes/default/templates/403.html:14
 msgid "An error ocurred or you don't have to see this page."
-msgstr ""
-"Um erro ocorreu ou você não tem permissão para visualizar esta página."
+msgstr "Um erro ocorreu ou você não tem permissão para visualizar esta página."
 
 #: themes/default/templates/403.html:28
 msgid ""
@@ -1280,7 +1278,8 @@ msgstr "Confirme sua senha"
 #: themes/default/templates/account/signup.html:57
 #: themes/default/templates/account/signup.html:135
 #, python-format
-msgid "I agree to the <a href=\"%(terms_url)s\" target=\"_blank\">Terms of Use</a>"
+msgid ""
+"I agree to the <a href=\"%(terms_url)s\" target=\"_blank\">Terms of Use</a>"
 msgstr ""
 "Eu concordo com os <a href=\"%(terms_url)s\" target=\"_blank\">Termos de "
 "Uso</a>"
@@ -1320,8 +1319,10 @@ msgstr "O registro falhou"
 #: themes/default/templates/account/email/password_reset_key_message.txt:1
 #, python-format
 msgid ""
-"You're receiving this e-mail because you or someone else has requested a password for your user account at %(site_domain)s.\n"
-"It can be safely ignored if you did not request a password reset. Click the link below to reset your password.\n"
+"You're receiving this e-mail because you or someone else has requested a "
+"password for your user account at %(site_domain)s.\n"
+"It can be safely ignored if you did not request a password reset. Click the "
+"link below to reset your password.\n"
 "\n"
 "%(password_reset_url)s\n"
 "\n"
@@ -1329,8 +1330,10 @@ msgid ""
 "\n"
 "Thanks for using our site!\n"
 msgstr ""
-"Você está recebendo este e-mail porque você ou alguém solicitou uma redefinição de senha para sua conta no site %(site_domain)s.\n"
-"Você pode seguramente ignorar esta mensagem se você não solicitou esta redefinição de senha. Clique no link abaixo para redefinir sua senha.\n"
+"Você está recebendo este e-mail porque você ou alguém solicitou uma "
+"redefinição de senha para sua conta no site %(site_domain)s.\n"
+"Você pode seguramente ignorar esta mensagem se você não solicitou esta "
+"redefinição de senha. Clique no link abaixo para redefinir sua senha.\n"
 "\n"
 "%(password_reset_url)s\n"
 "\n"
@@ -1349,8 +1352,8 @@ msgid ""
 "Please confirm that <a href=\"mailto:%(email)s\">%(email)s</a> is an e-mail "
 "address for user %(user_display)s."
 msgstr ""
-"Por favor confirme que o endereço <a href=\"mailto:%(email)s\">%(email)s</a>"
-" é o email do usuário %(user_display)s."
+"Por favor confirme que o endereço <a href=\"mailto:%(email)s\">%(email)s</a> "
+"é o email do usuário %(user_display)s."
 
 #: themes/default/templates/account/email_confirm.html:16
 #: themes/default/templates/account/email_confirm.html:34
@@ -1361,11 +1364,11 @@ msgstr "Confirmar"
 #: themes/default/templates/account/email_confirm.html:38
 #, python-format
 msgid ""
-"This e-mail confirmation link expired or is invalid.<br/>Please <a "
-"href=\"%(email_url)s\">issue a new e-mail confirmation request</a>."
+"This e-mail confirmation link expired or is invalid.<br/>Please <a href="
+"\"%(email_url)s\">issue a new e-mail confirmation request</a>."
 msgstr ""
-"Este email de confirmação expirou ou é inválido. Por favor <a "
-"href=\"%(email_url)s\">solicite uma nova confirmação de e-mail</a>."
+"Este email de confirmação expirou ou é inválido. Por favor <a href="
+"\"%(email_url)s\">solicite uma nova confirmação de e-mail</a>."
 
 #: themes/default/templates/account/email_confirmed.html:7
 msgid "Mission accomplished"
@@ -1425,12 +1428,12 @@ msgstr "Mudar sua senha"
 #, python-format
 msgid ""
 "The password reset link was invalid, possibly because it has already been "
-"used.  Please request a <a href=\"%(passwd_reset_url)s\">new password "
-"reset</a>."
+"used.  Please request a <a href=\"%(passwd_reset_url)s\">new password reset</"
+"a>."
 msgstr ""
 "O link de solicitação de redefinição de senha é inválido, possivelmente "
-"porque já foi usado. Por favor solicite uma <a "
-"href=\"%(passwd_reset_url)s\">nova redefinição de senha</a>."
+"porque já foi usado. Por favor solicite uma <a href=\"%(passwd_reset_url)s"
+"\">nova redefinição de senha</a>."
 
 #: themes/default/templates/account/password_reset_from_key.html:35
 #: themes/default/templates/account/password_reset_from_key.html:73
@@ -1613,7 +1616,6 @@ msgstr "Texto/Imagem"
 
 #: themes/default/templates/administration/lesson.html:158
 #, fuzzy
-#| msgid "Unit video"
 msgid "Topic video"
 msgstr "Vídeo do capítulo"
 
@@ -1648,15 +1650,15 @@ msgid ""
 "The text bellow will be shown to students when they send a correctly answer "
 "to this activity."
 msgstr ""
-"O texto abaixo é um comentário que será exibido quando o estudante responder"
-" corretamente a atividade."
+"O texto abaixo é um comentário que será exibido quando o estudante responder "
+"corretamente a atividade."
 
 #: themes/default/templates/administration/lesson.html:234
 #: themes/default/templates/administration/lesson.html:241
 msgid "If you don't fill this field, it will appear a default message."
 msgstr ""
-"Se você não preencher este campo, aparecerá uma mensagem padrão pré-definida"
-" pelo sistema."
+"Se você não preencher este campo, aparecerá uma mensagem padrão pré-definida "
+"pelo sistema."
 
 #: themes/default/templates/administration/lesson.html:240
 msgid ""
@@ -1681,8 +1683,6 @@ msgstr "Trocar thumbnail"
 #: themes/default/templates/administration/lesson.html:314
 #: themes/default/templates/administration/lesson.html:315
 #: themes/default/templates/lesson.html:180
-#, fuzzy
-#| msgid "Addicional materials"
 msgid "Additional materials"
 msgstr "Materiais adicionais"
 
@@ -2128,8 +2128,7 @@ msgid "More information"
 msgstr "Mais informações"
 
 #: themes/default/templates/evaluations.html:181
-msgid ""
-"Chose an evaluation throught the left aside menu or schedule a new one."
+msgid "Chose an evaluation throught the left aside menu or schedule a new one."
 msgstr "Escolha uma avaliação pelo menu à esquerda ou agende uma nova"
 
 #: themes/default/templates/evaluations.html:224
@@ -2262,7 +2261,6 @@ msgid "My Annotations"
 msgstr "Minhas Anotações"
 
 #: themes/default/templates/lesson.html:183
-#, fuzzy
 #| msgid "This unit has no addicional materials"
 msgid "This topic has no additional materials"
 msgstr "Este capítulo não possui material adicional"
@@ -2426,8 +2424,8 @@ msgstr "Autenticação cancelada"
 #, python-format
 msgid ""
 "You decided to cancel logging in to our site using one of your existing "
-"accounts. If this was a mistake, please proceed to <a "
-"href=\"%(login_url)s\">sign in</a>."
+"accounts. If this was a mistake, please proceed to <a href=\"%(login_url)s"
+"\">sign in</a>."
 msgstr ""
 "Você decidiu cancelar o login no nosso site usando uma conta sua existente. "
 "Se isso foi um engano volte para <a href=\"%(login_url)s\">entrar</a>."
@@ -2524,6 +2522,10 @@ msgid "English"
 msgstr "Inglês"
 
 #, fuzzy
+#~ msgid "Addicional materials"
+#~ msgstr "Materiais adicionais"
+
+#, fuzzy
 #~ msgid "next unit"
 #~ msgstr "próxima"
 
@@ -2582,8 +2584,8 @@ msgstr "Inglês"
 #~ "There's been an error. It's been reported to the site administrators via "
 #~ "email and should be fixed shortly. Thanks for your patience."
 #~ msgstr ""
-#~ "Ocorreu um erro. Este erro será reportado aos administradores do site e será"
-#~ " corrigido em breve. Obrigado por sua paciência."
+#~ "Ocorreu um erro. Este erro será reportado aos administradores do site e "
+#~ "será corrigido em breve. Obrigado por sua paciência."
 
 #~ msgid "An error ocurred"
 #~ msgstr "Um erro ocorreu"
@@ -2664,26 +2666,29 @@ msgstr "Inglês"
 #~ msgstr "Marcar todas"
 
 #~ msgid ""
-#~ "Please confirm that <a href=\"mailto:%(email)s\">%(email)s</a><br>is an "
-#~ "e-mail address for user %(user_display)s."
+#~ "Please confirm that <a href=\"mailto:%(email)s\">%(email)s</a><br>is an e-"
+#~ "mail address for user %(user_display)s."
 #~ msgstr ""
-#~ "Por favor confirme que o endereço <a href=\"mailto:%(email)s\">%(email)s</a>"
-#~ " é o email do usuário %(user_display)s."
+#~ "Por favor confirme que o endereço <a href=\"mailto:%(email)s\">%(email)s</"
+#~ "a> é o email do usuário %(user_display)s."
 
 #~ msgid ""
 #~ "This e-mail confirmation link expired or is invalid.</p>\n"
-#~ "                <p>Please <a href=\"%(email_url)s\">issue a new e-mail confirmation request</a>."
+#~ "                <p>Please <a href=\"%(email_url)s\">issue a new e-mail "
+#~ "confirmation request</a>."
 #~ msgstr ""
 #~ "Este email de confirmação expirou ou é inválido.</h2> <p>Por favor <a "
 #~ "href=\"%(email_url)s\">solicite uma nova confirmação de e-mail</a>."
 
 #~ msgid ""
-#~ "The password reset link was invalid,<br>possibly because it has already been used.</p>\n"
-#~ "                <p>Please request a <a href=\"%(passwd_reset_url)s\">new password reset</a>."
+#~ "The password reset link was invalid,<br>possibly because it has already "
+#~ "been used.</p>\n"
+#~ "                <p>Please request a <a href=\"%(passwd_reset_url)s\">new "
+#~ "password reset</a>."
 #~ msgstr ""
 #~ "O link de solicitação de redefinição de senha é inválido, possivelmente "
-#~ "porque já foi usado. Por favor solicite uma <a "
-#~ "href=\"%(passwd_reset_url)s\">nova redefinição de senha</a>."
+#~ "porque já foi usado. Por favor solicite uma <a href=\"%(passwd_reset_url)s"
+#~ "\">nova redefinição de senha</a>."
 
 #~ msgid "Delete this course"
 #~ msgstr "Apagar este curso"
