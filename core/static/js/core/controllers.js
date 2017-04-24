@@ -144,17 +144,17 @@
                     var row = [];
                     row[0] = $scope.upcoming_courses[i];
 
-                    if (upcoming_courses.length - i > 1) {
-                        // normal case
-                        row[1] = $scope.upcoming_courses[i + 1];
-                        if (upcoming_courses.length - i > 2)
-                            row[2] = $scope.upcoming_courses[i + 2];
-                        else
-                            row[2] = $scope.upcoming_courses[upcoming_courses.length - i - 2];
-                    } else {
-                        row[1] = $scope.upcoming_courses[upcoming_courses.length - i - 1];
-                        row[2] = $scope.upcoming_courses[upcoming_courses.length - i];
-                    }
+                    // if (upcoming_courses.length - i > 1) {
+                    //     // normal case
+                    //     row[1] = $scope.upcoming_courses[i + 1];
+                    //     if (upcoming_courses.length - i > 2)
+                    //         row[2] = $scope.upcoming_courses[i + 2];
+                    //     else
+                    //         row[2] = $scope.upcoming_courses[upcoming_courses.length - i - 2];
+                    // } else {
+                    //     row[1] = $scope.upcoming_courses[upcoming_courses.length - i - 1];
+                    //     row[2] = $scope.upcoming_courses[upcoming_courses.length - i];
+                    // }
                     $scope.upcoming_courses_rows_3.push(row);
                 }
             }
