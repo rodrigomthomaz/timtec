@@ -599,7 +599,6 @@ msgid "Certificate is valid"
 msgstr "Certificado é valido"
 
 #: core/models.py:738
-#, fuzzy
 #| msgid "Total hours"
 msgid "Total topics"
 msgstr "Total de capítulos"
@@ -1605,7 +1604,6 @@ msgid "Lesson description"
 msgstr "Descrição da aula"
 
 #: themes/default/templates/administration/lesson.html:103
-#, fuzzy
 #| msgid "Delete this unit"
 msgid "Delete this topic"
 msgstr "Apagar este capítulo"
@@ -1669,7 +1667,6 @@ msgstr ""
 "incorretamente a atividade."
 
 #: themes/default/templates/administration/lesson.html:251
-#, fuzzy
 #| msgid "Unit activity"
 msgid "Topic activity"
 msgstr "Atividade do capítulo"
