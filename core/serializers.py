@@ -216,7 +216,11 @@ class CourseSerializer(serializers.ModelSerializer):
         intro_video = validated_data.pop('intro_video', None)
         updated_course = super(CourseSerializer, self).update(instance, validated_data, **kwargs)
         if intro_video:
-            intro_video, created = Video.objects.get_or_create(**intro_video)
+            try:
+                intro_video, created = Video.objects.get_or_create(**intro_video)
+            except Video.MultipleObjectsReturned:
+                intro_video = Video.objects.filter(**intro_video).first()
+
         updated_course.intro_video = intro_video
         updated_course.save()
         return updated_course
