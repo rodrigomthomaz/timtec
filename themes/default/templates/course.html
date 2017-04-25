@@ -572,9 +572,11 @@ wrapper-course-intro
                     <div class="page-header-double">
                         <h3><i ng-class="{'blink-text-danger':errors.start_date}" class="fa fa-angle-double-right"></i> {% trans 'Start date' %}</h3>
                     </div>
+                    {% verbatim %}
                     <div class="editable editable-text">
-                        <input type="text" ng-model="course.start_date" datepicker-popup="dd/MM/yyyy" is-open="opened" show-button-bar="false" ng-click="opened = true" />
+                        <input type="date" ng-model="course.start_date" value="{{ course.start_date }}" ng-click="opened = true" />
                     </div>
+                    {% endverbatim %}
 
                     <div class="page-header-double">
                         <h3><i ng-class="{'blink-text-danger':errors.total_hours}" class="fa fa-angle-double-right"></i> {% trans 'Total hours' %}</h3>
