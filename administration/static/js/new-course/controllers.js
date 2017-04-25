@@ -56,8 +56,10 @@
             $scope.add_video = function(url) {
                 var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
                 var match = url.match(regExp);
-                $scope.course.intro_video = {};
-                $scope.course.intro_video.youtube_id = (match&&match[7].length==11)? match[7] : false;;
+                $scope.course.intro_video = {
+                    "youtube_id": (match&&match[7].length==11)? match[7] : false,
+                    "name": ""
+                };
             }
 
             $scope.$watch('course.intro_video.youtube_id', function(vid, oldVid){
