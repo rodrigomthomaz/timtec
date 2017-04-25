@@ -74,7 +74,7 @@ wrapper-course-lesson
                         <h2>{% trans 'Chapters' %}</h2>
                         {% verbatim %}
                         <a style="display:block;" data-placement="right"
-                           title="{{unit.video.name}}"
+                           title="{{unit.title}}"
                            href="#/{{$index+1}}"
                            class="has-tooltip unit track" data-toggle="tooltip"
                            ng-repeat="unit in lesson.units"
