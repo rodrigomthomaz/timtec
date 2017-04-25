@@ -205,7 +205,7 @@ class CourseSerializer(serializers.ModelSerializer):
                   'professors', "is_assistant_or_coordinator", 'welcome_email', 'total_hours')
 
     def create(self, validated_data):
-        intro_video = validated_data.pop('intro_video')
+        intro_video = validated_data.pop('intro_video', None)
         new_course = super(CourseSerializer, self).create(validated_data)
         intro_video.save()
         new_course.intro_video = intro_video
@@ -213,8 +213,10 @@ class CourseSerializer(serializers.ModelSerializer):
         return new_course
 
     def update(self, instance, validated_data, **kwargs):
-        intro_video, created = Video.objects.get_or_create(**validated_data.pop('intro_video'))
+        intro_video = validated_data.pop('intro_video', None)
         updated_course = super(CourseSerializer, self).update(instance, validated_data, **kwargs)
+        if intro_video:
+            intro_video, created = Video.objects.get_or_create(**intro_video)
         updated_course.intro_video = intro_video
         updated_course.save()
         return updated_course
