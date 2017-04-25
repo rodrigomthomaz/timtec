@@ -53,6 +53,13 @@
                 $scope.playerReady = true;
             });
 
+            $scope.add_video = function(url) {
+                var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
+                var match = url.match(regExp);
+                $scope.course.intro_video = {};
+                $scope.course.intro_video.youtube_id = (match&&match[7].length==11)? match[7] : false;;
+            }
+
             $scope.$watch('course.intro_video.youtube_id', function(vid, oldVid){
                 if(!vid || vid === oldVid) return;
                 if(player) player.cueVideoById(vid);

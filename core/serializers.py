@@ -185,7 +185,7 @@ class VideoSerializer(serializers.ModelSerializer):
 
 class CourseSerializer(serializers.ModelSerializer):
     # BUGFIX: intro_video needs to be read_only=False. This is a little workaround to make other modules work
-    intro_video = VideoSerializer(required=False, read_only=True)
+    intro_video = VideoSerializer(required=False)
     thumbnail_url = serializers.ReadOnlyField(source='get_thumbnail_url')
 
     has_started = serializers.ReadOnlyField()
@@ -203,6 +203,21 @@ class CourseSerializer(serializers.ModelSerializer):
                   "start_date", "home_published", "authors_names", "has_started",
                   "min_percent_to_complete", "is_user_assistant", "is_user_coordinator",
                   'professors', "is_assistant_or_coordinator", 'welcome_email', 'total_hours')
+
+    def create(self, validated_data):
+        intro_video = validated_data.pop('intro_video')
+        new_course = super(CourseSerializer, self).create(validated_data)
+        intro_video.save()
+        new_course.intro_video = intro_video
+        new_course.save()
+        return new_course
+
+    def update(self, instance, validated_data, **kwargs):
+        intro_video, created = Video.objects.get_or_create(**validated_data.pop('intro_video'))
+        updated_course = super(CourseSerializer, self).update(instance, validated_data, **kwargs)
+        updated_course.intro_video = intro_video
+        updated_course.save()
+        return updated_course
 
     @staticmethod
     def get_professor_name(obj):
