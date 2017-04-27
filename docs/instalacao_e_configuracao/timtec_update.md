@@ -1,6 +1,6 @@
 ## Atualizando para uma nova versão
 
-> Atenção: estas orientações são para a versão 3.1 ou superior. Se seu ambiente é inferior a esta versão, não siga estes passos. 
+> Atenção: estas orientações são para a versão 3.1 ou superior para versão 4.1.2. Se seu ambiente é inferior a esta versão, não siga estes passos. 
 
 ### 1. Faça um backup de todos os seus arquivos e de sua base de dados
 * 1.1 Recomendamos que faça uma cópia dos diretório /timtec e /webfiles antes de começar esse processo:
@@ -27,9 +27,8 @@ HEAD detached at v3.2
 No seu servidor, logado com usuário da aplicação (se você seguiu a documentação deve ser o usuário timtec-production), entre na pasta da aplicação e de um git pull:
 
 ```
-timtec-production@server:$ git checkout master
-timtec-production@server:$ git pull --all
-timtec-production@server:$ git checkout v3.3
+timtec-production@server:$ git fetch --all
+timtec-production@server:$ git checkout 4.1.2
 ```
 ### 4. Faça o update
 
