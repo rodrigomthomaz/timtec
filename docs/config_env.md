@@ -27,6 +27,7 @@ Para deletar um ambiente virtual já criado, no contexto do TIM Tec, faça isso:
 ```
 timtec-production@server$ rm -rf /home/timtec-production/env
 ```
+Caso seja deletado, deve ser recriado conforme indicado acima. 
 
 ## Ativando o env
 Para ativar o env no TIM Tec, faça:
