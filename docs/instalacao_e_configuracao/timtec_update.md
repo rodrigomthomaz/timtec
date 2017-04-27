@@ -22,17 +22,27 @@ timtec-production@server:$ pg_dump timtec-production > yyyy_mm_dd_timtec_backup_
 timtec-production@server:$ git status
 HEAD detached at v3.2
 ```
+### 3. Refaça o enviroment
 
-### 3. Baixe as atualizações e mude o checkout
+* 3.1. Delete o env já existente. No contexto da documentação padrão, o env deve estar em /home/timtec-production/env. Veja:
+```
+timtec-production@server$ rm -rf /home/timtec-production/env
+```
+* 3.2. Recrie o env com o comando abaixo: 
+```
+timtec-production@server$ virtualenv /home/timtec-production/env
+```
+
+### 4. Baixe as atualizações e mude o checkout
 No seu servidor, logado com usuário da aplicação (se você seguiu a documentação deve ser o usuário timtec-production), entre na pasta da aplicação e de um git pull:
 
 ```
 timtec-production@server:$ git fetch --all
 timtec-production@server:$ git checkout 4.1.2
 ```
-### 4. Faça o update
+### 5. Faça o update
 
-* 4.1 ative o ambiente virtual python:
+* 5.1 ative o ambiente virtual python:
 
 ```
 timtec-production@server:$ virtualenv /home/NOME-DO-SEU-USUARIO-OU-DIRETORIO/env
@@ -45,7 +55,7 @@ timtec-production@server:$ virtualenv /home/timtec-production/env
 timtec-production@server:$ source /home/timtec-production/env/bin/activate
 ```
 
-* 4.2 Rode o make update na pasta da aplicação:
+* 5.2 Rode o make update na pasta da aplicação:
 ```
 timtec-production@server:$ cd ~/timtec/
 timtec-production@server:$ make update
