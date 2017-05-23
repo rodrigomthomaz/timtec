@@ -323,13 +323,4 @@
       }
     ]);
 
-    app.controller('CourseHeaderCtrl', [
-        '$scope',
-        function ($scope) {
-            $scope.confirmUrl = function(url, msg) {
-                if (confirm(msg))
-                    window.location.href = url;
-            };
-        }
-    ]);
 })(angular);
