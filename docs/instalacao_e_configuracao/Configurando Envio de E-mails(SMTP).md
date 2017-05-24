@@ -23,5 +23,5 @@ ACCOUNT_EMAIL_VERIFICATION = 'optional'
 No arquivo /timtec/timtec/settings_production.py, busque a entrada CONTACT_RECIPIENT_LIST para configurar quais emails devem receber uma cópia dos emails enviados pelo form de contato. 
 
 ```
-CONTACT_RECIPIENT_LIST = ['timtec-dev@listas.hacklab.com.br', 'bruna@lfdb.com.br', 'timtec@lfdb.com.br','timtec@timt$
+CONTACT_RECIPIENT_LIST = ['meu-email1@timtec.com.br', 'meu-email2@timtec.com.br',]
 ```
