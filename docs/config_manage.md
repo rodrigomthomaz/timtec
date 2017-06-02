@@ -13,8 +13,13 @@ python manage.py shell
 Importe um objeto e/ou um registro em específico
 
 ```
-from django.contrib.auth.models import User
-user = User.objects.get(username="myname")
+from django.contrib.auth import get_user_model
+user = get_user_model().objects.get(username="myname")
+
+ou
+
+user = get_user_model().objects.get(username="email")
+
 ```
 Como fazer para mudar uma role (papel) de um usuário? Exemplo de alteração para role superadmin: 
 
