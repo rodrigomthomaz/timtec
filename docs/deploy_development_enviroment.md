@@ -1,4 +1,4 @@
-# TIM Tec > Develop Mode
+# TIM Tec > Develop Enviroment Deploy
 
 Se você quer desenvolver features para ferramenta timtec ou ainda resolver bugfixes, o primeiro passo é criar um ambiente adequado para isso. 
 
