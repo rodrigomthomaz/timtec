@@ -39,6 +39,33 @@ Sugerimos que use o user ```timtec-development``` para o ambiente de desenvolvim
 
 Uma vez que você tenha clonado o repo do timtec dentro de um diretório vagrant ele irá aparecer na pasta /vagrant/timtec quando estiveres logado, certo? O que a linha acima faz é linkar isso com a pasta home do usuário da aplicação, no caso ```/home/timtec-development/timtec```. 
 
+Por fim, o arquivo ```Vagrantfile``` vai ficar conforme exemplo abaixo.
+```
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# All Vagrant configuration is done below. The "2" in Vagrant.configure
+# configures the configuration version (we support older styles for
+# backwards compatibility). Please don't change it unless you know what
+# you're doing.
+Vagrant.configure("2") do |config|
+
+# Tipo de máquina em uso
+  config.vm.box = "ubuntu/xenial64"
+
+# Redirecionamento de portas
+  config.vm.network "forwarded_port", guest: 80, host: 3133
+
+# Ip Fake para rodar no browser
+  config.vm.network "private_network", ip: "192.168.10.99"
+
+# Pasta syncada
+  config.vm.synced_folder "timtec", "/home/timtec-production/timtec",
+  owner: "timtec-production", group: "timtec-production"
+
+end
+```
+
 6. Prossiga com o procedimento de deploy normal da aplicação dentro do Vagrant, isto é, entre no vagrant com ```vagrant ssh```, vire root com ```sudo su``` e execute os passos necessários como root, incluindo a criação de um user, que nesse caso ao contrário do que recomendado na documentação padrão do timtec, sugerimos que seja ```timtec-development```. 
 
 
