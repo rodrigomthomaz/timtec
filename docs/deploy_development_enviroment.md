@@ -9,7 +9,7 @@ O primeiro passo recomendado é fazer uma instalação local. Recomendamos usar 
 ![selecao_029](https://user-images.githubusercontent.com/641411/27147091-ee65787e-5111-11e7-877e-f59e0ceb4398.png)
 
 2. Crie um diretório para hospedar uma máquina ubuntu 16.04: sugestão de nome ```vagrant_ubuntu_16_04_timtec```
-Ex.: de execução:
+
 ```
 user@server$ mkdir vagrant_ubuntu_16_04_timtec
 user@server$ vagrant init ubuntu/xenial64; vagrant up --provider virtualbox
