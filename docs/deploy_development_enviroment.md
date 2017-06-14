@@ -24,23 +24,9 @@ Gif Demonstração:
 
 ![ezgif-1-21a939a5a1](https://user-images.githubusercontent.com/641411/27148144-90ecf9ca-5115-11e7-81ce-fc5fcc8b58a9.gif)
 
-4. Entre no arquivo Vagrantfile criado pelo Vagrant e edite a linha de pastas syncadas. Acrescente na opção synced_folder a pasta padrão do timtec. Ficará mais ou menos desta forma dependendo de onde você tenha feito o clone do repo:
+4. Altere o Vagrantfile seguindo o modelo abaixo.
 
-```
-  config.vm.synced_folder "timtec", "/home/timtec-development/timtec",
-  owner: "timtec-development", group: "timtec-development"
-```
-Sugerimos que use o user ```timtec-development``` para o ambiente de desenvolvimento, por isso esse seria o nome do diretório do user da aplicação. Mas isso é totalmente opcional. 
 
-5. Edite também o redirecionamento de portas do guest para o host. Deixe no host algo como 3131, ou qualquer outra porta alta sem uso. 
-
-```
-  config.vm.network "forwarded_port", guest: 80, host: 3131
-```
-
-Uma vez que você tenha clonado o repo do timtec dentro de um diretório vagrant ele irá aparecer na pasta /vagrant/timtec quando estiveres logado, certo? O que a linha acima faz é linkar isso com a pasta home do usuário da aplicação, no caso ```/home/timtec-development/timtec```. 
-
-Por fim, o arquivo ```Vagrantfile``` vai ficar conforme exemplo abaixo.
 ```
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
@@ -55,19 +41,41 @@ Vagrant.configure("2") do |config|
   config.vm.box = "ubuntu/xenial64"
 
 # Redirecionamento de portas
-  config.vm.network "forwarded_port", guest: 80, host: 3133
+  config.vm.network "forwarded_port", guest: 80, host: 3140
 
 # Ip Fake para rodar no browser
   config.vm.network "private_network", ip: "192.168.10.99"
 
 # Pasta syncada
-  config.vm.synced_folder "timtec", "/home/timtec-production/timtec",
-  owner: "timtec-production", group: "timtec-production"
+  config.vm.synced_folder "timtec", "/home/timtec-development/timtec"
+#  owner: "timtec-development", group: "timtec-development"
 
 end
 ```
 
-6. Prossiga com o procedimento de deploy normal da aplicação dentro do Vagrant, isto é, entre no vagrant com ```vagrant ssh```, vire root com ```sudo su``` e execute os passos necessários como root, incluindo a criação de um user, que nesse caso ao contrário do que recomendado na documentação padrão do timtec, sugerimos que seja ```timtec-development```. 
+Com essas configurações, estamos modificando basicamente duas coisas:
+
+4.1. alteramos a opção ```synced_folder``` para a pasta padrão do timtec. Ficará mais ou menos desta forma dependendo de onde você tenha feito o clone do repo.
+
+```
+  config.vm.synced_folder "timtec", "/home/timtec-development/timtec",
+  owner: "timtec-development", group: "timtec-development"
+```
+
+Por hora deixamos comentada a linha do usuário e do dono da pasta. Vamos habilitar isso depois de feito o deploy de requisitos e criação de usuário. Sugerimos que use o user ```timtec-development``` para o ambiente de desenvolvimento, por isso esse seria o nome do diretório do user da aplicação. Mas isso é totalmente opcional. 
+
+4.2. Alteramos também a porta padrão do Vagrant e colocamos um ipfake:
+
+```
+  config.vm.network "forwarded_port", guest: 80, host: 3131
+  config.vm.network "private_network", ip: "192.168.10.99"
+```
+
+5. Prossiga com o procedimento de deploy normal da aplicação dentro do Vagrant, isto é, entre no vagrant com ```vagrant ssh```, vire root com ```sudo su``` e execute os passos necessários como root, incluindo a criação de um user, que nesse caso ao contrário do que recomendado na documentação padrão do timtec, sugerimos que seja ```timtec-development```. 
+
+Veja: 
+
+6.Altere o Vagrantfile, compartilhando a pasta
 
 
 ## Ative o env
