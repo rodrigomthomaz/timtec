@@ -6,7 +6,7 @@ Se você quer desenvolver features para ferramenta timtec ou ainda resolver bugf
 O primeiro passo recomendado é fazer uma instalação local. Recomendamos usar uma máquina virtual via commandline para isso, com Vagrant. Se você não quiser usar Vagrant, faça uma instalação de outra forma e siga para o próximo passo. 
 
 1. Instale o vagrant e o virtualbox na sua máquina
-2. Crie um diretório para hospedar uma máquina ubuntu 16.04: sugestão de nome ```2017_06_vagrant_ubuntu_16_04_timtec```
+2. Crie um diretório para hospedar uma máquina ubuntu 16.04: sugestão de nome ```vagrant_ubuntu_16_04_timtec```
 Ex.: de execução:
 ```
 user@server$ mkdir vagrant_ubuntu_16_04_timtec
