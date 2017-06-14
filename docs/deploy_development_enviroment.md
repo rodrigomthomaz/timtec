@@ -22,7 +22,7 @@ user@server/vagrant_ubuntu_16_04_timtec$ git clone https://github.com/institutot
 ```
 Gif Demonstração:
 
-![ezgif-1-8c281572a5](https://user-images.githubusercontent.com/641411/27147922-e68befd6-5114-11e7-88d4-a989d3bc33b8.gif)
+![ezgif-1-21a939a5a1](https://user-images.githubusercontent.com/641411/27148144-90ecf9ca-5115-11e7-81ce-fc5fcc8b58a9.gif)
 
 4. Entre no arquivo Vagrantfile criado pelo Vagrant e edite a linha de pastas syncadas. Acrescente na opção synced_folder a pasta padrão do timtec. Ficará mais ou menos desta forma dependendo de onde você tenha feito o clone do repo:
 
