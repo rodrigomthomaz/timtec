@@ -44,7 +44,6 @@ install:
 	./node_modules/bower/bin/bower install
 	mkdir -p ~/webfiles/static
 	mkdir -p ~/webfiles/media
-	cp timtec/settings_local.py.template timtec/settings_local.py
 	~/env/bin/python manage.py migrate --noinput
 	~/env/bin/python manage.py loaddata initial
 	~/env/bin/python manage.py collectstatic --noinput
