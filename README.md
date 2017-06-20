@@ -87,45 +87,7 @@ Para acessar a documentação completa, veja a pasta [docs](docs) na raiz da apl
 * Incoming: 2GB
 * Outgoing: 23 GB
 
-### Python env
-* create a Python 2.X virtualenv
 
-    `virtualenv ../timtec-env`
-
-* activate the virtual env
-
-    `source ../timtec-env/bin/activate`
-
-* run make
-
-    `make`
-
-* run the django devel server
-
-    `./manage.py runserver`
-
-### Getting Started
-
-We provide a vagrant file for easy dev environment creation. Install
-[Vagrant](http://www.vagrantup.com/) and on the main directory run:
-
-    vagrant up
-
-Them you just need to go inside the machine to start the dev server:
-
-    vagrant ssh
-
-On the VM console:
-
-    ./manage.py runserver 0.0.0.0:8000
-
-Now the system is running, you can go to `http://localhost:8000` on your web
-browser and navigate on it.
-To create a new superuser (so you can give permissions to other make other users professors) run:
-
-    ./manage.py createsuperuser
-
-See the Vagrantfile and script folder for more details.
 
 ## Running Tests
 
