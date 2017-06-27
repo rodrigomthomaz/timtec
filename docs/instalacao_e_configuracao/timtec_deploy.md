@@ -141,7 +141,7 @@ timtec-production@server$ createdb --encoding "UTF-8" timtec-production
 
 Veja exemplo com usuário ```timtec-production```:
 ```
-timtec-production@server$ cp /home/timtec-production/timtec/timtec/settings_local.py.template /home/timtec-production/timtec/settings_local.py
+timtec-production@server$ cp /home/timtec-production/timtec/timtec/settings_local.py.template /home/timtec-production/timtec/timtec/settings_local.py
 ```
 
 Depois de copiar, entre nesse arquivo e faça as adaptações necessárias. Por padrão ele vem pronto para uma instalação nova, seguindo os parametros passados acima, mas você pode mudar conforme melhor se adequar a sua situaão. Nesse arquivo você deve encontrar as informações de banco de dados, url, entre outras coisas importantes. 
