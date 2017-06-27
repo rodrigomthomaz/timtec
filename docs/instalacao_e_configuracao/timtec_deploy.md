@@ -137,9 +137,11 @@ timtec-production@server$ createdb --encoding "UTF-8" timtec-production
 
 ## Instalação
 
-* Copie o arquivo de configuração modelo da aplicação
+* Copie o arquivo de configuração modelo da aplicação. Esse arquivo fica dentro de ```/timtec/timtec/settings_local.py.template``` e deve ser copiado para ```/HOME-USER-DA-APLICACAO//timtec/settings_local.py```
+
+Veja exemplo com usuário ```timtec-production```:
 ```
-timtec-production@server$ cp /home/timtec-production/timtec/settings_local.py.template /home/timtec-production/timtec/settings_local.py
+timtec-production@server$ cp /home/timtec-production/timtec/timtec/settings_local.py.template /home/timtec-production/timtec/settings_local.py
 ```
 
 Depois de copiar, entre nesse arquivo e faça as adaptações necessárias. Por padrão ele vem pronto para uma instalação nova, seguindo os parametros passados acima, mas você pode mudar conforme melhor se adequar a sua situaão. Nesse arquivo você deve encontrar as informações de banco de dados, url, entre outras coisas importantes. 
