@@ -151,6 +151,39 @@ timtec-production@server$ nano /home/timtec-production/timtec/settings_local.py
 
 ```
 
+* Faça a edição nesse arquivo e esteja atento aos pontos abaixo:
+
+```
+timtec-production@server$ vi timtec/timtec/settings_local.py
+```
+
+Edite estes trechos caso precise:
+
+```
+# Acrescente a url principal que deseja usar
+DOMAIN_NAME = 'suaurl.com.br'
+
+# Aqui devemos deixar dessa forma para que ele possa pegar a url da variável acima
+ALLOWED_HOSTS = [
+    DOMAIN_NAME,
+    'wwww.' + DOMAIN_NAME
+]
+
+# Mude isto caso queira alterar o nome da base de dados
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'timtec-production',
+        'USER': 'timtec-production',
+    }
+}
+
+# Aqui é o padrão do endereço de armazenamento dos files da aplicação
+MEDIA_ROOT = "/home/timtec-production/webfiles/media/"
+STATIC_ROOT = "/home/timtec-production/webfiles/static/"
+
+```
+
 * Utilize o make para rodar todos os comandos necessários para a instalação da aplicação propriamente dita
 
 ```
@@ -158,33 +191,9 @@ timtec-production@server$ cd ~/timtec
 timtec-production@server$ make install
 ```
 
-* Insira o endereço (url) de sua instância 
-
-```
-timtec-production@server$ vi timtec/timtec/settings_local.py
-```
-Edite este trecho:
-```
-# TODO: you NEED to change this to your domain name ######
-DOMAIN_NAME = 'suaurl.com.br'
-```
 
 > **ATENÇÃO 7:** Se ocorrer algum erro, tente rodar o comando make novamente, pois falhas podem ocorrer devido a problemas com a internet.
 
-### Criando ambiente virtual manualmente
-
-Caso precise criar o ambiente virtual do python manualmente, você pode usar isto: 
-
-```
-timtec-production@server$ virtualenv /home/NOME-DO-SEU-USUARIO-OU-DIRETORIO/env & source /home/NOME-DO-SEU-USUARIO-OU-DIRETORIO/env/bin/activate
-```
-
-Se você estiver seguindo a documentação, você pode deverá dar o comando da seguinte maneira:
-
-```
-timtec-production@server$ virtualenv /home/timtec-production/env
-timtec-production@server$ source /home/timtec-production/env/bin/activate
-```
 
 ## Servidor web e de aplicação
 
