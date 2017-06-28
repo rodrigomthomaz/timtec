@@ -83,6 +83,13 @@ Veja:
 
 source env/bin/activate
 
+## Instale a debug tool bar e rode as dependencias do ambiente
+
+```
+pip install django-debug-toolbar
+~/env/bin/pip install -r requirements/local.txt
+```
+
 
 ## Runserver
 O Django possui um servidor livein para desenvolvimento. Ao rodar esse servidor a aplicação fica em modo "watch" permitindo com que toda e qualquer alteração gere um logo ao vivo no terminal de comandos. Para ativar o ```runserver``` junto com vagrant no timtec, você seguir o exemplo abaixo:
