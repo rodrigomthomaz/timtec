@@ -216,6 +216,9 @@
                     if (course_professor.picture !== null)
                         delete course_professor.picture;
 
+                    if (course_professor.user === undefined)
+                        course_professor.user = null;
+
                     if (course_professor.id === undefined){
                         course_professor.course = $scope.course_id;
                         course_professor.position = $scope.courseProfessors.length;
