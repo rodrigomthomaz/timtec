@@ -944,12 +944,6 @@ class FlatpageViewSet(viewsets.ModelViewSet):
     filter_fields = ('url',)
     permission_classes = (IsAdminOrReadOnly,)
 
-    def post_save(self, obj, created=False):
-        if created:
-            from django.contrib.sites.models import Site
-            obj.sites.add(Site.objects.get(id=settings.SITE_ID))
-            obj.save()
-
     def get_queryset(self):
         queryset = super(FlatpageViewSet, self).get_queryset()
         url_prefix = self.request.query_params.get('url_prefix')

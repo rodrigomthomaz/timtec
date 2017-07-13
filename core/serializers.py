@@ -506,7 +506,14 @@ class CourseAuthorPictureSerializer(serializers.ModelSerializer):
 
 
 class FlatpageSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = FlatPage
         exclude = ('sites', )
+
+    def save(self, **kwargs):
+        instance = super(FlatpageSerializer, self).save(**kwargs)
+        from django.contrib.sites.models import Site
+        from django.conf import settings
+        instance.sites.add(Site.objects.get(id=settings.SITE_ID))
+        instance.save()
+        return instance
