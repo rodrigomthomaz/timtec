@@ -664,6 +664,13 @@ class LessonDetailView(LoginRequiredMixin, DetailView):
     model = Lesson
     template_name = "lesson.html"
 
+    def get(self, request, *args, **kwargs):
+        response = super(LessonDetailView, self).get(request, *args, **kwargs)
+        course = self.object.course
+        if(self.object.status == 'draft' or course.status == 'draft' or course.start_date > datetime.date.today()):
+            raise Http404
+        return response
+
     def get_queryset(self, *args, **kwargs):
         qs = super(LessonDetailView, self).get_queryset(*args, **kwargs)
         course_slug = self.kwargs.get('course_slug')
