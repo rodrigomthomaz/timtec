@@ -116,7 +116,7 @@ wrapper-course-lesson
                         <div class="row" ng-show="users_reports.$resolved">
                             <div class="col-sm-8">
                                 <h3>{% trans 'Students progress' %}</h3>
-                                <h4>{% trans 'Total number of students' %}: {% verbatim %}{{ users_reports.length }}{% endverbatim %}</h4   >
+                                <h4>{% trans 'Total number of students' %}: {% verbatim %}{{ users_reports.count }}{% endverbatim %}</h4>
                             </div>
                             <!--
                             <div class="col-sm-4 textright">
@@ -167,6 +167,12 @@ wrapper-course-lesson
                                     </div>
                                 </div>
                             </li>
+                        </ul>
+                        <ul uib-pagination
+                                    max-size="10" items-per-page="40" boundary-links="true"
+                                    total-items="totalItems" ng-model="currentPage" class="pagination-sm top pointer"
+                                    previous-text="&lsaquo;" next-text="&rsaquo;"
+                                    first-text="&laquo;" last-text="&raquo;">
                         </ul>
                     </div>
                     <div class="tab-pane fade in" id="lessons">
