@@ -43,7 +43,7 @@ wrapper-course-lesson
 
             {% verbatim %}
             <div id="lesson-{{ lesson.position }}" class="lesson" ng-repeat="lesson in lessons">
-                <h1><span>{% endverbatim %}{% trans 'Lesson' %}{% verbatim %}</span> <a href="/course/{{lesson.course}}/lesson/{{lesson.slug}}">{{ lesson.name }}</a></h1>
+                <h1 class="note"><a href="/course/{{lesson.course}}/lesson/{{lesson.slug}}">{{ lesson.name }}</a></h1>
                 <div ng-repeat="unit in lesson.units_notes">
                     <div class="note">
                         <div class="row">
