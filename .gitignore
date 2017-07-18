@@ -61,6 +61,9 @@ settings_local.py
 /themes/default/templates/version.txt
 bower_components/
 
+# Used to custom themes cloned there
+/themes/themes_custom
+
 # Vagrant
 .vagrant
 

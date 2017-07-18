@@ -15,8 +15,11 @@ INSTALLED_APPS += (
   'if_theme',        # Use this to IF theme
   # 'timtec_theme',  # Use this to Timtec theme
 )
-TIMTEC_THEME = 'if_theme'  # Use this to IF theme
-# TIMTEC_THEME = 'timtec_theme'  # Use this to Timtec theme
+
+# TODO: Clone into /themes/themes_custom your theme and change this 
+# path name to the your theme
+# TIMTEC_THEME = 'themes_custom/path-to-theme1/path-to-theme1'  
+TIMTEC_THEME = 'timtec_theme'  # Use this to Timtec theme
 
 COMPRESS_PRECOMPILERS = (
     ('text/less', '%s/node_modules/less/bin/lessc {infile} {outfile} --include-path="%s/bower_components/bootstrap:%s/themes/default/static:%s/themes/default/static/less:%s/bower_components"' % (PROJECT_ROOT, PROJECT_ROOT, PROJECT_ROOT, PROJECT_ROOT, PROJECT_ROOT)),
@@ -59,7 +62,8 @@ ADMINS = list(ADMINS) + [('Admin', 'root@' + DOMAIN_NAME), ]
 DEFAULT_FROM_EMAIL = 'donotreply@' + DOMAIN_NAME
 CONTACT_RECIPIENT_LIST = ['contato@' + DOMAIN_NAME, ]
 
-SITE_NAME = 'IF'
+#TODO: Change here the site name that appears in <title></title> html
+SITE_NAME = 'ENTER YOUR SITE NAME HERE'
 EMAIL_SUBJECT_PREFIX = '[if-sysadmin]'
 
 if DEBUG:
