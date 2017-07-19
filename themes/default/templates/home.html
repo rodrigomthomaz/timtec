@@ -133,11 +133,14 @@ home
             </div><!-- .row -->
             {% endif %}
 
+            {% block button_all_courses %}
             <div class="row">
                 <div class="see-all-courses col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
                     <a href="{% url 'courses' %}" class="btn btn-lg btn-info btn-block">{% trans "All courses" %}</a>
                 </div>
             </div>
+            {% endblock %}
+
         </section><!-- #courses -->
 
         <section id="how-it-works">
