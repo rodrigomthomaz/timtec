@@ -450,7 +450,7 @@ msgstr "Home thumbnail"
 #: core/models.py:125 themes/default/templates/course.html:615
 #: themes/default/templates/course.html:618
 msgid "Welcome Email"
-msgstr "Email de boas vindas"
+msgstr "E-mail de boas-vindas"
 
 #: core/models.py:126 themes/default/templates/course.html:580
 msgid "Total hours"
@@ -2108,7 +2108,7 @@ msgid "Add lesson"
 msgstr "Adicionar aula"
 
 #: themes/default/templates/course.html:564
-msgid "Progresso necessario para certificado"
+msgid "Progresso necessário para certificado"
 msgstr ""
 
 #: themes/default/templates/course.html:592
