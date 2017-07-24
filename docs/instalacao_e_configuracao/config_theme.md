@@ -1,8 +1,8 @@
 # Themes
 
-## Editar um tema
+## Configurando um novo tema
 
-Se você deseja editar um tema, siga os seguintes procedimentos
+Se você deseja configurar um tema diferente dos temas disponíveis por padrão, siga os seguintes procedimentos
 
 1. Fork um tema que deseja modificar
 
