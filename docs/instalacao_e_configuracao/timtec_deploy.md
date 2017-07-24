@@ -180,6 +180,9 @@ STATIC_ROOT = "/home/timtec-production/webfiles/static/"
 
 ```
 
+> **ATENÇÃO 7:** Caso queira extender os temas-padrão para fazer modificações e evitar que sejam sobreescritas ao atualizar a aplicação ou mesmo usar um tema próprio com interface diferente, você pode seguir estes passos descritos em [configurando novo tema](https://github.com/institutotim/timtec/blob/master/docs/instalacao_e_configuracao/config_theme.md)
+
+
 * Utilize o make para rodar todos os comandos necessários para a instalação da aplicação propriamente dita
 
 ```
