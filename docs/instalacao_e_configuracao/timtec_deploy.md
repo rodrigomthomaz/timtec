@@ -144,17 +144,13 @@ Veja exemplo com usuário ```timtec-production```:
 timtec-production@server$ cp /home/timtec-production/timtec/timtec/settings_local.py.template /home/timtec-production/timtec/timtec/settings_local.py
 ```
 
-Depois de copiar, entre nesse arquivo e faça as adaptações necessárias. Por padrão ele vem pronto para uma instalação nova, seguindo os parametros passados acima, mas você pode mudar conforme melhor se adequar a sua situaão. Nesse arquivo você deve encontrar as informações de banco de dados, url, entre outras coisas importantes. 
-
-```
-timtec-production@server$ nano /home/timtec-production/timtec/settings_local.py
-
-```
+Depois de copiar, entre nesse arquivo e faça as adaptações necessárias. Por padrão ele vem pronto para uma instalação nova, seguindo os parametros passados acima, mas você pode mudar conforme melhor se adequar a sua situação. Nesse arquivo você deve encontrar as informações de banco de dados, url, entre outras coisas importantes. 
 
 * Faça a edição nesse arquivo e esteja atento aos pontos abaixo:
 
 ```
-timtec-production@server$ vi timtec/timtec/settings_local.py
+timtec-production@server$ nano /home/timtec-production/timtec/timtec/settings_local.py
+
 ```
 
 Edite estes trechos caso precise:
