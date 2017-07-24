@@ -12,7 +12,7 @@ Você precisa de um servidor com algum dos seguintes sistemas operacionais:
 
 * Ubuntu 14.04
 * Ubuntu 16.04 
-* Debian 8.0
+* Debian 9.0
 
 > **ATENÇÃO 4:** É possível instalar em outras distribuições, no entanto não fizemos os testes de 
 deploy que recobrem esses procedimentos. Você pode fazer estes testes e construir uma documentação com base em outros servidores. Se fizer isso, mande um pullrequest para a gente que incluiremos a documentação neste repositório oficial. 
@@ -42,7 +42,7 @@ root@server# apt-get install build-essential python-dev gettext python-virtualen
 * Instale algumas **BIBLIOTECAS DE PROCESSAMENTO DE IMAGENS**
 
 ```
-root@server# apt-get install libpq-dev libjpeg-dev libpng12-dev 
+root@server# apt-get install libpq-dev libjpeg-dev libpng-dev 
 ```
 
 * Instale o **NODEJS**
