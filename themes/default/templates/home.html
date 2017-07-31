@@ -54,6 +54,7 @@ home
             {% include '_highlight.html' %}
         </div>
 
+        {% block home_courses_block %}
         <section id="courses" class="container">
 
             <header>
@@ -142,7 +143,9 @@ home
             {% endblock %}
 
         </section><!-- #courses -->
+        {% endblock %}
 
+        {% block how_it_works %}
         <section id="how-it-works">
             <div class="container">
 
@@ -167,15 +170,21 @@ home
 						</modalmarkdowneditorwithtitle>
 					</div>
 				</div>
+
                 {% else %}
-                {% get_flatpage '/home/bottom/intro/' as home_bottom_intro %}
-                <header>
-                    <h1>{{ home_bottom_intro.title }}</h1>
-                </header>
-                <div class="highlight textcenter">
-                        <p>{{ home_bottom_intro.content }}</p>
-                </div>
+
+                    {% block how_it_hows_intro %}
+                    {% get_flatpage '/home/bottom/intro/' as home_bottom_intro %}
+                    <header>
+                        <h1>{{ home_bottom_intro.title }}</h1>
+                    </header>
+                    <div class="highlight textcenter">
+                            <p>{{ home_bottom_intro.content }}</p>
+                    </div>
+                    {% endblock %}
+
                 {% endif %}
+
                 <div class="row">
                     <div class="block col-md-4 col-sm-6 col-xs-12">
                         <div class="info">
@@ -261,6 +270,7 @@ home
                 </div>
             </div>
         </section><!-- #how-it-works -->
+        {% endblock %}
 
         {% if in_admin %}
             <div class="modal fade" id="modalSelectCourses">
