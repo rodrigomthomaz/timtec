@@ -12,7 +12,7 @@ Você precisa de um servidor com algum dos seguintes sistemas operacionais:
 
 * Ubuntu 14.04
 * Ubuntu 16.04 
-* Debian 8.0
+* Debian 9.0
 
 > **ATENÇÃO 4:** É possível instalar em outras distribuições, no entanto não fizemos os testes de 
 deploy que recobrem esses procedimentos. Você pode fazer estes testes e construir uma documentação com base em outros servidores. Se fizer isso, mande um pullrequest para a gente que incluiremos a documentação neste repositório oficial. 
@@ -42,7 +42,7 @@ root@server# apt-get install build-essential python-dev gettext python-virtualen
 * Instale algumas **BIBLIOTECAS DE PROCESSAMENTO DE IMAGENS**
 
 ```
-root@server# apt-get install libpq-dev libjpeg-dev libpng12-dev 
+root@server# apt-get install libpq-dev libjpeg-dev libpng-dev 
 ```
 
 * Instale o **NODEJS**
@@ -114,11 +114,11 @@ root@server# passwd timtec-production
 timtec-production@server$ git clone https://github.com/institutotim/timtec.git
 ```
 
-* Faça checkout para versão atual (4.1.4)
+* Faça checkout para versão atual (4.1.5)
 
 ```
 timtec-production@server$ cd timtec
-timtec-production@server$ git checkout 4.1.4
+timtec-production@server$ git checkout 4.1.5
 ```
 
 ## Criando Banco de dados
@@ -144,17 +144,13 @@ Veja exemplo com usuário ```timtec-production```:
 timtec-production@server$ cp /home/timtec-production/timtec/timtec/settings_local.py.template /home/timtec-production/timtec/timtec/settings_local.py
 ```
 
-Depois de copiar, entre nesse arquivo e faça as adaptações necessárias. Por padrão ele vem pronto para uma instalação nova, seguindo os parametros passados acima, mas você pode mudar conforme melhor se adequar a sua situaão. Nesse arquivo você deve encontrar as informações de banco de dados, url, entre outras coisas importantes. 
-
-```
-timtec-production@server$ nano /home/timtec-production/timtec/settings_local.py
-
-```
+Depois de copiar, entre nesse arquivo e faça as adaptações necessárias. Por padrão ele vem pronto para uma instalação nova, seguindo os parametros passados acima, mas você pode mudar conforme melhor se adequar a sua situação. Nesse arquivo você deve encontrar as informações de banco de dados, url, entre outras coisas importantes. 
 
 * Faça a edição nesse arquivo e esteja atento aos pontos abaixo:
 
 ```
-timtec-production@server$ vi timtec/timtec/settings_local.py
+timtec-production@server$ nano /home/timtec-production/timtec/timtec/settings_local.py
+
 ```
 
 Edite estes trechos caso precise:
@@ -183,6 +179,9 @@ MEDIA_ROOT = "/home/timtec-production/webfiles/media/"
 STATIC_ROOT = "/home/timtec-production/webfiles/static/"
 
 ```
+
+> **ATENÇÃO 7:** Caso queira extender os temas-padrão para fazer modificações e evitar que sejam sobreescritas ao atualizar a aplicação ou mesmo usar um tema próprio com interface diferente, você pode seguir estes passos descritos em [configurando novo tema](https://github.com/institutotim/timtec/blob/master/docs/instalacao_e_configuracao/config_theme.md)
+
 
 * Utilize o make para rodar todos os comandos necessários para a instalação da aplicação propriamente dita
 
