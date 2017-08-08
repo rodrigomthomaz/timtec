@@ -576,7 +576,13 @@ wrapper-course-intro
                     </div>
                     {% verbatim %}
                     <div class="editable editable-text">
-                        <input type="date" ng-model="course.start_date" value="{{ course.start_date }}" ng-click="opened = true" />
+                        <input id="start_date"
+                               type="date"
+                               placeholder="dd-MM-yyyy"
+                               datetime-picker="dd-MM-yyyy"
+                               ng-model="course.start_date"
+                               value="{{ course.start_date }}"
+                               ng-click="opened = true" />
                     </div>
                     {% endverbatim %}
 

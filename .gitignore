@@ -74,3 +74,5 @@ bower_components/
 *.log
 *.log.*
 site/
+/static/
+settings_local.old.py
