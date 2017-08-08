@@ -60,15 +60,23 @@ class CourseMaterialViewSet(LoginRequiredMixin, viewsets.ModelViewSet):
     filter_fields = ('course__id',)
     filter_backends = (filters.DjangoFilterBackend,)
 
-    def pre_save(self, obj):
-        # Get Question vote usign kwarg as questionId
-        if 'course' in self.kwargs:
-            obj.course = Course.objects.get(id=int(self.kwargs['course']))
-            self.kwargs['course'] = obj.course
-        return super(CourseMaterialViewSet, self).pre_save(obj)
+    # def pre_save(self, obj):
+    #     # Get Question vote usign kwarg as questionId
+    #     if 'course' in self.kwargs:
+    #         obj.course = Course.objects.get(id=int(self.kwargs['course']))
+    #         self.kwargs['course'] = obj.course
+    #     return super(CourseMaterialViewSet, self).pre_save(obj)
+
+    def update(self, request, **kwargs):
+        print self.get_object().files
+
+        return super(CourseMaterialViewSet, self).update(request, **kwargs)
 
 
-class CourseMaterialFileViewSet(LoginRequiredMixin, mixins.DestroyModelMixin, viewsets.GenericViewSet):
-    queryset = CourseMaterialFile.objects.all()
+# class CourseMaterialFileViewSet(LoginRequiredMixin, mixins.DestroyModelMixin, mixins.UpdateModelMixin, viewsets.GenericViewSet):
+class CourseMaterialFileViewSet(LoginRequiredMixin, viewsets.ModelViewSet):
     model = CourseMaterialFile
     serializer_class = FilesSerializer
+    queryset = CourseMaterialFile.objects.all()
+    filter_fields = ('id',)
+    filter_backends = (filters.DjangoFilterBackend,)

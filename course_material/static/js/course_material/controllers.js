@@ -31,5 +31,23 @@
                     });
                 }
             };
+            $scope.hiden_file = function(file_obj){
+                // console.log($scope.course_material);
+                angular.forEach($scope.course_material.files, function(file, index){
+                    if (file.id == file_obj.id){
+                        file.hide = !file.hide;
+                        $scope.course_material.files[index].hide = !$scope.course_material.files[index].hide;
+                        var file_post = CourseMaterialFile.query({id: file_obj.id}, function(a){
+                            console.log(a);
+                        });
+                        console.log(file_post);
+                        file_post.hide = file.hide;
+                        file_post.$update();
+                        file_post.$update({id: file.id}, function(a){
+                            console.log(a);
+                        });
+                    }
+                });
+            };
     }]);
 })(angular);

@@ -307,6 +307,9 @@ class CoursePictureUploadViewSet(viewsets.ModelViewSet):
     lookup_field = 'id'
     serializer_class = CourseAuthorPictureSerializer
 
+    def get_queryset(self):
+        return super(CoursePictureUploadViewSet, self).get_queryset()
+
     def post(self, request, **kwargs):
         course = self.get_object()
         serializer = self.get_serializer(course, request.FILES)
