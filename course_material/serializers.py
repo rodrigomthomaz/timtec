@@ -3,7 +3,6 @@ from rest_framework import serializers
 
 
 class FilesSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = File
 
