@@ -306,6 +306,7 @@ class CoursePictureUploadViewSet(viewsets.ModelViewSet):
     model = CourseAuthor
     lookup_field = 'id'
     serializer_class = CourseAuthorPictureSerializer
+    queryset = CourseAuthor.objects.all()
 
     def post(self, request, **kwargs):
         course = self.get_object()
@@ -531,6 +532,7 @@ class UserMessageViewSet(viewsets.ModelViewSet):
         print total_ids
 
         return ProfessorMessage.objects.filter(id__in=total_ids).order_by('-date')
+
 
 class ProfessorMessageViewSet(viewsets.ModelViewSet):
     model = ProfessorMessage
