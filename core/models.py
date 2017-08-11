@@ -25,8 +25,8 @@ import re
 
 
 class Video(models.Model):
-    name = models.CharField(max_length=255)
-    youtube_id = models.CharField(max_length=100)
+    name = models.CharField(max_length=255, null=True, blank=True)
+    youtube_id = models.CharField(max_length=100, null=True, blank=True)
 
     class Meta:
         verbose_name = _('Video')
