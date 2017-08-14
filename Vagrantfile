@@ -22,7 +22,11 @@ Vagrant.configure('2') do |config|
            inline: $runserver,
            privileged: false,
            run: "always"
-  config.vm.network "forwarded_port", guest: 8000, host: 8000
+  config.vm.network "forwarded_port", guest: 8000, host: 8100
+  config.vm.network "forwarded_port", guest: 5432, host: 8150
   config.ssh.username = TIMTEC_USER
   config.vm.synced_folder "./", "/home/" + TIMTEC_USER  + "/timtec/", create: true
+  config.vm.provision "file", source: "~/.ssh/id_rsa.pub", destination: "~/.ssh/me.pub"
+  config.vm.provision "shell", inline: "cat ~/.ssh/me.pub >> ~/.ssh/authorized_keys"
+
 end
