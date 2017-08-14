@@ -1,6 +1,10 @@
 (function(angular){
     'use strict';
 
-    var app = angular.module('activities.services', []);
-
+    angular.module('activities.services', ['ngRoute', 'ngResource']).
+        factory('ActivityImage', function($resource){
+            return $resource('/api/activity_image/:id/', {}, {
+                update: {method: 'PUT'}
+            });
+        });
 })(angular);

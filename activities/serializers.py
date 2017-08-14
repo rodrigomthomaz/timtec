@@ -19,6 +19,13 @@ class ActivitySerializer(serializers.ModelSerializer):
             return ''
 
 
+class ActivityImageSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Activity
+        fields = ('id', 'image',)
+
+
 class AnswerSerializer(serializers.ModelSerializer):
     user_id = serializers.ReadOnlyField(source='user.id')
     correct = serializers.ReadOnlyField(source='is_correct')
