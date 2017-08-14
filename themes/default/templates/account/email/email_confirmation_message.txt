@@ -1,11 +1,11 @@
-Caro(a), bem vindo(a) ao TIM Tec.
-
-Estamos felizes por poder ajudá-lo(a) a conquistar uma qualificação técnica e construir um futuro melhor.
-
-Para garantir que você tenha acesso a todos os recursos e cursos que temos para oferecer, clique no link abaixo e confirme o seu endereço de e-mail.
+Bem-vindo(a) a TIM Tec
+ 
+Agora você tem acesso ao conteúdo de todos os cursos da plataforma gratuitamente, para estudar quando e onde quiser. Antes de iniciar seu primeiro curso, precisamos que você clique no link abaixo para confirmar seu endereço de e-mail e sua inscrição na plataforma, ok?
 
 {{ activate_url }}
 
 
-Até já!
-Instituto TIM
+Se tiver qualquer dúvida, fique à vontade para nos procurar pelo formulário de contato da plataforma (cursos.timtec.com.br), que responderemos assim que possível.
+ 
+Bons estudos!
+Equipe TIM Tec

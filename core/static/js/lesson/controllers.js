@@ -158,6 +158,13 @@
                 $scope.nextUnit();
             };
 
+            $scope.jumpNext = function(){
+                if ($scope.currentUnit.video)
+                    $scope.nextUnit();
+                else
+                    $scope.nextStep();
+            };
+
             $scope.nextStep = function(skipComment) {
                 var progress;
                 if($scope.section === 'video') {

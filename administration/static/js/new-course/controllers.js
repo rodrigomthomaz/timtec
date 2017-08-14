@@ -216,22 +216,21 @@
                     if (course_professor.picture !== null)
                         delete course_professor.picture;
 
+                    if (course_professor.user === undefined)
+                        course_professor.user = null;
+
                     if (course_professor.id === undefined){
                         course_professor.course = $scope.course_id;
                         course_professor.position = $scope.courseProfessors.length;
 
                         course_professor.$save({}, function (course_professor){
-
                             if (course_professor_picture_file){
-                                // return a new promise that file will be uploaded
                                 fu.sendTo('/api/course_professor_picture/' + course_professor.id)
                                     .then(function(response){
-                                        course_professor.get_picture_url = '/media/' + response.data.picture;
-                                        course_professor.picture = '/media/' + response.data.picture;
-                                        //$scope.alert.success('A imagem atualizada.');
+                                        course_professor.get_picture_url = response.data.picture;
+                                        course_professor.picture = response.data.picture;
                                 });
                             }
-
                             $scope.courseProfessors.push(course_professor);
                             $scope.alert.success('Professor do curso atualizado com sucesso!');
                         }, function (){
@@ -240,11 +239,10 @@
                     } else {
                         course_professor.$update({id: course_professor.id}, function (){
                             if (course_professor_picture_file){
-                                // return a new promise that file will be uploaded
                                 fu.sendTo('/api/course_professor_picture/' + course_professor.id)
                                     .then(function(response){
-                                        course_professor.get_picture_url = '/media/' + response.data.picture;
-                                        course_professor.picture = '/media/' + response.data.picture;
+                                        course_professor.get_picture_url = response.data.picture;
+                                        course_professor.picture = response.data.picture;
                                 });
                             }
                             $scope.alert.success('Professor do curso atualizado com sucesso!');

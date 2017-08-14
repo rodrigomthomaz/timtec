@@ -185,7 +185,7 @@ class VideoSerializer(serializers.ModelSerializer):
 
 class CourseSerializer(serializers.ModelSerializer):
     # BUGFIX: intro_video needs to be read_only=False. This is a little workaround to make other modules work
-    intro_video = VideoSerializer(required=False)
+    intro_video = VideoSerializer(required=False, allow_null=True)
     thumbnail_url = serializers.ReadOnlyField(source='get_thumbnail_url')
 
     has_started = serializers.ReadOnlyField()
@@ -487,6 +487,7 @@ class CourseProfessorSerializer(serializers.ModelSerializer):
 class CourseAuthorSerializer(serializers.ModelSerializer):
     user_info = TimtecUserSerializer(source='user', read_only=True)
     course_info = CourseSerializer(source='course', read_only=True)
+    user = serializers.PrimaryKeyRelatedField(queryset=get_user_model().objects.all(), allow_null=True)
     get_name = serializers.ReadOnlyField()
     get_biography = serializers.ReadOnlyField()
     get_picture_url = serializers.ReadOnlyField()
@@ -505,7 +506,14 @@ class CourseAuthorPictureSerializer(serializers.ModelSerializer):
 
 
 class FlatpageSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = FlatPage
         exclude = ('sites', )
+
+    def save(self, **kwargs):
+        instance = super(FlatpageSerializer, self).save(**kwargs)
+        from django.contrib.sites.models import Site
+        from django.conf import settings
+        instance.sites.add(Site.objects.get(id=settings.SITE_ID))
+        instance.save()
+        return instance

@@ -41,14 +41,15 @@ Vagrant.configure("2") do |config|
   config.vm.box = "ubuntu/xenial64"
 
 # Redirecionamento de portas
-  config.vm.network "forwarded_port", guest: 80, host: 3140
+  config.vm.network "forwarded_port", guest: 8000, host: 3133
 
 # Ip Fake para rodar no browser
-  config.vm.network "private_network", ip: "192.168.10.99"
+#  config.vm.network "private_network", ip: "192.168.10.99"
+#  config.vm.network "public_network", ip: "192.168.10.98"
 
 # Pasta syncada
-  config.vm.synced_folder "timtec", "/home/timtec-development/timtec"
-#  owner: "timtec-development", group: "timtec-development"
+  config.vm.synced_folder "timtec", "/home/timtec-production/timtec",
+  owner: "timtec-development", group: "timtec-development"
 
 end
 ```
@@ -64,24 +65,15 @@ Com essas configurações, estamos modificando basicamente duas coisas:
 
 Por hora deixamos comentada a linha do usuário e do dono da pasta. Vamos habilitar isso depois de feito o deploy de requisitos e criação de usuário. Sugerimos que use o user ```timtec-development``` para o ambiente de desenvolvimento, por isso esse seria o nome do diretório do user da aplicação. Mas isso é totalmente opcional. 
 
-4.2. Alteramos também a porta padrão do Vagrant e colocamos um ipfake:
-
-```
-  config.vm.network "forwarded_port", guest: 80, host: 3131
-  config.vm.network "private_network", ip: "192.168.10.99"
-```
-
 5. Prossiga com o procedimento de deploy normal da aplicação dentro do Vagrant, isto é, entre no vagrant com ```vagrant ssh```, vire root com ```sudo su``` e execute os passos necessários como root, incluindo a criação de um user, que nesse caso ao contrário do que recomendado na documentação padrão do timtec, sugerimos que seja ```timtec-development```. 
-
-Veja: 
-
-6.Altere o Vagrantfile, compartilhando a pasta
-
 
 ## Ative o env
 
+6. Já com aplicação instalada, rode isso na pasta do usuário:
 
-source env/bin/activate
+```
+$ source env/bin/activate
+```
 
 ## Instale a debug tool bar e rode as dependencias do ambiente
 

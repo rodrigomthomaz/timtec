@@ -306,6 +306,7 @@ class CoursePictureUploadViewSet(viewsets.ModelViewSet):
     model = CourseAuthor
     lookup_field = 'id'
     serializer_class = CourseAuthorPictureSerializer
+    queryset = CourseAuthor.objects.all()
 
     def post(self, request, **kwargs):
         course = self.get_object()
@@ -532,6 +533,7 @@ class UserMessageViewSet(viewsets.ModelViewSet):
 
         return ProfessorMessage.objects.filter(id__in=total_ids).order_by('-date')
 
+
 class ProfessorMessageViewSet(viewsets.ModelViewSet):
     model = ProfessorMessage
     queryset = ProfessorMessage.objects.all()
@@ -663,6 +665,13 @@ class CarouselCourseView(viewsets.ReadOnlyModelViewSet):
 class LessonDetailView(LoginRequiredMixin, DetailView):
     model = Lesson
     template_name = "lesson.html"
+
+    def get(self, request, *args, **kwargs):
+        response = super(LessonDetailView, self).get(request, *args, **kwargs)
+        course = self.object.course
+        if(self.object.status == 'draft' or course.status == 'draft' or course.start_date > datetime.date.today()):
+            raise Http404
+        return response
 
     def get_queryset(self, *args, **kwargs):
         qs = super(LessonDetailView, self).get_queryset(*args, **kwargs)
@@ -943,12 +952,6 @@ class FlatpageViewSet(viewsets.ModelViewSet):
     serializer_class = FlatpageSerializer
     filter_fields = ('url',)
     permission_classes = (IsAdminOrReadOnly,)
-
-    def post_save(self, obj, created=False):
-        if created:
-            from django.contrib.sites.models import Site
-            obj.sites.add(Site.objects.get(id=settings.SITE_ID))
-            obj.save()
 
     def get_queryset(self):
         queryset = super(FlatpageViewSet, self).get_queryset()

@@ -56,13 +56,22 @@ Para acessar a documentação completa, veja a pasta [docs](docs) na raiz da apl
 
 ## Requisitos de instalação
 
-* Operating system: Debian (>= 7.7) or Ubuntu (14.04);
+* Operating system: Debian (8, 9) or Ubuntu (16.04);
 * Proxy server: uwsgi (>= 2.0.7);
 * Web Server: nginx (>= 1.6.2);
 * javascript server-side interpreter: node.js (>= 0.10.40);
 * Data base server: postgresql (>= 9.2);
 * Python language package: python (= 2.7 ou < 3);
 * Virtual Enviroment Python: virtualenv (>=1.11.6);
+
+### Pacotes e módulos importantes
+* http://django-rest-framework.org/ -> Rest API and AngularJS
+* https://github.com/cobrateam/splinter and https://github.com/olegpidsadnyi/pytest-bdd -> Acceptance tests (full browser support)
+* https://github.com/vandersonmota/model_mommy -> mocking of objects
+* https://github.com/omab/django-social-auth -> facebook/twitter/gmail logins
+* https://github.com/DeadWisdom/django-fixie -> fixture tools
+* https://github.com/eldarion/brabeion -> badges
+* Para traduções: https://django-rosetta.readthedocs.io/en/latest/
 
 ## Requisitos de Desenvolvimento
 * all the above requirements

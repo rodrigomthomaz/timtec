@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-24 11:02-0300\n"
+"POT-Creation-Date: 2017-08-10 20:23-0300\n"
 "PO-Revision-Date: 2017-04-24 11:02-0300\n"
 "Last-Translator: Administrador TIMTec <timtectimtec@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -235,8 +235,7 @@ msgstr "Resposta esperada"
 
 #: activities/models.py:29 core/models.py:698 core/models.py:709
 #: themes/default/templates/administration/lesson.html:99
-#: themes/default/templates/course.html:502
-#: themes/default/templates/course.html:511
+#: themes/default/templates/course-notes.html:51
 #: themes/default/templates/lesson.html:107
 msgid "Topic"
 msgstr "Capítulo"
@@ -278,7 +277,7 @@ msgstr "Estudante"
 msgid "Given answer"
 msgstr "Resposta fornecida"
 
-#: activities/models.py:62 forum/models.py:65 forum/models.py:139
+#: activities/models.py:62 forum/models.py:65 forum/models.py:140
 #: themes/default/templates/question.html:95
 msgid "Answer"
 msgstr "Resposta"
@@ -308,8 +307,7 @@ msgstr "Assunto"
 msgid "Name"
 msgstr "Nome"
 
-#: core/forms.py:18
-#: themes/default/templates/administration/permissions.html:56
+#: core/forms.py:18 themes/default/templates/administration/permissions.html:56
 #: themes/default/templates/administration/permissions.html:105
 #: themes/default/templates/administration/users.html:86
 #: themes/default/templates/class_edit.html:161
@@ -366,12 +364,12 @@ msgstr "Habilitar certificação mesmo sem o progresso mínimo requerido?"
 #: themes/default/templates/administration/courses.html:113
 #: themes/default/templates/administration/courses.html:153
 #: themes/default/templates/administration/courses.html:199
-#: themes/default/templates/course.html:328
-#: themes/default/templates/course.html:332
-#: themes/default/templates/course.html:371
-#: themes/default/templates/course.html:381
-#: themes/default/templates/course.html:553
-#: themes/default/templates/course.html:557
+#: themes/default/templates/course.html:330
+#: themes/default/templates/course.html:334
+#: themes/default/templates/course.html:373
+#: themes/default/templates/course.html:383
+#: themes/default/templates/course.html:555
+#: themes/default/templates/course.html:559
 #: themes/default/templates/user-courses.html:254
 #: themes/default/templates/user-courses.html:337
 #: themes/default/templates/user-courses.html:382
@@ -382,12 +380,12 @@ msgstr "Rascunho"
 #: themes/default/templates/administration/courses.html:112
 #: themes/default/templates/administration/courses.html:154
 #: themes/default/templates/administration/courses.html:198
-#: themes/default/templates/course.html:325
-#: themes/default/templates/course.html:331
-#: themes/default/templates/course.html:372
-#: themes/default/templates/course.html:389
-#: themes/default/templates/course.html:550
-#: themes/default/templates/course.html:556
+#: themes/default/templates/course.html:327
+#: themes/default/templates/course.html:333
+#: themes/default/templates/course.html:374
+#: themes/default/templates/course.html:391
+#: themes/default/templates/course.html:552
+#: themes/default/templates/course.html:558
 #: themes/default/templates/user-courses.html:255
 #: themes/default/templates/user-courses.html:338
 #: themes/default/templates/user-courses.html:381
@@ -402,7 +400,7 @@ msgstr "Slug"
 msgid "Intro video"
 msgstr "Vídeo introdutório"
 
-#: core/models.py:112 themes/default/templates/course.html:282
+#: core/models.py:112 themes/default/templates/course.html:284
 msgid "Application"
 msgstr "Aplicação"
 
@@ -410,10 +408,10 @@ msgstr "Aplicação"
 msgid "Requirement"
 msgstr "Requisitos"
 
-#: core/models.py:114 themes/default/templates/course.html:265
-#: themes/default/templates/course.html:269
-#: themes/default/templates/course.html:600
-#: themes/default/templates/course.html:605
+#: core/models.py:114 themes/default/templates/course.html:267
+#: themes/default/templates/course.html:271
+#: themes/default/templates/course.html:610
+#: themes/default/templates/course.html:615
 msgid "Abstract"
 msgstr "Resumo"
 
@@ -447,18 +445,18 @@ msgstr "Thumbnail"
 msgid "Home thumbnail"
 msgstr "Home thumbnail"
 
-#: core/models.py:125 themes/default/templates/course.html:615
-#: themes/default/templates/course.html:618
+#: core/models.py:125 themes/default/templates/course.html:625
+#: themes/default/templates/course.html:628
 msgid "Welcome Email"
-msgstr "Email de boas vindas"
+msgstr "E-mail de boas-vindas"
 
-#: core/models.py:126 themes/default/templates/course.html:580
+#: core/models.py:126 themes/default/templates/course.html:590
 msgid "Total hours"
 msgstr "Total de horas"
 
 #: core/models.py:127 themes/default/templates/administration/courses.html:125
-#: themes/default/templates/course.html:573
-#: themes/default/templates/course.html:587
+#: themes/default/templates/course.html:575
+#: themes/default/templates/course.html:597
 msgid "Start date"
 msgstr "Data de início"
 
@@ -544,8 +542,8 @@ msgid "Lesson"
 msgstr "Aula"
 
 #: core/models.py:648 themes/default/templates/administration/stats.html:101
-#: themes/default/templates/course.html:349
-#: themes/default/templates/course.html:464
+#: themes/default/templates/course.html:351
+#: themes/default/templates/course.html:466
 msgid "Lessons"
 msgstr "Aulas"
 
@@ -599,7 +597,6 @@ msgid "Certificate is valid"
 msgstr "Certificado é valido"
 
 #: core/models.py:738
-#| msgid "Total hours"
 msgid "Total topics"
 msgstr "Total de capítulos"
 
@@ -682,7 +679,7 @@ msgid "Course Materials"
 msgstr "Material didático"
 
 #: course_material/models.py:9 forum/models.py:15 forum/models.py:64
-#: forum/models.py:132 forum/models.py:149 forum/models.py:154
+#: forum/models.py:133 forum/models.py:150 forum/models.py:155
 msgid "Question"
 msgstr "Descrição"
 
@@ -692,35 +689,8 @@ msgstr "Descrição"
 msgid "Files"
 msgstr "Arquivos"
 
-#: docs/_templates/layout.html:47
-msgid "About these documents"
-msgstr "Sobre estes documentos"
-
-#: docs/_templates/layout.html:51
-msgid "Index"
-msgstr "Índice"
-
-#: docs/_templates/layout.html:55 docs/_templates/search.html:11
-msgid "Search"
-msgstr "Pesquisar usuário"
-
-#: docs/_templates/layout.html:58
-msgid "Copyright"
-msgstr ""
-
-#: docs/_templates/search.html:33
-msgid "Search Results"
-msgstr "Pesquisar nos resultados"
-
-#: docs/_templates/search.html:35
-msgid ""
-"Sua busca não encontrou nenhum documento. Tenha certeza de que todas as "
-"palavras inseridas estejam corretas e que você selecionou as categorias "
-"necessárias."
-msgstr "Copyright"
-
 #: forum/models.py:17 forum/models.py:23 forum/models.py:66 forum/models.py:69
-#: forum/models.py:125 forum/models.py:148 forum/models.py:153
+#: forum/models.py:126 forum/models.py:149 forum/models.py:154
 #: notes/models.py:11 themes/default/templates/_course-details-inline.html:13
 msgid "User"
 msgstr "Usuário"
@@ -737,11 +707,11 @@ msgstr "Oculto"
 msgid "Justification"
 msgstr "Publicação"
 
-#: forum/models.py:106
+#: forum/models.py:107
 msgid "A question that you follow has new answers"
 msgstr "Uma questão que você segue possui novas respostas"
 
-#: forum/models.py:107
+#: forum/models.py:108
 #, python-format
 msgid ""
 "The question '%s' has a new answer. Please access the link below to see this."
@@ -842,7 +812,7 @@ msgid "Intro"
 msgstr "Vídeo introdutório"
 
 #: themes/default/templates/_course-header-inline.html:18
-#: themes/default/templates/home.html:124
+#: themes/default/templates/home.html:125
 #: themes/default/templates/notes.html:57
 msgid "Resume course"
 msgstr "Continuar curso"
@@ -891,7 +861,7 @@ msgstr "Organizar instrutores"
 #: themes/default/templates/_edit_answer_modal.html:33
 #: themes/default/templates/_edit_question_modal.html:36
 #: themes/default/templates/_forum_inline.html:199
-#: themes/default/templates/_modal_course_complete.html:74
+#: themes/default/templates/_modal_course_complete.html:46
 #: themes/default/templates/administration/courses.html:28
 #: themes/default/templates/course-evaluations.html:309
 #: themes/default/templates/course-evaluations.html:365
@@ -918,7 +888,7 @@ msgstr "Fechar"
 #: themes/default/templates/administration/permissions.html:33
 #: themes/default/templates/class_edit.html:68
 #: themes/default/templates/course.html:49
-#: themes/default/templates/course.html:403
+#: themes/default/templates/course.html:405
 #: themes/default/templates/home.html:45
 #: themes/default/templates/ifs/signup-completion.html:139
 #: themes/default/templates/profile-edit.html:232
@@ -984,10 +954,9 @@ msgstr "Usar biografia do perfil do usuário"
 #: themes/default/templates/administration/permissions.html:32
 #: themes/default/templates/course.html:119
 #: themes/default/templates/course.html:163
-#: themes/default/templates/course.html:227
-#: themes/default/templates/course.html:402
-#: themes/default/templates/home.html:44
-#: themes/default/templates/home.html:287
+#: themes/default/templates/course.html:229
+#: themes/default/templates/course.html:404
+#: themes/default/templates/home.html:44 themes/default/templates/home.html:300
 #: themes/default/templates/modal-profile-create-social.html:23
 #: themes/default/templates/modal-profile-delete-social.html:14
 msgid "Cancel"
@@ -1179,7 +1148,7 @@ msgstr "Este curso começa em %(start_date)s e você já está inscrito"
 #: themes/default/templates/_go-to-course-button-inline.html:21
 #: themes/default/templates/_go-to-course-button-inline.html:25
 #: themes/default/templates/courses.html:85
-#: themes/default/templates/home.html:126
+#: themes/default/templates/home.html:127
 msgid "Go to course"
 msgstr "Ir para o curso"
 
@@ -1593,8 +1562,8 @@ msgid "Publish"
 msgstr "Publicar"
 
 #: themes/default/templates/administration/lesson.html:85
-#: themes/default/templates/course.html:365
-#: themes/default/templates/course.html:420
+#: themes/default/templates/course.html:367
+#: themes/default/templates/course.html:422
 msgid "Lesson name"
 msgstr "Nome da aula"
 
@@ -1604,7 +1573,6 @@ msgid "Lesson description"
 msgstr "Descrição da aula"
 
 #: themes/default/templates/administration/lesson.html:103
-#| msgid "Delete this unit"
 msgid "Delete this topic"
 msgstr "Apagar este capítulo"
 
@@ -1621,13 +1589,13 @@ msgstr "Vídeo do capítulo"
 #: themes/default/templates/administration/lesson.html:288
 #: themes/default/templates/course.html:122
 #: themes/default/templates/course.html:166
-#: themes/default/templates/course.html:231
+#: themes/default/templates/course.html:233
 #: themes/default/templates/modal-profile-create-social.html:24
 msgid "Add"
 msgstr "Adicionar"
 
 #: themes/default/templates/administration/lesson.html:185
-#: themes/default/templates/course.html:211
+#: themes/default/templates/course.html:213
 msgid "Change video"
 msgstr "Trocar vídeo"
 
@@ -1667,19 +1635,18 @@ msgstr ""
 "incorretamente a atividade."
 
 #: themes/default/templates/administration/lesson.html:251
-#| msgid "Unit activity"
 msgid "Topic activity"
 msgstr "Atividade do capítulo"
 
 #: themes/default/templates/administration/lesson.html:302
 #: themes/default/templates/course.html:139
-#: themes/default/templates/course.html:181
+#: themes/default/templates/course.html:185
 msgid "Change thumbnail"
 msgstr "Trocar thumbnail"
 
-#: themes/default/templates/administration/lesson.html:314
-#: themes/default/templates/administration/lesson.html:315
-#: themes/default/templates/lesson.html:180
+#: themes/default/templates/administration/lesson.html:312
+#: themes/default/templates/administration/lesson.html:313
+#: themes/default/templates/lesson.html:190
 msgid "Additional materials"
 msgstr "Materiais adicionais"
 
@@ -1758,11 +1725,11 @@ msgstr "Estudante"
 msgid "Loading student report"
 msgstr "Carregando relatório de estudantes"
 
-#: themes/default/templates/administration/stats.html:175
+#: themes/default/templates/administration/stats.html:181
 msgid "Average student progress per class"
 msgstr "Progresso médio dos estudantes por turma"
 
-#: themes/default/templates/administration/stats.html:177
+#: themes/default/templates/administration/stats.html:183
 msgid "Loading lessons report"
 msgstr "Carregando relatórios de aulas"
 
@@ -2057,66 +2024,66 @@ msgstr "Apagar curso"
 msgid "min-width"
 msgstr "tam. mínimo"
 
-#: themes/default/templates/course.html:221
+#: themes/default/templates/course.html:223
 msgid "Introduction video"
 msgstr "Vídeo introdutório"
 
-#: themes/default/templates/course.html:278
+#: themes/default/templates/course.html:280
 msgid "Why do this course?"
 msgstr "Por que fazer esse curso?"
 
-#: themes/default/templates/course.html:290
+#: themes/default/templates/course.html:292
 msgid "What do I have to know?"
 msgstr "O que eu preciso saber?"
 
-#: themes/default/templates/course.html:293
+#: themes/default/templates/course.html:295
 msgid "Requirements"
 msgstr "Requisitos"
 
-#: themes/default/templates/course.html:300
-#: themes/default/templates/course.html:303
+#: themes/default/templates/course.html:302
+#: themes/default/templates/course.html:305
 msgid "Estrutura do Curso"
 msgstr "Estrutura do Curso"
 
-#: themes/default/templates/course.html:320
-#: themes/default/templates/course.html:545
+#: themes/default/templates/course.html:322
+#: themes/default/templates/course.html:547
 msgid "This course is"
 msgstr "Este curso é"
 
-#: themes/default/templates/course.html:353
+#: themes/default/templates/course.html:355
 msgid "Organize lesson"
 msgstr "Organizar aulas"
 
-#: themes/default/templates/course.html:385
+#: themes/default/templates/course.html:387
 msgid "Listed"
 msgstr "Listado"
 
-#: themes/default/templates/course.html:442
+#: themes/default/templates/course.html:444
 msgid "videos"
 msgstr "videos"
 
-#: themes/default/templates/course.html:443
+#: themes/default/templates/course.html:445
 msgid "activities"
 msgstr "atividades"
 
-#: themes/default/templates/course.html:444
+#: themes/default/templates/course.html:446
 msgid "text/image"
 msgstr "Texto/Imagem"
 
-#: themes/default/templates/course.html:455
+#: themes/default/templates/course.html:457
 msgid "Add lesson"
 msgstr "Adicionar aula"
 
-#: themes/default/templates/course.html:564
+#: themes/default/templates/course.html:566
 msgid "Progresso necessario para certificado"
 msgstr ""
 
-#: themes/default/templates/course.html:592
+#: themes/default/templates/course.html:602
 msgid "Total Hours"
 msgstr "Total de Horas"
 
 #: themes/default/templates/courses.html:65
-#: themes/default/templates/home.html:108
+#: themes/default/templates/home.html:109
 msgid "Soon"
 msgstr "Em breve"
 
@@ -2199,7 +2166,7 @@ msgstr "Minhas Anotações"
 msgid "Logout"
 msgstr "Sair"
 
-#: themes/default/templates/home.html:41 themes/default/templates/home.html:67
+#: themes/default/templates/home.html:41 themes/default/templates/home.html:68
 msgid "Organize courses"
 msgstr "Organizar cursos"
 
@@ -2207,15 +2174,15 @@ msgstr "Organizar cursos"
 msgid "Choose home courses"
 msgstr "Escolher cursos da home"
 
-#: themes/default/templates/home.html:62
+#: themes/default/templates/home.html:63
 msgid "Featured courses"
 msgstr "Cursos em destaque"
 
-#: themes/default/templates/home.html:138
+#: themes/default/templates/home.html:140
 msgid "All courses"
 msgstr "Todos os cursos"
 
-#: themes/default/templates/home.html:268
+#: themes/default/templates/home.html:281
 msgid "Edit home courses"
 msgstr "Editar cursos da home"
 
@@ -2253,12 +2220,19 @@ msgstr "Anotações do professor"
 msgid "Continue"
 msgstr "Continuar"
 
-#: themes/default/templates/lesson.html:164
+#: themes/default/templates/lesson.html:159
+msgid "Previous Chapter"
+msgstr "Capítulo Anterior"
+
+#: themes/default/templates/lesson.html:162
+msgid "Next Chapter"
+msgstr "Próximo Capítulo"
+
+#: themes/default/templates/lesson.html:174
 msgid "My Annotations"
 msgstr "Minhas Anotações"
 
-#: themes/default/templates/lesson.html:183
-#| msgid "This unit has no addicional materials"
+#: themes/default/templates/lesson.html:193
 msgid "This topic has no additional materials"
 msgstr "Este capítulo não possui material adicional"
 
@@ -2517,6 +2491,24 @@ msgstr "Espanhol"
 #: timtec/settings.py:85 timtec/settings_local_docker.py:87
 msgid "English"
 msgstr "Inglês"
+
+#~ msgid "About these documents"
+#~ msgstr "Sobre estes documentos"
+
+#~ msgid "Index"
+#~ msgstr "Índice"
+
+#~ msgid "Search"
+#~ msgstr "Pesquisar usuário"
+
+#~ msgid "Search Results"
+#~ msgstr "Pesquisar nos resultados"
+
+#~ msgid ""
+#~ "Sua busca não encontrou nenhum documento. Tenha certeza de que todas as "
+#~ "palavras inseridas estejam corretas e que você selecionou as categorias "
+#~ "necessárias."
+#~ msgstr "Copyright"
 
 #, fuzzy
 #~ msgid "Addicional materials"

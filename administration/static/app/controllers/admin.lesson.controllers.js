@@ -101,7 +101,6 @@
                 {'name': 'markdown', 'label': 'Texto simples'},
                 {'name': 'image', 'label': 'Imagem'},
                 {'name': 'reading', 'label': 'Atividade de leitura'},
-                {'name': 'discussion', 'label': 'Atividade com discussão'},
             ];
 
             /*  Methods */
