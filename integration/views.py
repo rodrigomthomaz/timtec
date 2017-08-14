@@ -16,10 +16,11 @@ class IntegrationController(View):
         payload = jwt.decode(token, settings.INTEGRATION_JWT_SECRET, algorithms=['HS256'])
 
         if not payload['sub']: return JsonResponse({'status': 'invalid_jwt', 'missing': 'sub'})
+        if not payload['uid']: return JsonResponse({'status': 'invalid_jwt', 'missing': 'uid'})
         if not payload['name']: return JsonResponse({'status': 'invalid_jwt', 'missing': 'name'})
         if not payload['email']: return JsonResponse({'status': 'invalid_jwt', 'missing': 'email'})
 
-        external_user_id = int(payload['sub'])
+        external_user_id = int(payload['uid'])
 
         try:
 

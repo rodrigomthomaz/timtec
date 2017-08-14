@@ -112,3 +112,7 @@ LOGGING = {
         },
     }
 }
+
+INTEGRATION_LOGIN_URL = "http://nest-nne-plataforma-api.app/?login=1"
+INTEGRATION_PROFILE_URL = "http://nest-nne-plataforma-api.app/api/v1/profile"
+INTEGRATION_JWT_SECRET = "secret"
