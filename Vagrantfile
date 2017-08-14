@@ -18,10 +18,10 @@ Vagrant.configure('2') do |config|
   config.vm.box = "ubuntu/trusty64"
   config.vm.provision :shell, path: "scripts/bootstrap-ubuntu.sh", privileged: false, keep_color: true
   # config.vm.provision :shell, path: "scripts/production-ubuntu.sh", privileged: false, keep_color: true
-  config.vm.provision "shell",
-           inline: $runserver,
-           privileged: false,
-           run: "always"
+  #config.vm.provision "shell",
+  #         inline: $runserver,
+  #         privileged: false,
+  #         run: "always"
   config.vm.network "forwarded_port", guest: 8000, host: 8100
   config.vm.network "forwarded_port", guest: 5432, host: 8150
   config.ssh.username = TIMTEC_USER

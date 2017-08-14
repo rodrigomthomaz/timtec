@@ -365,3 +365,5 @@ STATICFILES_DIRS += (
 
 # Fix debug toolbar issue: https://github.com/django-debug-toolbar/django-debug-toolbar/issues/521
 # DEBUG_TOOLBAR_PATCH_SETTINGS = False
+
+#INTEGRATION_JWT_SECRET = "secret"
