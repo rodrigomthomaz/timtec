@@ -45,4 +45,4 @@ class IntegrationController(View):
 
         login(request, user)
 
-        return redirect('user_courses')
+        return redirect('home_view')
