@@ -58,6 +58,12 @@ django-extensions==1.5.5
 # Themes
 git+https://github.com/institutotim/timtec-theme-timtec.git#master
 git+https://github.com/institutotim/timtec-theme-if.git#master
+git+https://github.com/lafabbricabr/timtec-theme-nutrir.git#master
+
+# JWT
+PyJWT==1.5.2
 
 # Selenium
 selenium==3.0.2
+
+

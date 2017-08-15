@@ -2,6 +2,7 @@
 from django.conf import settings
 from django.conf.urls import patterns, include, url
 from django.conf.urls.static import static
+from django.views.decorators.csrf import csrf_exempt
 
 from django.views.generic import TemplateView
 from accounts.views import (ProfileEditView, ProfileView, UserSearchView,
@@ -33,6 +34,7 @@ from forum.views import (CourseForumView, QuestionView, QuestionCreateView, Ques
                          QuestionVoteViewSet, AnswerVoteViewSet, AnswerViewSet as ForumAnswerViewSet,
                          QuestionNotificationViewSet)
 from course_material.views import CourseMaterialView, FileUploadView, CourseMaterialViewSet, CourseMaterialFileViewSet
+from integration.views import IntegrationController
 from notes.views import NotesViewSet, CourseNotesView, UserNotesView
 from reports.views import UserCourseStats, CourseStatsByLessonViewSet, UserCourseLessonsStats
 from rest_framework import routers
@@ -99,6 +101,8 @@ urlpatterns = patterns(
 
     # Public browsing
     url(r'^my-courses/?$', UserCoursesView.as_view(), name='user_courses'),
+
+    url(r'^integration/connect$', csrf_exempt(IntegrationController.as_view()), name='integration_connect'),
 
     url(r'^emit_recipt/(?P<course_id>[-a-zA-Z0-9_]+)$', EmitReceiptView.as_view(), name='emit_recipt'),
     url(r'^request_certificate/(?P<course_id>[-a-zA-Z0-9_]+)$',
