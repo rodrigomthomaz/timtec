@@ -44,16 +44,12 @@ wrapper-course-intro
         <!-- ACTIONS -->
         <div class="actions-menu" fixed-bar>
             <div class="container">
-                <div class="actions-buttons align-left">
-                    <!-- LEFT BUTTON GROUP -->
-                    <button class="btn btn-success" ng-click="saveCourse()">{% trans 'Save' %} | <i class="fa fa-save"></i></button>
-                    <button class="btn btn-success" title="{% trans 'Export course and download' %}" ng-click="export_course()">{% trans 'Export' %} | <i class="fa fa-download"></i></button>
-                    <!-- END LEFT BUTTON GROUP -->
-                </div>
                 {% include 'administration/_alert.html' %}
                 <div class="actions-buttons align-right">
                     <!-- RIGHT BUTTON GROUP -->
                     <button class="btn btn-danger" title="{% trans 'Delete course' %}" ng-click="deleteCourse()">{% trans 'Delete' %} | <i class="fa fa-trash-o"></i></button>
+                    <button class="btn btn-success" ng-click="saveCourse()">{% trans 'Save' %} | <i class="fa fa-save"></i></button>
+                    <button class="btn btn-success" title="{% trans 'Export course and download' %}" ng-click="export_course()">{% trans 'Export' %} | <i class="fa fa-download"></i></button>
                     <!-- RIGHT BUTTON GROUP -->
                 </div>
 
