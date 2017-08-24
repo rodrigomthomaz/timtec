@@ -52,6 +52,12 @@ class HomeView(ListView):
     def get_queryset(self):
         return Course.objects.filter(home_published=True).order_by('home_position')
 
+    def get_context_data(self, **kwargs):
+        context = super(HomeView, self).get_context_data(**kwargs)
+        if hasattr(settings, 'INTEGRATION_LOGIN_URL'):
+            context['integration_login_url'] = settings.INTEGRATION_LOGIN_URL
+        return context
+
 
 if settings.TWITTER_USER != '':
     from twitter import Twitter, OAuth

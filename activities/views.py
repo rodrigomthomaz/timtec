@@ -2,13 +2,12 @@
 import os
 import random
 import tarfile
-from django.http import Http404
 
 from rest_framework import viewsets
 import requests
 
-from .models import Answer
-from .serializers import AnswerSerializer
+from .models import Answer, Activity
+from .serializers import AnswerSerializer, ActivityImageSerializer
 
 
 class AnswerViewSet(viewsets.ModelViewSet):
@@ -51,3 +50,10 @@ class AnswerViewSet(viewsets.ModelViewSet):
             host = 'http://php.timtec.com.br'
             requests.get("%s/%d/start/" % (host, obj.user.id))
             requests.post("%s/%d/documents/" % (host, obj.user.id), files={"tgz": tgz})
+
+
+class ActivityImageUploadViewSet(viewsets.ModelViewSet):
+    model = Activity
+    queryset = Activity.objects.all()
+    lookup_field = 'id'
+    serializer_class = ActivityImageSerializer

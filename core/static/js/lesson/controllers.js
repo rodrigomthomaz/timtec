@@ -166,9 +166,8 @@
             };
 
             $scope.nextStep = function(skipComment) {
-                var progress;
-                if($scope.section === 'video') {
-                    // Test if currentUnit has an activity
+
+                if($scope.section === 'video' || $scope.section === 'content') {
                     if(angular.isArray($scope.currentUnit.activities) &&
                         $scope.currentUnit.activities.length > 0) {
                         $scope.section = 'activity';
@@ -177,7 +176,6 @@
                         $scope.nextUnit();
                     }
                 } else {
-                    // Test if must display activity comments
                     if($scope.section === 'activity' && !skipComment && $scope.currentActivity.comment) {
                         $scope.section = 'comment';
                     } else {
