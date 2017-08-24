@@ -5,7 +5,7 @@
     <button class="btn btn-danger" ng-click="removeCurrentActivity()"><i class="fa fa-trash-o"></i></button>
 </div>
 <section class="thumbnail" ng-init="thumbfile=null">
-    <div class="row" ng-show="addThumb" ng-init="addThumb=(thumbfile===null)">
+    <div class="row" ng-show="addThumb" ng-init="addThumb=(thumbfile===null && !currentActivity.image_url)">
 
         <div class="add-thumbnail col-sm-12 col-lg-12 textcenter">
             <div class="centered">

@@ -320,6 +320,8 @@
 
             $scope.selectActivity = function(activity) {
                 $scope.currentActivity = activity;
+                if ($scope.currentActivity.image_url)
+                    $scope.addThumb = false;
                 MarkdownDirective.refreshEditorsPreview();
             };
 
@@ -341,15 +343,15 @@
                 MarkdownDirective.refreshEditorsPreview();
             };
 
-            $scope.saveActivityImage = function(a) {
-                if(!a)
+            $scope.saveActivityImage = function(image) {
+                if(!image)
                     return;
                 if ($scope.currentActivity.id) {
                     var fu = new FormUpload();
-                    fu.addField('image', a);
+                    fu.addField('image', image);
                     return fu.sendTo('/api/activity_image/' + $scope.currentActivity.id)
-                        .then(function(){
-                            $scope.alert.success('A imagem atualizada.');
+                        .then(function(activity){
+                            $scope.alert.success('Imagem atualizada.');
                         });
                 }
             };
