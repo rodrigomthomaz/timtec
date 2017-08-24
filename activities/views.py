@@ -8,6 +8,8 @@ import requests
 
 from .models import Answer, Activity
 from .serializers import AnswerSerializer, ActivityImageSerializer
+from core.permissions import IsProfessorCoordinatorOrAdminPermissionOrReadOnly
+from rest_framework.response import Response
 
 
 class AnswerViewSet(viewsets.ModelViewSet):
@@ -57,3 +59,13 @@ class ActivityImageUploadViewSet(viewsets.ModelViewSet):
     queryset = Activity.objects.all()
     lookup_field = 'id'
     serializer_class = ActivityImageSerializer
+    permission_classes = (IsProfessorCoordinatorOrAdminPermissionOrReadOnly, )
+
+    def post(self, request, **kwargs):
+        activity = self.get_object()
+        serializer = ActivityImageSerializer(activity, request.FILES)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(status=200)
+        else:
+            return Response(serializer.errors, status=400)

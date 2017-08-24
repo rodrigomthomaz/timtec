@@ -340,6 +340,19 @@
                 }
                 MarkdownDirective.refreshEditorsPreview();
             };
+
+            $scope.saveActivityImage = function(a) {
+                if(!a)
+                    return;
+                if ($scope.currentActivity.id) {
+                    var fu = new FormUpload();
+                    fu.addField('image', a);
+                    return fu.sendTo('/api/activity_image/' + $scope.currentActivity.id)
+                        .then(function(){
+                            $scope.alert.success('A imagem atualizada.');
+                        });
+                }
+            };
         }
     ]);
 })(window.angular);
