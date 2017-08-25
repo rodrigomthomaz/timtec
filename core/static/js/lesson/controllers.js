@@ -159,14 +159,13 @@
             };
 
             $scope.jumpNext = function(){
-                if ($scope.currentUnit.video)
+                if ($scope.currentUnit.video && $scope.section !== 'activity')
                     $scope.nextUnit();
                 else
                     $scope.nextStep();
             };
 
             $scope.nextStep = function(skipComment) {
-
                 if($scope.section === 'video' || $scope.section === 'content') {
                     if(angular.isArray($scope.currentUnit.activities) &&
                         $scope.currentUnit.activities.length > 0) {
