@@ -1,10 +1,21 @@
-<div class="question textleft">
+<div ng-show="!currentActivity.id">
+    <div class="row">
+        <div class="add-thumbnail col-sm-12 col-lg-12 textcenter">
+            <div class="centered">
+                <h1 class="bottom top">Para adicionar imagem nesta atividade por favor clique em SALVAR antes</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="question textleft" ng-show="currentActivity.id">
     <div class="editable-title">
         <input type="text" ng-model="currentActivity.data.question" placeholder="Título da atividade">
     </div>
     <button class="btn btn-danger" ng-click="removeCurrentActivity()"><i class="fa fa-trash-o"></i></button>
 </div>
-<section class="thumbnail" ng-init="thumbfile=null">
+
+<section class="thumbnail" ng-init="thumbfile=null" ng-show="currentActivity.id">
     <div class="row" ng-show="addThumb" ng-init="addThumb=(thumbfile===null && !currentActivity.image_url)">
 
         <div class="add-thumbnail col-sm-12 col-lg-12 textcenter">
