@@ -46,13 +46,13 @@ ALLOWED_HOSTS = ['*']
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'timtec-production',
-        'USER': 'timtec-production',
+        'NAME': 'vagrant',
+        'USER': 'vagrant',
     }
 }
 
-MEDIA_ROOT = "/home/timtec-production/webfiles/media/"
-STATIC_ROOT = "/home/timtec-production/webfiles/static/"
+MEDIA_ROOT = "/home/vagrant/webfiles/media/"
+STATIC_ROOT = "/home/vagrant/webfiles/static/"
 
 # TODO: change this to configure sending mail ######
 # EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -93,7 +93,7 @@ LOGGING = {
         'logfile': {
             'level': 'WARN',
             'class': 'logging.handlers.RotatingFileHandler',
-            'filename': '/home/timtec-production/django.log',
+            'filename': '/home/vagrant/django.log',
             'maxBytes': 50000,
             'backupCount': 2,
             'formatter': 'verbose',
@@ -112,3 +112,7 @@ LOGGING = {
         },
     }
 }
+
+INTEGRATION_LOGIN_URL = "http://nest-nne-plataforma-api.app/?login=1"
+INTEGRATION_PROFILE_URL = "http://nest-nne-plataforma-api.app/api/v1/profile/from_subscription"
+INTEGRATION_JWT_SECRET = "secret"

@@ -153,6 +153,16 @@ wrapper-course-lesson
                             {% endif %}
                         </div>
                     </div>
+                    <div ng-show="(section === 'video' || section === 'content') || (section === 'activity' && (currentActivity.type === 'reading' || currentActivity.type === 'image'))" class="panel panel-default">
+                        <div class="panel-body">
+                            <button ng-hide="currentUnit.position == 0" class="btn btn-success" ng-click="prevUnit()">
+                                <span class="fa fa-chevron-left" aria-hidden="true"></span>&nbsp;&nbsp;{% trans 'Previous Chapter' %}
+                            </button>
+                            <button class="btn btn-success pull-right" ng-click="jumpNext()" ng-hide="section === 'video' && lesson.is_course_last_lesson && (lesson.units.length - 1) == currentUnit.position">
+                                {% trans 'Next Chapter' %}&nbsp;&nbsp;<span class="fa fa-chevron-right" aria-hidden="true"></span>
+                            </button>
+                        </div>
+                    </div>
                     {% endblock %}
                 </div>
 

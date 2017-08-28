@@ -102,7 +102,8 @@ class Answer(models.Model):
     def send_alerts(self):
         notifications = QuestionNotification.objects.filter(question=self.question)
         if notifications:
-            url = "http://%s%s" % (Site.objects.get_current().domain, reverse_lazy('forum_question', args=[self.question.slug, ]))
+            url = "%s%s" % (Site.objects.get_current().domain, reverse_lazy('forum_question', args=[self.question.slug, ]))
+            url = '<a href="//%s">%s</a>' % (url, url)
             subject = _("A question that you follow has new answers")
             message = _("The question '%s' has a new answer. Please access the link below to see this.") % self.question
             message += "<br><br>%s" % url

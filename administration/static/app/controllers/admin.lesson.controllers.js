@@ -101,7 +101,6 @@
                 {'name': 'markdown', 'label': 'Texto simples'},
                 {'name': 'image', 'label': 'Imagem'},
                 {'name': 'reading', 'label': 'Atividade de leitura'},
-                {'name': 'discussion', 'label': 'Atividade com discussão'},
             ];
 
             /*  Methods */
@@ -321,6 +320,8 @@
 
             $scope.selectActivity = function(activity) {
                 $scope.currentActivity = activity;
+                if ($scope.currentActivity.image_url)
+                    $scope.addThumb = false;
                 MarkdownDirective.refreshEditorsPreview();
             };
 
@@ -340,6 +341,19 @@
                     $scope.currentActivity = null;
                 }
                 MarkdownDirective.refreshEditorsPreview();
+            };
+
+            $scope.saveActivityImage = function(image) {
+                if(!image)
+                    return;
+                if ($scope.currentActivity.id) {
+                    var fu = new FormUpload();
+                    fu.addField('image', image);
+                    return fu.sendTo('/api/activity_image/' + $scope.currentActivity.id)
+                        .then(function(activity){
+                            $scope.alert.success('Imagem atualizada.');
+                        });
+                }
             };
         }
     ]);

@@ -2,6 +2,7 @@
 from django.conf import settings
 from django.conf.urls import patterns, include, url
 from django.conf.urls.static import static
+from django.views.decorators.csrf import csrf_exempt
 
 from django.views.generic import TemplateView
 from accounts.views import (ProfileEditView, ProfileView, UserSearchView,
@@ -28,11 +29,12 @@ from core.views import (CourseView, GenericCourseView, CourseViewSet,
                         CertificateTemplateImageViewSet, RequestCertificateView,
                         EmitReceiptView, ProfileViewSet, LessonThumbViewSet)
 
-from activities.views import AnswerViewSet
+from activities.views import AnswerViewSet, ActivityImageUploadViewSet
 from forum.views import (CourseForumView, QuestionView, QuestionCreateView, QuestionViewSet,
                          QuestionVoteViewSet, AnswerVoteViewSet, AnswerViewSet as ForumAnswerViewSet,
                          QuestionNotificationViewSet)
 from course_material.views import CourseMaterialView, FileUploadView, CourseMaterialViewSet, CourseMaterialFileViewSet
+from integration.views import IntegrationController
 from notes.views import NotesViewSet, CourseNotesView, UserNotesView
 from reports.views import UserCourseStats, CourseStatsByLessonViewSet, UserCourseLessonsStats
 from rest_framework import routers
@@ -83,6 +85,7 @@ router.register(r'certificate_template', CertificateTemplateViewSet, base_name='
 router.register(r'certificate_template_images', CertificateTemplateImageViewSet, base_name='certificate_template_images')
 router.register(r'states', StateViewSet, base_name='test')
 router.register(r'cities', CityViewSet, base_name='test2')
+router.register(r'activity_image', ActivityImageUploadViewSet, base_name='activity_image')
 
 urlpatterns = patterns(
     '',
@@ -98,6 +101,8 @@ urlpatterns = patterns(
 
     # Public browsing
     url(r'^my-courses/?$', UserCoursesView.as_view(), name='user_courses'),
+
+    url(r'^integration/connect$', csrf_exempt(IntegrationController.as_view()), name='integration_connect'),
 
     url(r'^emit_recipt/(?P<course_id>[-a-zA-Z0-9_]+)$', EmitReceiptView.as_view(), name='emit_recipt'),
     url(r'^request_certificate/(?P<course_id>[-a-zA-Z0-9_]+)$',

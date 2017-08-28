@@ -363,5 +363,12 @@ STATICFILES_DIRS += (
     os.path.join(PROJECT_ROOT, 'bower_components'),
 )
 
+if os.path.exists(os.path.join(THEMES_DIR, TIMTEC_THEME, 'locale')):
+    LOCALE_PATHS = (
+        os.path.join(THEMES_DIR, TIMTEC_THEME, 'locale'),
+    ) + LOCALE_PATHS
+
 # Fix debug toolbar issue: https://github.com/django-debug-toolbar/django-debug-toolbar/issues/521
 # DEBUG_TOOLBAR_PATCH_SETTINGS = False
+
+# INTEGRATION_JWT_SECRET = "secret"

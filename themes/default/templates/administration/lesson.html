@@ -140,7 +140,7 @@ wrapper-course-lesson
             </div>
 
             <!-- VIDEO SECTION -->
-            <div class="video col-sm-8" ng-class="{'hidder': section !== 'video'}">
+            <div class="video col-sm-10" ng-class="{'hidder': section !== 'video'}">
 
                 <div class="waiting textcenter jumbotron"
                      style="height: 419px"
@@ -192,11 +192,11 @@ wrapper-course-lesson
             <!-- END VIDEO SECTION -->
 
             <!-- CONTENT SECTION -->
-            <div class="content col-sm-8" ng-class="{'hidder': section !== 'content'}">
+            <div class="content col-sm-10" ng-class="{'hidder': section !== 'content'}">
 
                 <textarea
                     class="form-control"
-                    rows="10"
+                    rows="50"
                     ng-model="currentUnit.content"
                     ui-tinymce="tinymceOptions"
                     placeholder="{% trans 'Fill with your content' %}">
@@ -206,7 +206,7 @@ wrapper-course-lesson
             <!-- END CONTENT SECTION -->
 
             <!-- ACTIVITIES SECTION -->
-            <div class="activity col-sm-8" ng-show="section==='activity'">
+            <div class="activity col-sm-10" ng-show="section==='activity'">
                 <div class="row">
                     <div class="panel panel-default" ng-show="currentActivity">
                         <div class="panel-heading clearfix">
@@ -233,8 +233,6 @@ wrapper-course-lesson
                                 {% trans 'The text bellow will be shown to students when they send a correctly answer to this activity.' %}
                                 {% trans "If you don't fill this field, it will appear a default message." %}
                             </p>
-                            <markdowneditor title="{% trans 'Positive Feedback' %}" content="currentActivity.positive_feedback"></markdowneditor>
-
                             <hr/>
                             <p>
                                 {% trans 'The text bellow will be shown to students when they send a wrong answer to this activity.' %}
@@ -265,7 +263,7 @@ wrapper-course-lesson
             <!-- END ACTIVITIES SECTION -->
 
             <!-- ACTIVITIES SECTION -->
-            <div class="thumbnail col-sm-8" ng-show="section==='thumbnail'">
+            <div class="thumbnail col-sm-10" ng-show="section==='thumbnail'">
 
                 <div class="row" ng-show="addThumb" ng-init="addThumb=(thumbnail=='/static/img/lesson-default.png')">
 
@@ -282,7 +280,7 @@ wrapper-course-lesson
                             <p>
                                 <br>
                                 <button class="btn btn-danger btn-lg uppercase"
-                                        ng-click="thumbnail=null">{% trans 'Cancel' %}</button>
+                                        ng-click="thumbnail=null">{% trans 'Cancel' %}XXXX</button>
 
                                 <button class="btn btn-success btn-lg uppercase"
                                         ng-click="addThumb=(thumbnail===null); saveThumb()">{% trans 'Add' %}</button>
@@ -307,7 +305,7 @@ wrapper-course-lesson
 
             </div>
             <div class="row">
-                <div class="col-lg-8 col-sm-10 col-lg-offset-1 col-sm-offset-1">
+                <div class="col-sm-10 col-lg-offset-1 col-sm-offset-1">
                     <div id="side-notes">
                         <h2>{% trans 'Additional materials' %}</h2>
                         <modalmarkdowneditor title="{% trans 'Additional materials' %}" content="currentUnit.side_notes"></modalmarkdowneditor>

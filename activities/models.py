@@ -125,5 +125,6 @@ class Answer(models.Model):
 
         progress.save()
 
+
 models.signals.post_save.connect(Answer.update_student_progress, sender=Answer,
                                  dispatch_uid="Answer.update_student_progress")

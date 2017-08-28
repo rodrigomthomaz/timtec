@@ -25,8 +25,8 @@ import re
 
 
 class Video(models.Model):
-    name = models.CharField(max_length=255)
-    youtube_id = models.CharField(max_length=100)
+    name = models.CharField(max_length=255, null=True, blank=True)
+    youtube_id = models.CharField(max_length=100, null=True, blank=True)
 
     class Meta:
         verbose_name = _('Video')
@@ -580,7 +580,7 @@ class ProfessorMessage(models.Model):
     message = models.TextField(_('Message'))
     date = models.DateTimeField(_('Date'), auto_now_add=True)
     course = models.ForeignKey(Course, verbose_name=_('Course'), null=True)
-    users_that_read = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='read_messages', null=True)
+    users_that_read = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='read_messages')
 
     def __unicode__(self):
         return unicode(self.subject)
