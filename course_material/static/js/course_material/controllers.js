@@ -36,11 +36,13 @@
             };
 
             $scope.hide_file = function(file_obj){
-                var file = CourseMaterialFile.get({id:file_obj.id});
-                file.hide = !file.hide;
-                file.$update(
-                    {id: file.id},
-                    function() { console.log('hã hãhã hãhã hã')}
+                CourseMaterialFile.get({id:file_obj.id}).$promise.then(
+                    function(f){
+                        f.hide = !f.hide;
+                        f.$update({}, function(){
+                            file_obj.hide = f.hide;
+                        });
+                    }
                 );
             };
     }]);

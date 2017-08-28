@@ -20,3 +20,10 @@ class CourseMaterialImportExportSerializer(serializers.ModelSerializer):
     class Meta:
         model = CourseMaterial
         fields = ('text', 'files',)
+
+
+class CourseMaterialFileHideSerialilizer(serializers.ModelSerializer):
+
+    class Meta:
+        model = File
+        fields = ('id', 'hide')
