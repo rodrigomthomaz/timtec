@@ -116,11 +116,15 @@ class Course(models.Model):
     workload = models.TextField(_('Workload'), blank=True)
     pronatec = models.TextField(_('Pronatec'), blank=True)
     status = models.CharField(_('Status'), choices=STATES, default=STATES[0][0], max_length=64)
-    thumbnail = models.ImageField(_('Thumbnail'), upload_to=hash_name('course_thumbnails', 'name'), null=True, blank=True)
-    professors = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='professorcourse_set', through='CourseProfessor')
+    thumbnail = models.ImageField(_('Thumbnail'), upload_to=hash_name(
+        'course_thumbnails', 'name'), null=True, blank=True)
+    professors = models.ManyToManyField(
+        settings.AUTH_USER_MODEL, related_name='professorcourse_set', through='CourseProfessor')
     authors = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='authorcourses', through='CourseAuthor')
-    students = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='studentcourse_set', through='CourseStudent')
-    home_thumbnail = models.ImageField(_('Home thumbnail'), upload_to=hash_name('home_thumbnails', 'name'), null=True, blank=True)
+    students = models.ManyToManyField(settings.AUTH_USER_MODEL,
+                                      related_name='studentcourse_set', through='CourseStudent')
+    home_thumbnail = models.ImageField(_('Home thumbnail'), upload_to=hash_name(
+        'home_thumbnails', 'name'), null=True, blank=True)
     home_position = models.IntegerField(null=True, blank=True)
     welcome_email = models.TextField(_('Welcome Email'), blank=True)
     total_hours = models.IntegerField(_('Total hours'), default=0, null=True)
@@ -435,7 +439,8 @@ class CourseStudent(models.Model):
                                       .filter(user=self.user, unit__lesson=lesson)
 
     def get_lesson_finish_time(self, lesson):
-        latest = StudentProgress.objects.exclude(complete=None).filter(user=self.user, unit__lesson=lesson).order_by('complete')
+        latest = StudentProgress.objects.exclude(complete=None).filter(
+            user=self.user, unit__lesson=lesson).order_by('complete')
         if latest:
             return latest.latest('complete').complete
         else:
@@ -475,7 +480,8 @@ class CourseProfessor(models.Model):
         ('coordinator', _('Professor Coordinator')),
     )
 
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name=_('Professor'), related_name='teaching_courses', blank=True, null=True)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name=_('Professor'),
+                             related_name='teaching_courses', blank=True, null=True)
     course = models.ForeignKey(Course, verbose_name=_('Course'), related_name='course_professors')
     biography = models.TextField(_('Biography'), blank=True, null=True)
     role = models.CharField(_('Role'), choices=ROLES, default=ROLES[1][0], max_length=128)
@@ -632,7 +638,7 @@ class Lesson(PositionedModel):
     slug = AutoSlugField(_('Slug'), populate_from='name', max_length=128, editable=False, unique=True)
     status = models.CharField(_('Status'), choices=STATES, default=STATES[0][0], max_length=64)
     custom_thumbnail = models.ImageField(_('Thumbnail'), null=True, blank=True,
-                                  upload_to=hash_name('lesson_thumbnails', 'name'))
+                                         upload_to=hash_name('lesson_thumbnails', 'name'))
 
     collection_name = 'course'
 
