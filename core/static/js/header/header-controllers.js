@@ -17,7 +17,7 @@
                     angular.forEach(data, function(message, key){
                         if (!message.is_read) {
                             $scope.theres_new_messages = true;
-                            $scope.total_messages += 1;
+                            $scope.total_messages++;
                         }
                     })
                 });
@@ -29,6 +29,11 @@
             }, 60 * 1000);
             $scope.load_messages();
 
+            $scope.delete_message = function(msg) {
+                msg.$delete(function(){
+                    $scope.load_messages();
+                });
+            };
         }
     ]);
 

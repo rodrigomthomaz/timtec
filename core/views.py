@@ -16,7 +16,7 @@ from django.contrib.auth import get_user_model
 from django.shortcuts import get_object_or_404
 from django.conf import settings
 from django.utils import timezone
-from rest_framework import viewsets
+from rest_framework import viewsets, status
 from rest_framework.response import Response
 from rest_framework import filters
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
@@ -524,15 +524,15 @@ class CertificateTemplateImageViewSet(viewsets.ModelViewSet):
             return Response(serializer.errors, status=400)
 
 
-class UserMessageViewSet(viewsets.ModelViewSet):
+class UserMessageViewSet(LoginRequiredMixin, viewsets.ModelViewSet):
     model = ProfessorMessage
     lookup_field = 'id'
     serializer_class = UserMessageSerializer
 
     def get_queryset(self, *args, **kwargs):
         """Some tricks to show first unread, after reads."""
-        reads = ProfessorMessage.objects.filter(users_that_read=self.request.user).order_by('-date').values_list('id')
-        unreads = ProfessorMessage.objects.filter(users=self.request.user).exclude(users_that_read=self.request.user) \
+        reads = ProfessorMessage.objects.filter(users_that_read=self.request.user).exclude(users_that_delete=self.request.user).order_by('-date').values_list('id')
+        unreads = ProfessorMessage.objects.filter(users=self.request.user).exclude(users_that_read=self.request.user, users_that_delete=self.request.user) \
             .order_by('-date').values_list('id')
 
         reads = [item[0] for item in reads]
@@ -541,6 +541,12 @@ class UserMessageViewSet(viewsets.ModelViewSet):
         print total_ids
 
         return ProfessorMessage.objects.filter(id__in=total_ids).order_by('-date')
+
+    # Don't delete the message, just mark that user has deleted this message
+    def destroy(self, request, id=None):
+        msg = self.get_object()
+        msg.users_that_delete.add(request.user)
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 
 class ProfessorMessageViewSet(viewsets.ModelViewSet):

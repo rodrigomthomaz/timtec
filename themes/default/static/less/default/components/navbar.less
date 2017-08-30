@@ -63,6 +63,28 @@
   .dropdown-menu {
     left: initial;
     right: 0;
+    &.messages {
+      max-height: 400px;
+      overflow-y: scroll;
+    }
+    > li {
+      > a {
+        clear: initial;
+      }
+      > a.delete {
+        background-color: transparent;
+        padding: 14px !important;
+        border-bottom: none !important;
+        color: #DC241F;
+        margin-top: -54px;
+        > i {
+          font-size: 15px;
+        }
+        &:hover, &:active {
+          color: #af1d19 !important;
+        }
+      }
+    }
   }
 }
 
