@@ -88,15 +88,17 @@
                 	{% endblock %}
                 </li>
             {% else %}
-                <li>
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">{% trans 'Sign In' %}</a>
-                    {% include '_login_modal.html' %}
-                </li>
-                <li>
-                {% block header_signup_link %}
-                    <a href="{% url 'account_signup' %}">{% trans 'Sign Up' %}</a>
+                {% block header_signin %}
+                    <li>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">{% trans 'Sign In' %}</a>
+                        {% include '_login_modal.html' %}
+                    </li>
                 {% endblock %}
-                </li>
+                {% block header_signup %}
+                    <li>
+                        <a href="{% url 'account_signup' %}">{% trans 'Sign Up' %}</a>
+                    </li>
+                {% endblock %}
             {% endif %}
             </ul>
         </div><!-- /.navbar-collapse -->

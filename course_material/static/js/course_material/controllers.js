@@ -16,12 +16,15 @@
             $scope.save_course_material = function(){
                 $scope.course_material.$update({course: $scope.courseId}, function(){
                     $scope.alert.success('Alterações salvas com sucesso!');
+                }, function(x){
+                    console.log(x);
                 });
             };
 
             $scope.delete_file = function(file_obj){
                 if (confirm('Tem certeza que dejeja apagar este arquivo?')){
-                    CourseMaterialFile.delete({id: file_obj.id}, function(){
+                    var file = CourseMaterialFile.get({id:file_obj.id});
+                    file.$delete({id: file_obj.id}, function(){
                         angular.forEach($scope.course_material.files, function(file, index){
                             if (file.id == file_obj.id){
                                 $scope.course_material.files.splice(index, 1);
@@ -30,6 +33,17 @@
                         });
                     });
                 }
+            };
+
+            $scope.hide_file = function(file_obj){
+                CourseMaterialFile.get({id:file_obj.id}).$promise.then(
+                    function(f){
+                        f.hide = !f.hide;
+                        f.$update({}, function(){
+                            file_obj.hide = f.hide;
+                        });
+                    }
+                );
             };
     }]);
 })(angular);

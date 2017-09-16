@@ -6,7 +6,7 @@ from django.utils.text import slugify
 
 class CourseMaterial(models.Model):
     course = models.OneToOneField('core.Course', related_name='course_material', verbose_name=_('Course Materials'))
-    text = models.TextField(_('Question'))
+    text = models.TextField(_('Question'), blank=True)
 
     class Meta:
         unique_together = ("id", "course")
@@ -28,6 +28,6 @@ def get_upload_path(instance, filename):
 
 
 class File(models.Model):
-    # title = models.CharField(_('Title'), max_length=255)
     file = models.FileField(upload_to=get_upload_path)
     course_material = models.ForeignKey(CourseMaterial, related_name='files', verbose_name=_('Files'))
+    hide = models.BooleanField(_('Hide'), default=False)

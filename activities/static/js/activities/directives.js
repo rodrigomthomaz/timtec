@@ -14,7 +14,7 @@
             transclude: true,
             /*jshint multistr: true */
             template: ' \
-                        <label class="radio" ng-class="{checked: checked == ngValue}"  ng-click="checked = ngValue"> \
+                        <label class="radio" ng-class="{checked: checked === ngValue}"  ng-click="checked = ngValue"> \
                             <span class="icons"> \
                                 <span class="first-icon fa fa-circle-o"></span> \
                                 <span class="second-icon fa fa-dot-circle-o"></span> \

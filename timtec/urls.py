@@ -29,7 +29,7 @@ from core.views import (CourseView, GenericCourseView, CourseViewSet,
                         CertificateTemplateImageViewSet, RequestCertificateView,
                         EmitReceiptView, ProfileViewSet, LessonThumbViewSet)
 
-from activities.views import AnswerViewSet
+from activities.views import AnswerViewSet, ActivityImageUploadViewSet
 from forum.views import (CourseForumView, QuestionView, QuestionCreateView, QuestionViewSet,
                          QuestionVoteViewSet, AnswerVoteViewSet, AnswerViewSet as ForumAnswerViewSet,
                          QuestionNotificationViewSet)
@@ -85,6 +85,7 @@ router.register(r'certificate_template', CertificateTemplateViewSet, base_name='
 router.register(r'certificate_template_images', CertificateTemplateImageViewSet, base_name='certificate_template_images')
 router.register(r'states', StateViewSet, base_name='test')
 router.register(r'cities', CityViewSet, base_name='test2')
+router.register(r'activity_image', ActivityImageUploadViewSet, base_name='activity_image')
 
 urlpatterns = patterns(
     '',
@@ -212,3 +213,11 @@ if settings.DEBUG:
 
 if 'ifs' in settings.INSTALLED_APPS:
     urlpatterns += (url(r'^ifs/', include('ifs.urls')),)
+
+if settings.DEBUG:
+    import debug_toolbar
+
+    urlpatterns += patterns(
+        '',
+        url(r'^__debug__/', include(debug_toolbar.urls)),
+    )

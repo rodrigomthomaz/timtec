@@ -1,5 +1,13 @@
-<div class="question textleft">
+<div class="textright">
     <button class="btn btn-danger" ng-click="removeCurrentActivity()"><i class="fa fa-trash-o"></i></button>
-    <modalmarkdowneditor title="reading" content="currentActivity.data.question">
-    </modalmarkdowneditor>
+</div>
+<p>&nbsp;</p>
+<div class="question textleft">
+    <textarea
+        class="form-control"
+        rows="50"
+        ng-model="currentActivity.data.question"
+        ui-tinymce="tinymceOptions"
+        placeholder="{% trans 'Fill with your content' %}">
+    </textarea>
 </div>

@@ -11,7 +11,8 @@
             });
         }).
         factory('CourseMaterialFile', function($resource){
-            return $resource('/api/course_material_file/:id/', {}, {
+            return $resource('/api/course_material_file/:id/', {'id': '@id'}, {
+                update: {method: 'PUT'}
             });
         }).
         factory('Course', function($resource){
