@@ -304,14 +304,14 @@
                         var new_question = Question.save({course: course_id, title: $scope.new_question_title, text: $scope.new_text}, function(question){
                             question.hidden_to_user = false;
                             question.hidden = false;
+                            $scope.new_question_title = undefined;
+                            $scope.new_text = undefined;
+                            angular.element(document.querySelector('#wmd-preview')).html('');
+                            $scope.question_title_validation = '';
+                            $scope.question_text_validation = '';
+                            get_questions();
                         });
 
-                        $scope.new_question_title = undefined;
-                        $scope.new_text = undefined;
-                        angular.element(document.querySelector('#wmd-preview')).html('');
-                        $scope.question_title_validation = '';
-                        $scope.question_text_validation = '';
-                        get_questions();
 
                     } else {
                         if ($scope.new_question_title === undefined  || $scope.new_question_title === ''){

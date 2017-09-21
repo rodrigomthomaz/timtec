@@ -96,7 +96,7 @@ class QuestionCreateView(LoginRequiredMixin, FormView):
 class QuestionViewSet(LoginRequiredMixin, viewsets.ModelViewSet):
 
     model = Question
-    queryset = Question.objects.all()
+    queryset = Question.objects.all().order_by('-timestamp')
     serializer_class = QuestionSerializer
     filter_fields = ('course', 'user', 'hidden')
     permission_classes = (EditQuestionPermission,)
