@@ -7,6 +7,8 @@ from django.http import JsonResponse
 
 from accounts.models import TimtecUser
 from timtec import settings
+from django.contrib.auth.models import Group
+
 
 class IntegrationController(View):
 
@@ -15,10 +17,14 @@ class IntegrationController(View):
         token = request.POST['token']
         payload = jwt.decode(token, settings.INTEGRATION_JWT_SECRET, algorithms=['HS256'])
 
-        if not payload['sub']: return JsonResponse({'status': 'invalid_jwt', 'missing': 'sub'})
-        if not payload['uid']: return JsonResponse({'status': 'invalid_jwt', 'missing': 'uid'})
-        if not payload['name']: return JsonResponse({'status': 'invalid_jwt', 'missing': 'name'})
-        if not payload['email']: return JsonResponse({'status': 'invalid_jwt', 'missing': 'email'})
+        if not payload['sub']:
+            return JsonResponse({'status': 'invalid_jwt', 'missing': 'sub'})
+        if not payload['uid']:
+            return JsonResponse({'status': 'invalid_jwt', 'missing': 'uid'})
+        if not payload['name']:
+            return JsonResponse({'status': 'invalid_jwt', 'missing': 'name'})
+        if not payload['email']:
+            return JsonResponse({'status': 'invalid_jwt', 'missing': 'email'})
 
         external_user_id = int(payload['uid'])
 
@@ -32,8 +38,9 @@ class IntegrationController(View):
                 username=('ead_' + str(external_user_id)),
                 first_name=payload['name'],
                 # Generate '+' alias email to avoid uniqueness clashing on future editions
-                email= 'ead_' + str(external_user_id) + '+' + payload['email']
+                email='ead_' + str(external_user_id) + '+' + payload['email']
             )
+            user.groups.add(Group.objects.get(name="students"))
 
         if not user:
             return JsonResponse({'error': 'connect_failed'})
