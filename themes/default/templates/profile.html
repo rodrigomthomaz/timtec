@@ -107,17 +107,19 @@ wrapper-course-lesson
                     <p>
                         {% trans 'Finished at' %} {% verbatim %}{{ certificate.created_date|date:"dd/MM/yyyy" }}{% endverbatim %}.
                     </p>
-                    {% verbatim %}
-                    <a class="enroll-link text-uppercase" ng-href="/certificate/{{ certificate.link_hash }}">
-                    {% endverbatim %}
-                        <i class="fa fa-file-text-o"></i>
-                        <span ng-if="certificate.type == 'receipt'">
-                            {% trans 'View Receipt' %}
-                        </span>
-                        <span ng-if="certificate.type == 'certificate'">
-                            {% trans 'View Certificate' %}
-                        </span>
-                    </a>
+                    {% block profile-certificate %}
+                        {% verbatim %}
+                        <a class="enroll-link text-uppercase" ng-href="/certificate/{{ certificate.link_hash }}">
+                        {% endverbatim %}
+                            <i class="fa fa-file-text-o"></i>
+                            <span ng-if="certificate.type == 'receipt'">
+                                {% trans 'View Receipt' %}
+                            </span>
+                            <span ng-if="certificate.type == 'certificate'">
+                                {% trans 'View Certificate' %}
+                            </span>
+                        </a>
+                    {% endblock %}
                 </div>
             </div>
         </div>

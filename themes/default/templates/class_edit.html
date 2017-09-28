@@ -180,34 +180,46 @@ wrapper-course-lesson
                                 <i class='fa fa-sort-desc' ng-show="reverse && propertyName == 'start_date'"></i>
                             </a>
                         </th>
-                        <th class="certificate" ng-show="classe.user_can_certificate">{% trans "Certificate" %}</th>
-                        <th class="actions">{% trans "Actions" %}</th>
+                        {% block certificate-title %}
+                            <th class="certificate" ng-show="classe.user_can_certificate">{% trans "Certificate" %}</th>
+                        {% endblock %}
+                        {% block actions-title %}
+                            <th class="actions">{% trans "Actions" %}</th>
+                        {% endblock %}
                         {% if object.course.default_class != object %}
                         {% endif %}
                     </tr>
 
                     <tr ng-repeat='student in classe.students_detail | orderBy:propertyName:reverse'>
                         {% verbatim %}
-                        <td>{{ student.user.username }}</td>
-                        <td>{{ student.user.email }}</td>
-                        <td>{{ student.user.name }}</td>
-                        <td>{{ student.start_date|date:"dd/MM/yyyy - H:m" }}</td>
-                        <td ng-show="classe.user_can_certificate">
-                            <input type='checkbox' ng-disabled='!student.certificate || !classe.user_can_certificate_even_without_progress && !student.can_emmit_receipt' ng-click="toggle_certificate($index)" ng-checked="student.certificate.type == 'certificate'">
-                        </td>
+                            <td>{{ student.user.username }}</td>
+                            <td>{{ student.user.email }}</td>
+                            <td>{{ student.user.name }}</td>
+                            <td>{{ student.start_date|date:"dd/MM/yyyy - H:m" }}</td>
                         {% endverbatim %}
-                        <td class="actions">
-                            {% if object.course.default_class != object %}
-                                <a ng-click="remove_item($index)" class="btn btn-warning"><i class="fa fa-trash-o"></i></a>
-                            {% endif %}
+                        {% block certificate-col %}
                             {% verbatim %}
-                            <a ng-hide="!student.certificate || !classe.user_can_certificate" ng-disabled='!student.can_emmit_receipt' href="{{ student.certificate.url }}" class="btn btn-default" target="_blank" ng-class="{'btn-info': student.certificate.type == 'certificate'}">
-                                <span ng-show="student.can_emmit_receipt && student.certificate.type == 'receipt'" title="Clique aqui para ver o comprovante deste estudante"><i class="fa fa-certificate"></i></span>
-                                <span ng-show="student.can_emmit_receipt && student.certificate.type == 'certificate'" title="Clique aqui para ver o certificado deste estudante"><i class="fa fa-certificate"></i></span>
-                                <span ng-show="!student.can_emmit_receipt" title="Não há certificados disponíveis"><i class="fa fa-certificate"></i></span>
-                            </a>
+                                <td ng-show="classe.user_can_certificate">
+                                    <input type='checkbox' ng-disabled='!student.certificate || !classe.user_can_certificate_even_without_progress && !student.can_emmit_receipt' ng-click="toggle_certificate($index)" ng-checked="student.certificate.type == 'certificate'">
+                                </td>
                             {% endverbatim %}
-                        </td>
+                        {% endblock %}
+                        {% block actions-col %}
+                            <td class="actions">
+                                {% if object.course.default_class != object %}
+                                    <a ng-click="remove_item($index)" class="btn btn-warning"><i class="fa fa-trash-o"></i></a>
+                                {% endif %}
+                                {% block student-certificate %}
+                                    {% verbatim %}
+                                    <a ng-hide="!student.certificate || !classe.user_can_certificate" ng-disabled='!student.can_emmit_receipt' href="{{ student.certificate.url }}" class="btn btn-default" target="_blank" ng-class="{'btn-info': student.certificate.type == 'certificate'}">
+                                        <span ng-show="student.can_emmit_receipt && student.certificate.type == 'receipt'" title="Clique aqui para ver o comprovante deste estudante"><i class="fa fa-certificate"></i></span>
+                                        <span ng-show="student.can_emmit_receipt && student.certificate.type == 'certificate'" title="Clique aqui para ver o certificado deste estudante"><i class="fa fa-certificate"></i></span>
+                                        <span ng-show="!student.can_emmit_receipt" title="Não há certificados disponíveis"><i class="fa fa-certificate"></i></span>
+                                    </a>
+                                    {% endverbatim %}
+                                {% endblock %}
+                            </td>
+                        {% endblock %}
                     </tr>
 
                     <tr ng-hide="classe.students_detail.length > 0">
