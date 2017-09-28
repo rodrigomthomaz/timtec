@@ -89,6 +89,8 @@
                             $scope.num_answers += 1;
                         });
                         $scope.answers.push(new_answer);
+                        $scope.new_answer_text = '';
+                        angular.element(document.querySelector('#wmd-preview')).html('');
                     }
 
                 };

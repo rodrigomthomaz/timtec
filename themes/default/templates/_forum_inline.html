@@ -156,7 +156,7 @@
                                     <h1 class="title"><a href="/forum/question/{{ question.slug }}">{{ question.title }}</a></h1>
                                     <div class="text" ng-bind-html="question.text|markdown|words:50"></div>
                                     {% endverbatim %}
-                                    <div class="author"> {% trans 'Asked' %} <strong>{% verbatim %}{{ question.timestamp|date:"dd/MM/yy" }}{% endverbatim %}</strong> {% trans 'by' %} {% verbatim %}<a href="/profile/{{ question.username }}">{{ question.username }}</a>{% endverbatim %}</div>
+                                    <div class="author"> {% trans 'Asked' %} <strong>{% verbatim %}{{ question.timestamp|date:"dd/MM/yy" }}{% endverbatim %}</strong> {% trans 'by' %} {% verbatim %}<a href="/profile/{{ question.username }}">{{ question.user_fullname }}</a>{% endverbatim %}</div>
                                 </td>
                             </tr>
                         </table>

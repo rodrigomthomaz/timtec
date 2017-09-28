@@ -5,7 +5,8 @@ from rest_framework import serializers
 class QuestionSerializer(serializers.ModelSerializer):
 
     votes = serializers.ReadOnlyField(source='count_votes')
-    username = serializers.ReadOnlyField(source='user.get_full_name')
+    username = serializers.ReadOnlyField(source='user.username')
+    user_fullname = serializers.ReadOnlyField(source='user.get_full_name')
     user_id = serializers.ReadOnlyField(source='user.id')
     timestamp = serializers.DateTimeField(read_only=True)
     hidden_to_user = serializers.SerializerMethodField('is_hidden')
@@ -14,7 +15,7 @@ class QuestionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Question
         fields = ('id', 'title', 'course', 'answers', 'text', 'slug', 'user_id',
-                  'votes', 'timestamp', 'username', 'hidden', 'likes', 'unlikes',
+                  'votes', 'timestamp', 'username', 'user_fullname', 'hidden', 'likes', 'unlikes',
                   'hidden_by', 'hidden_to_user', 'moderator', 'hidden_justification',
                   'visualizations', )
 
