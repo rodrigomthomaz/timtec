@@ -14,6 +14,11 @@
                 query: {method: 'GET', isArray: false }
             });
         }).
+        factory('QuestionEdit', function($resource){
+            return $resource('/api/forum_question_edit/:id/', {'id': '@id'}, {
+                update: {method: 'PUT'}
+            });
+        }).
         factory('AnswerVote', function($resource){
             return $resource('/api/answer_vote/:answer', {}, {
                 update: {method: 'PUT'}

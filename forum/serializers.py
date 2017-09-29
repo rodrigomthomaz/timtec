@@ -77,3 +77,10 @@ class QuestionNotificationSerializer(serializers.ModelSerializer):
     class Meta:
         model = QuestionNotification
         fields = ('id', 'user', 'question')
+
+
+class QuestionEditSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Question
+        fields = ('id', 'title', 'text', 'hidden', 'hidden_by', 'hidden_justification', 'user')

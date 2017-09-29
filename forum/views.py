@@ -10,12 +10,12 @@ from django.views.generic.list import ListView
 from core.models import Course, Class
 from forum.models import Question, Answer, QuestionVote, AnswerVote, QuestionVisualization, QuestionNotification
 from forum.forms import QuestionForm
-from forum.serializers import QuestionSerializer, AnswerSerializer, QuestionVoteSerializer, AnswerVoteSerializer
-from forum.serializers import QuestionNotificationSerializer
+from forum.serializers import QuestionSerializer, AnswerSerializer, QuestionVoteSerializer, AnswerVoteSerializer, QuestionEditSerializer, QuestionNotificationSerializer
 from forum.permissions import EditQuestionPermission, EditAnswerPermission
 from rest_framework import viewsets
 from administration.views import AdminMixin
 import operator
+from rest_framework import filters
 from rest_framework.response import Response
 from rest_framework.pagination import PageNumberPagination
 from django.db.models import Count, Sum
@@ -93,6 +93,16 @@ class QuestionCreateView(LoginRequiredMixin, FormView):
             return self.form_invalid(form)
 
 
+class QuestionEditViewSet(LoginRequiredMixin, viewsets.ModelViewSet):
+    model = Question
+    serializer_class = QuestionEditSerializer
+    queryset = Question.objects.all()
+    lookup_field = 'id'
+    filter_fields = ('id',)
+    permission_classes = (EditQuestionPermission,)
+    filter_backends = (filters.DjangoFilterBackend,)
+
+
 class QuestionViewSet(LoginRequiredMixin, viewsets.ModelViewSet):
 
     model = Question
@@ -163,7 +173,7 @@ class QuestionViewSet(LoginRequiredMixin, viewsets.ModelViewSet):
         question = super(QuestionViewSet, self).get_object(*args, **kwargs)
         try:
             question_view = QuestionVisualization.objects.get(
-                created__gte=timezone.now()-timedelta(hours=1),
+                created__gte=timezone.now() - timedelta(hours=1),
                 user=self.request.user,
                 question=question,
             )

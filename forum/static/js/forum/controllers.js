@@ -205,8 +205,8 @@
                     };
                 };
         }]).
-        controller('InlineForumCtrl', ['$scope', '$window', '$uibModal', '$http', 'Question', 'CourseProfessor', 'Class',
-            function ($scope, $window, $uibModal, $http, Question, CourseProfessor, Class) {
+        controller('InlineForumCtrl', ['$scope', '$window', '$uibModal', '$http', 'Question', 'QuestionEdit', 'CourseProfessor', 'Class',
+            function ($scope, $window, $uibModal, $http, Question, QuestionEdit, CourseProfessor, Class) {
                 var course_id = parseInt($window.course_id, 10);
                 var current_user_id = parseInt($window.user_id, 10);
 
@@ -356,8 +356,20 @@
                     });
 
                     modalInstance.result.then(function (question) {
-                        question.$update({questionId: question.id}, function(question){
-                            question.hidden_to_user = false;
+                        console.log('aqui');
+                        console.log(question);
+                        QuestionEdit.get({id: question.id}).$promise.then(function(q){
+                            console.log('oi', q);
+                            q.hidden = question.hidden;
+                            q.hidden_justification = question.hidden_justification;
+                            q.hidden_by = $window.user_id;
+                            q.user = $window.user_id;
+                            q.$update({}, function(oi){
+                                console.log('tudo bem?', oi);
+                            },
+                            function(xau){
+                                console.log('xau', xau);
+                            } );
                         });
 
                     });
