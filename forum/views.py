@@ -99,7 +99,7 @@ class QuestionEditViewSet(LoginRequiredMixin, viewsets.ModelViewSet):
     queryset = Question.objects.all()
     lookup_field = 'id'
     filter_fields = ('id',)
-    permission_classes = (EditQuestionPermission,)
+    # permission_classes = (EditQuestionPermission,)
     filter_backends = (filters.DjangoFilterBackend,)
 
 
@@ -109,7 +109,7 @@ class QuestionViewSet(LoginRequiredMixin, viewsets.ModelViewSet):
     queryset = Question.objects.all().order_by('-timestamp')
     serializer_class = QuestionSerializer
     filter_fields = ('course', 'user', 'hidden')
-    permission_classes = (EditQuestionPermission,)
+    # permission_classes = (EditQuestionPermission,)
     pagination_class = CustomPagination
 
     def perform_create(self, serializer):

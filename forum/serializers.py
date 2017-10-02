@@ -36,7 +36,8 @@ class QuestionSerializer(serializers.ModelSerializer):
 class AnswerSerializer(serializers.ModelSerializer):
 
     votes = serializers.ReadOnlyField(source='count_votes')
-    username = serializers.ReadOnlyField(source='user.get_full_name')
+    username = serializers.ReadOnlyField(source='user.username')
+    user_fullname = serializers.ReadOnlyField(source='user.get_full_name')
     user_id = serializers.ReadOnlyField(source='user.id')
     timestamp = serializers.DateTimeField(read_only=True)
     current_user_vote = serializers.SerializerMethodField()
@@ -44,7 +45,7 @@ class AnswerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Answer
         fields = ('id', 'question', 'text', 'votes', 'timestamp', 'username', 'current_user_vote', 'likes', 'unlikes',
-                  'hidden', 'hidden_by', 'user_id')
+                  'hidden', 'hidden_by', 'user_id', 'user_fullname')
 
     def get_current_user_vote(self, obj):
         current_user_vote, _ = AnswerVote.objects.get_or_create(user=self.context.get('request').user, answer=obj)
@@ -83,4 +84,4 @@ class QuestionEditSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Question
-        fields = ('id', 'title', 'text', 'hidden', 'hidden_by', 'hidden_justification', 'user')
+        fields = ('id', 'title', 'text', 'hidden', 'hidden_by', 'hidden_justification')
