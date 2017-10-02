@@ -115,59 +115,29 @@ class QuestionViewSet(LoginRequiredMixin, viewsets.ModelViewSet):
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
 
-    # def get_queryset(self):
-    #     # filter by course
-    #     queryset = super(QuestionViewSet, self).get_queryset()
+    def get_queryset(self):
+        queryset = super(QuestionViewSet, self).get_queryset()
+        course_id = self.request.query_params.get('course')
 
-    #     classes_id = self.request.query_params.getlist('classes')
-    #     if classes_id:
-    #         classes = Class.objects.filter(id__in=classes_id)
-    #         queries_list = [Q(user__in=klass.students.all()) for klass in classes.all()]
-    #         queryset = queryset.filter(reduce(operator.or_, queries_list))
+        try:
+            role = self.request.user.teaching_courses.get(course__id=course_id).role
+        except ObjectDoesNotExist:
+            role = None
 
-    #     course_id = self.request.query_params.get('course')
-
-    #     if not (classes_id or course_id):
-    #         return queryset
-
-    #     # ordering
-    #     search = self.request.query_params.get('s', None)
-    #     if search is not None:
-    #         queryset = queryset.filter(Q(title__icontains=search)
-    #                                    | Q(text__icontains=search)
-    #                                    | Q(answers__text__icontains=search)
-    #                                    )
-
-    #     # ordering
-    #     ordering = self.request.query_params.get('ordering', None)
-    #     if ordering is not None:
-    #         if ordering == 'timestamp':
-    #             queryset = queryset.order_by('-timestamp')
-    #         if ordering == 'answers':
-    #             queryset = queryset.annotate(total_answers=Count('answers')).order_by('-total_answers')
-    #         if ordering == 'views':
-    #             queryset = queryset.annotate(total_views=Count('views')).order_by('-total_views')
-    #         if ordering == 'likes':
-    #             queryset = queryset.filter(votes__value__gte=1).annotate(total_votes=Coalesce(Sum('votes__value'), 0)).order_by('-total_votes')
-
-    #     try:
-    #         role = self.request.user.teaching_courses.get(course__id=course_id).role
-    #     except ObjectDoesNotExist:
-    #         role = None
-
-    #     if role and role == 'assistant':
-    #         classes = Class.objects.filter(assistant=self.request.user)
-    #         queries_list = [Q(user__in=klass.students.all()) for klass in classes.all()]
-    #         if queries_list:
-    #             return queryset.filter(reduce(operator.or_, queries_list))
-    #     elif (role and role == 'coordinator') or self.request.user.is_superuser:
-    #         return queryset
-    #     # it's not professor in this course
-    #     try:
-    #         klass = self.request.user.classes.get(course=course_id)
-    #         return queryset.filter(Q(hidden=False) | Q(user=self.request.user)).filter(user__in=klass.students.all())
-    #     except ObjectDoesNotExist:
-    #         return queryset.none()
+        if role and role == 'assistant':
+            classes = Class.objects.filter(assistant=self.request.user)
+            queries_list = [Q(user__in=klass.students.all()) for klass in classes.all()]
+            if queries_list:
+                return queryset.filter(reduce(operator.or_, queries_list))
+        elif (role and role == 'coordinator') or self.request.user.is_superuser:
+            return queryset
+        # it's not professor in this course
+        try:
+            klass = self.request.user.classes.get(course=course_id)
+            return queryset.filter(Q(hidden=False) | Q(user=self.request.user)).filter(user__in=klass.students.all())
+        except ObjectDoesNotExist:
+            return queryset.none()
+        return super(QuestionViewSet, self).get_queryset()
 
     def get_object(self, *args, **kwargs):
         question = super(QuestionViewSet, self).get_object(*args, **kwargs)
