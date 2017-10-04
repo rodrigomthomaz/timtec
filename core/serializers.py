@@ -185,6 +185,15 @@ class VideoSerializer(serializers.ModelSerializer):
         fields = ('id', 'name', 'youtube_id',)
 
 
+class CourseProfessorAssistantSerializer(serializers.ModelSerializer):
+    id = serializers.IntegerField(source='user.id')
+    name = serializers.ReadOnlyField(source='user.get_full_name')
+
+    class Meta:
+        fields = ('id', 'name',)
+        model = CourseProfessor
+
+
 class CourseSerializer(serializers.ModelSerializer):
     # BUGFIX: intro_video needs to be read_only=False. This is a little workaround to make other modules work
     intro_video = VideoSerializer(required=False, allow_null=True)
@@ -192,6 +201,7 @@ class CourseSerializer(serializers.ModelSerializer):
 
     has_started = serializers.ReadOnlyField()
     professors = TimtecUserSerializer(source='authors', many=True, read_only=True)
+    course_professors = CourseProfessorAssistantSerializer(many=True, read_only=True)
     home_thumbnail_url = serializers.SerializerMethodField()
     is_user_assistant = serializers.SerializerMethodField()
     is_user_coordinator = serializers.SerializerMethodField()
@@ -204,7 +214,7 @@ class CourseSerializer(serializers.ModelSerializer):
                   "thumbnail_url", "home_thumbnail_url", "home_position",
                   "start_date", "home_published", "authors_names", "has_started",
                   "min_percent_to_complete", "is_user_assistant", "is_user_coordinator",
-                  'professors', "is_assistant_or_coordinator", 'welcome_email', 'total_hours')
+                  'professors', "is_assistant_or_coordinator", 'welcome_email', 'total_hours', 'course_professors')
 
     def create(self, validated_data):
         intro_video = validated_data.pop('intro_video', None)
