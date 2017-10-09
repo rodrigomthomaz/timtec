@@ -277,7 +277,7 @@ class Course(models.Model):
             return True
 
         role = self.get_professor_role(user)
-        return role in ['assistant', 'coordinator'] or user.is_superuser
+        return role in ['assistant', 'coordinator']
 
     def is_course_coordinator(self, user):
         course_coordinators = self.get_role_professors('coordinator')
@@ -582,6 +582,7 @@ class ProfessorMessage(models.Model):
     course = models.ForeignKey(Course, verbose_name=_('Course'), null=True)
     users_that_read = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='read_messages')
     users_that_delete = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='delete_messages')
+    receive_answer = models.BooleanField(_('Receive Answer'), default=False)
 
     def __unicode__(self):
         return unicode(self.subject)
@@ -604,6 +605,16 @@ class ProfessorMessage(models.Model):
 
     def get_absolute_url(self):
         return reverse('message_detail', kwargs={'message_id': self.id, 'course_slug': self.course.slug})
+
+
+class MessageAnswer(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name=_('User'), related_name='message_answers')
+    message = models.ForeignKey(ProfessorMessage, related_name='answers', verbose_name=_('Message'))
+    text = models.TextField(_('Text'))
+    date = models.DateTimeField(_('Date'), auto_now_add=True, editable=False)
+
+    def __unicode__(self):
+        return self.text
 
 
 class PositionedModel(models.Model):

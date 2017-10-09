@@ -1,6 +1,7 @@
 {% extends "messages.html" %}
 {% load i18n %}
 {% load is_assistant_or_coordinator %}
+{% load timtec_markdown %}
 
 {% block messages_title %}{% trans "Message" %}{% endblock %}
 
@@ -24,6 +25,34 @@
             <hr />
             <div class="body">
                 <span ng-bind-html="message.message"> </span>
+            </div>
+
+            {% verbatim %}
+                <div class="body" ng-repeat="answer in message.answers" ng-attr-title="{{answer.date|date:'dd/MM/yy HH:mm'}}">
+                    <hr>
+                    <span ng-bind-html="answer.text"></span>
+                </div>
+            {% endverbatim %}
+
+
+            <hr />
+
+            <div class="message-answer">
+                <h2>{% trans 'Respond' %}</h2>
+                <div class="alert alert-danger" role="alert" ng-if="new_answer_validation_error">
+                    <ul>
+                        <li><a href="#wmd-input"></a></li>
+                    </ul>
+                </div>
+                <div class="form-group text-editor">
+                    <div class="wmd-panel" markdowneditor="true">
+                        <div id="wmd-button-bar" class="js-button-bar"></div>
+                        <textarea ng-model="new_answer" class="form-control" id="wmd-input" rows="10"></textarea>
+                    </div>
+                </div>
+                <div class="form-group textright bottom">
+                    <button ng-click="answer_message()" class="btn btn-success">{% trans 'Send' %}</button>
+                </div>
             </div>
 
             {% if user|is_assistant_or_coordinator:course %}

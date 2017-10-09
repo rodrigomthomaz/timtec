@@ -17,4 +17,9 @@
     module.factory('Student', function($resource){
             return $resource('/api/course_student/', {}, {});
     });
+
+    module.factory('AnswerMessage', function($resource){
+        return $resource('/api/message_answer', {}, {});
+    });
+
 })(angular);

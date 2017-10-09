@@ -140,11 +140,11 @@
         }
     ]);
 
-    module.controller('MessageController', ['$scope', '$window', 'Message',
-        function($scope, $window, Message) {
+    module.controller('MessageController', ['$scope', '$window', 'Message', 'AnswerMessage',
+        function($scope, $window, Message, AnswerMessage) {
             $scope.course_id = parseInt($window.course_id, 10);
             $scope.message_id = document.location.href.match(/message\/([0-9]+)/)[1];
-            $scope.message = Message.get({messageId: $scope.message_id}, function(message) {});
+            $scope.message = Message.get({messageId: $scope.message_id}, function(message) {console.log(message)});
 
             $scope.show_recipients = false;
             $scope.toggle_recipient_list = function(){
@@ -153,6 +153,21 @@
                 } else {
                     $scope.show_recipients = true;
                 }
+            };
+
+            $scope.answer_message = function(){
+
+                var answer_message = new AnswerMessage({
+                    user: window.USER_ID,
+                    message: $scope.message,
+                    text: $scope.new_answer
+                });
+
+                answer_message.$save(function(m){
+                    $scope.message.push(m);
+                    $scope.new_answer = '';
+                });
+
             };
         }
     ]);

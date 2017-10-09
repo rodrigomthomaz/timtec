@@ -4,7 +4,7 @@ from core.models import (Course, CourseProfessor, CourseStudent, Lesson,
                          Video, StudentProgress, Unit, ProfessorMessage,
                          Class, CourseAuthor, CourseCertification,
                          CertificationProcess, Evaluation, CertificateTemplate,
-                         IfCertificateTemplate)
+                         IfCertificateTemplate, MessageAnswer)
 from accounts.serializers import (TimtecUserSerializer,
                                   TimtecUserAdminCertificateSerializer, TimtecUserAdminSerializer)
 from activities.models import Activity
@@ -14,16 +14,23 @@ from rest_framework import serializers
 from accounts.models import UserSocialAccount
 
 
+class MessageAnswerSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = MessageAnswer
+
+
 class ProfessorMessageSerializer(serializers.ModelSerializer):
 
     professor = TimtecUserSerializer(read_only=True)
     users_details = TimtecUserSerializer(many=True, source='users', read_only=True)
     users_that_read = TimtecUserSerializer(many=True, required=False)
     users_that_delete = TimtecUserSerializer(many=True, required=False)
+    answers = MessageAnswerSerializer(many=True, read_only=True)
 
     class Meta:
         model = ProfessorMessage
-        fields = ('id', 'users', 'users_details', 'users_that_read', 'users_that_delete', 'course', 'subject', 'message', 'date', 'professor')
+        fields = ('id', 'users', 'users_details', 'users_that_read', 'users_that_delete', 'course', 'subject', 'message', 'date', 'professor', 'answers')
 
 
 class UserMessageSerializer(serializers.ModelSerializer):
@@ -54,11 +61,12 @@ class ProfessorMessageUserDetailsSerializer(serializers.ModelSerializer):
     users_details = TimtecUserAdminSerializer(many=True, source='users', read_only=True)
     users_that_read_details = TimtecUserSerializer(many=True, source='users_that_read', read_only=True)
     users_that_not_read_details = TimtecUserSerializer(many=True, source='users_that_not_read', read_only=True)
+    answers = MessageAnswerSerializer(many=True)
 
     class Meta:
         model = ProfessorMessage
         fields = ('id', 'course', 'users', 'users_details', 'users_that_read', 'users_that_read_details',
-                  'subject', 'users_that_not_read_details', 'message', 'date', 'professor')
+                  'subject', 'users_that_not_read_details', 'message', 'date', 'professor', 'answers')
 
 
 class BaseCourseSerializer(serializers.ModelSerializer):

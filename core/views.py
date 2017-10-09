@@ -30,7 +30,7 @@ from .serializers import (CourseSerializer, CourseProfessorSerializer,
                           CourseStudentSerializer, ClassSerializer,
                           FlatpageSerializer, CourseAuthorPictureSerializer,
                           CourseAuthorSerializer, ClassSimpleSerializer,
-                          CourseCertificationSerializer,
+                          CourseCertificationSerializer, MessageAnswerSerializer,
                           CertificationProcessSerializer, UserMessageSerializer,
                           EvaluationSerializer, ProfileSerializer, ProfessorMessageUserDetailsSerializer,
                           IfCertificateTemplateSerializer, CertificateTemplateImageSerializer, LessonThumbSerializer)
@@ -38,7 +38,7 @@ from .serializers import (CourseSerializer, CourseProfessorSerializer,
 from .models import (Course, CourseProfessor, Lesson, StudentProgress,
                      Unit, ProfessorMessage, CourseStudent, Class,
                      CourseAuthor, CourseCertification, CertificationProcess,
-                     Evaluation, CertificateTemplate, IfCertificateTemplate)
+                     Evaluation, CertificateTemplate, IfCertificateTemplate, MessageAnswer)
 
 from .forms import (ContactForm, RemoveStudentForm)
 
@@ -578,6 +578,22 @@ class ProfessorMessageViewSet(viewsets.ModelViewSet):
         if not self.request.user.is_superuser:
             queryset = queryset.filter(users=self.request.user)
         return queryset
+
+
+class MessageAnswerViewSet(viewsets.ModelViewSet):
+    model = MessageAnswer
+    queryset = MessageAnswer.objects.all()
+    serializer_class = MessageAnswerSerializer
+
+    def post(self, request, **kwargs):
+        print 'aqui'
+        serializer = MessageAnswerSerializer(self.get_object(), request.data)
+
+        if serializer.is_valid():
+            serializer.save()
+            return Response(status=200)
+        else:
+            return Response(serializer.errors, status=400)
 
 
 class CourseViewSet(viewsets.ModelViewSet):

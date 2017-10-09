@@ -15,7 +15,7 @@ from core.views import (CourseView, GenericCourseView, CourseViewSet,
                         UserCoursesView, ContactView, LessonDetailView,
                         LessonViewSet, StudentProgressViewSet,
                         UserNotesViewSet, CoursesView, CourseThumbViewSet,
-                        ProfessorMessageViewSet, CourseStudentViewSet,
+                        ProfessorMessageViewSet, MessageAnswerViewSet, CourseStudentViewSet,
                         CarouselCourseView, ClassListView,
                         ClassCreateView, ClassUpdateView, ClassDeleteView,
                         ClassRemoveUserView, ClassViewSet, GoOutCourseView,
@@ -57,6 +57,7 @@ router.register(r'course_professor_picture', CoursePictureUploadViewSet, base_na
 router.register(r'course_author', CourseAuthorViewSet, base_name='course_author')
 router.register(r'course_student', CourseStudentViewSet, base_name='course_student')
 router.register(r'professor_message', ProfessorMessageViewSet, base_name='professor_message')
+router.register(r'message_answer', MessageAnswerViewSet, base_name='message_answer')
 router.register(r'user_message', UserMessageViewSet, base_name='user_message')
 router.register(r'coursethumbs', CourseThumbViewSet, base_name='coursethumbs')
 router.register(r'lessonthumbs', LessonThumbViewSet, base_name='lessonthumbs')
