@@ -8,7 +8,8 @@ Use a versão 4.1.6 do TIM tec ou superior: https://github.com/institutotim/timt
 
 2. **Settings.py**
 
-Certifique-se de que seu arquivo settings.py contém as seguintes linhas: 
+Certifique-se de que seu arquivo settings.py contém as seguintes linhas:
+
 ![selecao_210](https://user-images.githubusercontent.com/641411/31461909-3e7a0fa4-aea1-11e7-98e5-348ab206ae6f.png)
 
 3. **API Facebook Key**
