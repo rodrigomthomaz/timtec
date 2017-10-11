@@ -3,13 +3,16 @@
 O TIM Tec tem suporte a integração de login com Facebook atraveś do protocolo oauth2. Para habilitar corretamente essa funcionalidade, esteja atento aos seguintes pontos abaixo. 
 
 1. **Versão**
+
 Use a versão 4.1.6 do TIM tec ou superior: https://github.com/institutotim/timtec/releases
 
 2. **Settings.py**
+
 Certifique-se de que seu arquivo settings.py contém as seguintes linhas: 
 ![selecao_210](https://user-images.githubusercontent.com/641411/31461909-3e7a0fa4-aea1-11e7-98e5-348ab206ae6f.png)
 
 3. **API Facebook Key**
+
 O Facebook exige que você cadastre uma app-key para conectar com sua aplicação via protocolo oauth2. Essa exigência serve para verificar a origem da solicitação e dar mais segurança ao processo. 
 
 3.1 Como cadastrar uma api key? Você precisa de uma conta aqui: 
@@ -21,6 +24,7 @@ O facebook está sempre mudando a página e a forma de cadastro das keys de dese
 ![selecao_212](https://user-images.githubusercontent.com/641411/31462386-ffc3610a-aea2-11e7-8c22-88c429c6c4e1.png)
 
 4. **Django Admin Panel**
+
 Depois de obter sua facebook api key, você precisa entrar no Django Admin Painel de sua instalação TIM Tec e cadastrar o facebook como um provider de autenticação. Como fazer isso? 
 
 4.1 Primeiro acesse o Django Admin Panel com senha super admin. Você vai cair numa tela exatamente assim: 
