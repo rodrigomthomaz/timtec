@@ -142,11 +142,6 @@ Log UWSGI
 $ sudo nano /var/log/uwsgi/app/timtec-production.log
 ```
 
-## Configurando integração com Facebook
-
-pendente
-
-
 ## Instruções de importação dos cursos
 1. Considerando que você possui uma instalação da aplicação mais atual (ver Releases: https://github.com/hacklabr/timtec/releases) e quer utilizar os cursos disponíveis no projeto TIM Tec, logue no painel com permissão  no papel de administrador;
 
