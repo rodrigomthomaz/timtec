@@ -159,15 +159,33 @@
 
                 var answer_message = new AnswerMessage({
                     user: window.USER_ID,
-                    message: $scope.message,
+                    message: $scope.message.id,
                     text: $scope.new_answer
                 });
 
                 answer_message.$save(function(m){
-                    $scope.message.push(m);
+                    $scope.message.answers.push(m);
                     $scope.new_answer = '';
                 });
 
+            };
+
+            $scope.answer_as_new_message = function(){
+                if (window.USER_ID == $scope.message.professor.id){
+                    $scope.answer_message();
+                    return;
+                }
+                var answer_as_new_message = new Message({
+                    course: $scope.course_id,
+                    users: [$scope.message.professor.id, window.USER_ID],
+                    subject: 'RE: '+ $scope.message.subject,
+                    message: $scope.new_answer + '<br><blockquote>' + $scope.message.message + '</blockquote>'
+                });
+                answer_as_new_message.$save(
+                    function(m){
+                        window.location.href = m.get_absolute_url
+                    }
+                );
             };
         }
     ]);

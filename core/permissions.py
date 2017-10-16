@@ -43,3 +43,18 @@ class IsAdminOrReadOnly(IsAdmin):
         if request.method in permissions.SAFE_METHODS:
             return True
         return super(IsAdminOrReadOnly, self).has_permission(request, view)
+
+
+class MessageAnswerPermission(permissions.BasePermission):
+    """
+    Custom permission to allow users reply messages
+    """
+    def has_object_permission(self, request, view, obj):
+        # Read permissions are allowed to any request,
+        # so we'll always allow GET, HEAD or OPTIONS requests.
+        # print "agora deu neh"
+        if request.method in permissions.SAFE_METHODS:
+            return True
+
+        # todo: write rule to allow users that can post this
+        return True

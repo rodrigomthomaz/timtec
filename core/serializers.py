@@ -15,9 +15,11 @@ from accounts.models import UserSocialAccount
 
 
 class MessageAnswerSerializer(serializers.ModelSerializer):
+    user_fullname = serializers.CharField(source="user.get_full_name", required=False, read_only=True)
 
     class Meta:
         model = MessageAnswer
+        fields = ('message', 'user', 'text', 'date', 'user_fullname')
 
 
 class ProfessorMessageSerializer(serializers.ModelSerializer):
@@ -30,7 +32,7 @@ class ProfessorMessageSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ProfessorMessage
-        fields = ('id', 'users', 'users_details', 'users_that_read', 'users_that_delete', 'course', 'subject', 'message', 'date', 'professor', 'answers')
+        fields = ('id', 'users', 'users_details', 'users_that_read', 'users_that_delete', 'course', 'subject', 'message', 'date', 'professor', 'answers', 'get_absolute_url')
 
 
 class UserMessageSerializer(serializers.ModelSerializer):

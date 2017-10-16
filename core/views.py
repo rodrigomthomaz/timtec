@@ -42,7 +42,7 @@ from .models import (Course, CourseProfessor, Lesson, StudentProgress,
 
 from .forms import (ContactForm, RemoveStudentForm)
 
-from .permissions import IsProfessorCoordinatorOrAdminPermissionOrReadOnly, IsAdminOrReadOnly
+from .permissions import IsProfessorCoordinatorOrAdminPermissionOrReadOnly, IsAdminOrReadOnly, MessageAnswerPermission
 
 
 class HomeView(ListView):
@@ -555,6 +555,7 @@ class ProfessorMessageViewSet(viewsets.ModelViewSet):
     lookup_field = 'id'
     filter_fields = ('course',)
     filter_backends = (filters.DjangoFilterBackend,)
+    permission_classes = (MessageAnswerPermission, )
 
     def retrieve(self, *args, **kwargs):
         """Add the current user to readers list."""
@@ -584,16 +585,13 @@ class MessageAnswerViewSet(viewsets.ModelViewSet):
     model = MessageAnswer
     queryset = MessageAnswer.objects.all()
     serializer_class = MessageAnswerSerializer
+    permission_classes = (MessageAnswerPermission, )
 
-    def post(self, request, **kwargs):
-        print 'aqui'
-        serializer = MessageAnswerSerializer(self.get_object(), request.data)
-
-        if serializer.is_valid():
-            serializer.save()
-            return Response(status=200)
-        else:
-            return Response(serializer.errors, status=400)
+    def perform_create(self, serializer):
+        super(MessageAnswerViewSet, self).perform_create(serializer)
+        answer = serializer.instance
+        answer.message.users_that_read.clear()
+        answer.message.users_that_read.add(answer.user)
 
 
 class CourseViewSet(viewsets.ModelViewSet):
