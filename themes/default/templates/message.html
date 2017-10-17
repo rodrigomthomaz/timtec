@@ -23,23 +23,36 @@
         </div>
 
         <div ng-show="message.$resolved">
-            {% verbatim %}
-            <h1 class="bottom">{{ message.subject }}</h1>
-            <p class="date">{{ message.date|date:"dd/MM/yy" }}</p>
-            {% endverbatim %}
 
+            <h1 class="bottom">{% verbatim %}{{ message.subject }}{% endverbatim %}</h1>
             <hr />
-            <div class="body">
+            <div class="message-body">
+                {% if user|is_assistant_or_coordinator:course %}
+                    {% verbatim %}
+                        <a>{{ message.professor.name }}</a>
+                    {% endverbatim %}
+                {% else %}
+                    <a ng-if="message.professor.id == {{ user.id }}">{% verbatim %}{{ message.professor.name }}{% endverbatim %}</a>
+                    <strong ng-if="message.professor.id != {{ user.id }}">{% trans 'Tutor' %}</strong>
+                {% endif %}
                 <span ng-bind-html="message.message"> </span>
+                <div class="pull-right message-timestamp">{% verbatim %}{{message.date|date:'dd/MM/yy HH:mm'}}{% endverbatim %}</div>
             </div>
 
-            {% verbatim %}
-                <div class="body" ng-repeat="answer in message.answers" ng-attr-title="{{answer.date|date:'dd/MM/yy HH:mm'}}">
-                    <hr>
-                    <strong>{{answer.user_fullname}}: </strong>
-                    <span ng-bind-html="answer.text"></span>
-                </div>
-            {% endverbatim %}
+            <div class="message-body"
+                ng-repeat="answer in message.answers"
+                ng-attr-title="{% verbatim %}{{answer.date|date:'dd/MM/yy HH:mm'}}{% endverbatim %}">
+
+                <hr />
+                {% if user|is_assistant_or_coordinator:course %}
+                    <a>{% verbatim %}{{ answer.user_fullname }}{% endverbatim %}: </a>
+                {% else %}
+                    <a ng-if="answer.user_id == {{ user.id }}">{% verbatim %}{{ answer.user_fullname }}{% endverbatim %}: </a>
+                    <strong ng-if="answer.user_id != {{ user.id }}">{% trans 'Tutor' %}: </strong>
+                {% endif %}
+                <span ng-bind-html="answer.text"></span>
+                <div class="pull-right message-timestamp">{% verbatim %}{{answer.date|date:'dd/MM/yy HH:mm'}}{% endverbatim %}</div>
+            </div>
 
 
             <hr />

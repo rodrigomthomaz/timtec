@@ -16,10 +16,11 @@ from accounts.models import UserSocialAccount
 
 class MessageAnswerSerializer(serializers.ModelSerializer):
     user_fullname = serializers.CharField(source="user.get_full_name", required=False, read_only=True)
+    user_id = serializers.IntegerField(source="user.id", required=False, read_only=True)
 
     class Meta:
         model = MessageAnswer
-        fields = ('message', 'user', 'text', 'date', 'user_fullname')
+        fields = ('message', 'user', 'text', 'date', 'user_fullname', 'user_id')
 
 
 class ProfessorMessageSerializer(serializers.ModelSerializer):
