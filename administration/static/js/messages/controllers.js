@@ -175,11 +175,18 @@
                     $scope.answer_message();
                     return;
                 }
+                var msg_date = new Date($scope.message.date);
+                msg_date = msg_date.getDate() + '/' + (msg_date.getMonth() + 1) + '/' + msg_date.getFullYear() + ' ' + msg_date.getHours() + ':' + msg_date.getMinutes();
                 var answer_as_new_message = new Message({
                     course: $scope.course_id,
                     users: [$scope.message.professor.id, window.USER_ID],
                     subject: 'RE: '+ $scope.message.subject,
-                    message: $scope.new_answer + '<br><blockquote>' + $scope.message.message + '</blockquote>'
+                    message: '<blockquote>'
+                                + $scope.message.message
+                                + '<p>'
+                                + 'Enviado em ' + msg_date
+                                + '</p>'
+                            + '</blockquote><br />' + $scope.new_answer
                 });
                 answer_as_new_message.$save(
                     function(m){
