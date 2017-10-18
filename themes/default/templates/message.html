@@ -29,10 +29,10 @@
             <div class="message-body">
                 {% if user|is_assistant_or_coordinator:course %}
                     {% verbatim %}
-                        <a>{{ message.professor.name }}</a>
+                        <a href="/profile/{{ message.professor.username }}">{{ message.professor.name }}</a>
                     {% endverbatim %}
                 {% else %}
-                    <a ng-if="message.professor.id == {{ user.id }}">{% verbatim %}{{ message.professor.name }}{% endverbatim %}</a>
+                    <a ng-if="message.professor.id == {{ user.id }}" {% verbatim %} href="/profile/{{ message.professor.username }}">{{ message.professor.name }}{% endverbatim %}</a>
                     <strong ng-if="message.professor.id != {{ user.id }}">{% trans 'Tutor' %}</strong>
                 {% endif %}
                 <span ng-bind-html="message.message"> </span>
@@ -45,9 +45,9 @@
 
                 <hr />
                 {% if user|is_assistant_or_coordinator:course %}
-                    <a>{% verbatim %}{{ answer.user_fullname }}{% endverbatim %}: </a>
+                    {% verbatim %}<a href="/profile/{{ answer.user_username }}">{{ answer.user_fullname }}</a>: {% endverbatim %}
                 {% else %}
-                    <a ng-if="answer.user_id == {{ user.id }}">{% verbatim %}{{ answer.user_fullname }}{% endverbatim %}: </a>
+                    <a ng-if="answer.user_id == {{ user.id }}" {% verbatim %} href="/profile/{{ answer.user_username }}">{{ answer.user_fullname }}{% endverbatim %}: </a>
                     <strong ng-if="answer.user_id != {{ user.id }}">{% trans 'Tutor' %}: </strong>
                 {% endif %}
                 <span ng-bind-html="answer.text"></span>
