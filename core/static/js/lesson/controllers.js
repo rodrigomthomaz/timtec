@@ -92,20 +92,20 @@
                         // Test if the answer type is array.
                         // See https://github.com/hacklabr/timtec/wiki/Atividades for details
                         // FIXME should compare $scope.currentActivity.type
-                        if ($scope.currentActivity === 'relationship' ||
-                            $scope.currentActivity === 'trueorfalse' ||
-                            $scope.currentActivity === 'multiplechoice') {
+                        if ($scope.currentActivity.type === 'relationship' ||
+                            $scope.currentActivity.type === 'trueorfalse' ||
+                            $scope.currentActivity.type === 'multiplechoice') {
                             // FIXME why this name?
                             // TODO test if professor changes the activity (create a new alternative, the user lost his answer?
                             var shouldUseLastAnswer = (exp !== null && exp !== undefined) &&
                                 (angular.isArray(exp) && angular.isArray(giv) && giv.length === exp.length);
-
                             if (!shouldUseLastAnswer) {
                                 // Initialize empty given answer
                                 if(angular.isArray($scope.currentActivity.expected)) {
                                     answer.given = $scope.currentActivity.expected.map(function(){});
                                 }
                                 delete answer.correct;
+
                             }
                         }
                     },
@@ -130,13 +130,13 @@
                     $scope.answer.given = 'image';
 
                 // Converts a dict to array, to match with expected answer type
-                if(typeof($scope.answer.given) == 'object') {
+                if(typeof($scope.answer.given) == 'object'){
                     var given = [];
                     angular.forEach($scope.answer.given, function(element) {
                         given.push(element);
                     });
                     $scope.answer.given = given;
-                }
+                };
 
                 $scope.answer.$update({activityId: $scope.answer.activity}).then(function(answer){
                     $scope.$root.changed = false;
