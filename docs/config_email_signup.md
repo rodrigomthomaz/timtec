@@ -3,9 +3,7 @@
 Quando um aluno se cadastra na ferramenta, ele recebe um email de boas-vindas e um link de ativação da conta. O texto padrão é o seguinte: 
 
 ```
-Assunto: 
-
-Registro na plataforma EAD IF
+Assunto: Registro na plataforma EAD IF
 
 Email: 
 
