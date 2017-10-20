@@ -31,4 +31,4 @@ Para editar essa mensagem você precisa fazer uma **customização do tema padr�
 
 ![selecao_220](https://user-images.githubusercontent.com/641411/31837891-4b642ffa-b5b9-11e7-86e2-9d1ab58bef8f.png)
 
-3. Salve, de um make update na sua aplicação, reinicie o nginx e o uwsgi. Pronto! Os novos usuários receberão essa nova mensagem! 
+3. Salve, de um make update na sua aplicação, reinicie o nginx e o uwsgi. Pronto! Os novos usuários receberão essa nova mensagem! Não esqueça de commitar essas alterações no seu tema e no seu remote para que você as tenha em uma ocasião futura. 
