@@ -26,3 +26,9 @@ Para editar essa mensagem você precisa fazer uma **customização do tema padr�
 ## Customizando template padrão > mudança de mensagem de email para novos cadastros
 
 1. Siga os procedimentos descritos em  [configurando um novo tema](config_theme.md) e ative o tema preterido. Obs: tenha certeza de que está com o tema ativo em uso e que não está mais usando o mesmo tema como pacote. 
+
+2. Dentro do seu tema, na pasta **templates** > **account** > **email** você vai encontrar dois arquivos: email_confirmation_message.txt e email_confirmation_subject.txt. Edite esses dois arquivos com o texto que deseja. 
+
+![selecao_220](https://user-images.githubusercontent.com/641411/31837891-4b642ffa-b5b9-11e7-86e2-9d1ab58bef8f.png)
+
+3. Salve, de um make update na sua aplicação, reinicie o nginx e o uwsgi. Pronto! Os novos usuários receberão essa nova mensagem! 
