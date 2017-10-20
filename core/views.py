@@ -54,8 +54,6 @@ class HomeView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super(HomeView, self).get_context_data(**kwargs)
-        if hasattr(settings, 'INTEGRATION_LOGIN_URL'):
-            context['integration_login_url'] = settings.INTEGRATION_LOGIN_URL
         return context
 
 

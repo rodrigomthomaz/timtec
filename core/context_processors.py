@@ -8,10 +8,14 @@ def contact_form(request):
 
 
 def site_settings(request):
-    return {'site': {'domain': settings.SITE_DOMAIN,
-                     'home': settings.SITE_HOME,
-                     'name': settings.SITE_NAME,
-                     'YOUTUBE_API_KEY': settings.YOUTUBE_API_KEY}}
+    context = {'site': {'domain': settings.SITE_DOMAIN,
+                        'home': settings.SITE_HOME,
+                        'name': settings.SITE_NAME,
+                        'YOUTUBE_API_KEY': settings.YOUTUBE_API_KEY}}
+
+    if hasattr(settings, 'INTEGRATION_LOGIN_URL'):
+        context['site']['integration_login_url'] = settings.INTEGRATION_LOGIN_URL
+    return context
 
 
 def get_current_path(request):
