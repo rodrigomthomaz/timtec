@@ -39,6 +39,8 @@
                 <div class="pull-right message-timestamp">{% verbatim %}{{message.date|date:'dd/MM/yy HH:mm'}}{% endverbatim %}</div>
             </div>
 
+
+            {% block message-answers %}
             <div class="message-body"
                 ng-repeat="answer in message.answers"
                 ng-attr-title="{% verbatim %}{{answer.date|date:'dd/MM/yy HH:mm'}}{% endverbatim %}">
@@ -54,11 +56,12 @@
                 <div class="pull-right message-timestamp">{% verbatim %}{{answer.date|date:'dd/MM/yy HH:mm'}}{% endverbatim %}</div>
             </div>
 
-
             <hr />
+            {% endblock %}
 
 
             {% if user|is_assistant_or_coordinator:course %}
+                {% block answer-professor %}
                 <div class="message-answer">
                     <h2>{% trans 'RESPONDER' %}</h2>
                     <div class="alert alert-danger" role="alert" ng-if="new_answer_validation_error">
@@ -77,6 +80,7 @@
                     </div>
                 </div>
                 <hr />
+                {% endblock %}
                 <div class='btn btn-primary' ng-hide="show_recipients" ng-click="toggle_recipient_list()">{% trans "Show Recipient List" %}</div>
                 <div class='btn btn-primary' ng-hide="!show_recipients" ng-click="toggle_recipient_list()">{% trans "Hide Recipient List" %}</div>
 
@@ -100,23 +104,25 @@
                     </div>
                 </div>
             {% else %}
-                <div class="message-answer">
-                    <h2>{% trans 'RESPONDER' %}</h2>
-                    <div class="alert alert-danger" role="alert" ng-if="new_answer_validation_error">
-                        <ul>
-                            <li><a href="#wmd-input"></a></li>
-                        </ul>
-                    </div>
-                    <div class="form-group text-editor">
-                        <div class="wmd-panel" markdowneditor="true">
-                            <div id="wmd-button-bar" class="js-button-bar"></div>
-                            <textarea ng-model="new_answer" class="form-control" id="wmd-input" rows="10"></textarea>
+                {% block answer-normal-user %}
+                    <div class="message-answer">
+                        <h2>{% trans 'RESPONDER' %}</h2>
+                        <div class="alert alert-danger" role="alert" ng-if="new_answer_validation_error">
+                            <ul>
+                                <li><a href="#wmd-input"></a></li>
+                            </ul>
+                        </div>
+                        <div class="form-group text-editor">
+                            <div class="wmd-panel" markdowneditor="true">
+                                <div id="wmd-button-bar" class="js-button-bar"></div>
+                                <textarea ng-model="new_answer" class="form-control" id="wmd-input" rows="10"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group textright bottom">
+                            <button ng-click="answer_as_new_message()" class="btn btn-success">{% trans 'Send' %}</button>
                         </div>
                     </div>
-                    <div class="form-group textright bottom">
-                        <button ng-click="answer_as_new_message()" class="btn btn-success">{% trans 'Send' %}</button>
-                    </div>
-                </div>
+                {% endblock %}
             {% endif %}
         </div>
     </div>
