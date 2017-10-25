@@ -21,7 +21,7 @@ from rest_framework import generics
 
 from core.permissions import IsAdmin
 
-from allauth.account.views import LoginView
+from allauth.account.views import LoginView, PasswordResetView
 from django.conf import settings
 
 
@@ -236,6 +236,14 @@ class CustomLoginView(LoginView):
 
     def get(self, request, *args, **kwargs):
         response = super(CustomLoginView, self).get(request, *args, **kwargs)
+        if hasattr(settings, 'INTEGRATION_LOGIN_URL'):
+            return redirect(settings.INTEGRATION_LOGIN_URL)
+        return response
+
+
+class CustomPasswordResetView(PasswordResetView):
+    def get(self, request, *args, **kwargs):
+        response = super(CustomPasswordResetView, self).get(request, *args, **kwargs)
         if hasattr(settings, 'INTEGRATION_LOGIN_URL'):
             return redirect(settings.INTEGRATION_LOGIN_URL)
         return response
