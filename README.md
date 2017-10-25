@@ -24,18 +24,12 @@ A tecnologia e os conteúdos da plataforma TIM Tec estão sendo compartilhados c
 ## Instalação e configurações
 Para acessar a documentação completa, veja a pasta [docs](docs) na raiz da aplicação.
 
-* [Instalação (Deploy)](docs/instalacao_e_configuracao/timtec_deploy.md)
-* [Atualização (Update)](docs/instalacao_e_configuracao/timtec_update.md)
-* [ATUALIZAÇÃO a partir da versão 3.0.10 ou inferior](docs/instalacao_e_configuracao/Atualizando-a-partir-da-versão-3.0.10-ou-inferior.md)
-* [ATUALIZAÇÃO da versão 3.x para 4.0](docs/instalacao_e_configuracao/migracao-ambiente-3.x-4.0.md)
-* [CONFIGURAÇÕES v3.2 ou superior](docs/instalacao_e_configuracao/Configurações.md)
-* [CONFIGURAÇÕES (Versão 3.0.10 e inferiores)](docs/instalacao_e_configuracao/Configurações-(Versão-3.0.10-e-inferiores).md)
-
-
-## Desenvolvimento
-* [Criando ambiente de dev](docs/instalacao_e_configuracao/Criando-Ambiente-de-Desenvolvimento.md)
-* [Temas](docs/instalacao_e_configuracao/Temas.md)
-* [Tutorial para criação de tema](docs/instalacao_e_configuracao/Tutorial-para-criação-de-tema.md)
+* [Instalação (Deploy)](docs/deploy.md)
+* [Atualização (Update)](docs/docs/deploy_update.md)
+* [Atualização a partir da versão 3.0.10 ou inferior](docs/config_update_from_3.0.10_or_less.md)
+* [Atualização da versão 3.x para 4.0](docs/docs/deploy_migration_from_3.x_to_4.0.md)
+* [Configurações v3.2 ou superior](docs/config.md)
+* [Configurações (Versão 3.0.10 e inferiores)](docs/config_under_3.0.10_and_less.md)
 
 
 ## Licença - AGPLV3
