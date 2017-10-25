@@ -8,7 +8,7 @@ from django.views.generic import TemplateView
 from accounts.views import (ProfileEditView, ProfileView, UserSearchView,
                             TimtecUserViewSet, TimtecUserAdminViewSet, StudentSearchView,
                             AcceptTermsView, UserSocialAccountCreateView, UserSocialAccountDeleteView,
-                            StateViewSet, CityViewSet)
+                            StateViewSet, CityViewSet, CustomLoginView)
 
 from core.views import (CourseView, GenericCourseView, CourseViewSet,
                         CourseProfessorViewSet, EnrollCourseView, HomeView,
@@ -161,6 +161,7 @@ urlpatterns = patterns(
     url(r'^course/(?P<course_slug>[-a-zA-Z0-9_]+)/reports/?$', GenericCourseView.as_view(template_name="administration/stats.html"), name='reports'),
 
     # Authentication
+    url(r'^accounts/login/', CustomLoginView.as_view(), name='account_login'),
     url(r'^logout/', 'django.contrib.auth.views.logout', {'next_page': '/'}, name='timtec_logout'),
 
     url(r'^dashboard/', TemplateView.as_view(template_name="dashboard.html")),
