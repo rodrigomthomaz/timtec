@@ -442,6 +442,7 @@ class LessonSerializer(serializers.ModelSerializer):
                 activity_id = activity_data.pop('id', None)
                 activity, _ = Activity.objects.get_or_create(id=activity_id)
                 activity.comment = activity_data.get('comment', None)
+                activity.negative_feedback = activity_data.get('negative_feedback', None)
                 activity.data = activity_data.get('data', None)
                 activity.expected = activity_data.get('expected', None)
                 activity.type = activity_data.get('type', None)
