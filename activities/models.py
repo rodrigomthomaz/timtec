@@ -28,8 +28,7 @@ class Activity(models.Model):
     expected = JSONField(_('Expected answer'), blank=True)
     unit = models.ForeignKey(Unit, verbose_name=_('Topic'), null=True, blank=True, related_name='activities')
     comment = models.TextField(_('Comment'), blank=True, null=True)
-    positive_feedback = models.TextField(_('Positive Feedback'), blank=True)
-    negative_feedback = models.TextField(_('Negative Feedback'), blank=True)
+    negative_feedback = models.TextField(_('Negative Feedback'), blank=True, null=True)
     image = models.ImageField(_('Image'), upload_to='activities', null=True, blank=True)
 
     class Meta:
