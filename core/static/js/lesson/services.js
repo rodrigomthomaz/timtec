@@ -67,4 +67,8 @@
         };
     }]);
 
+    app.factory('MessageToCoord', function($resource){
+            return $resource('/api/message_to_coord/', {}, {});
+    });
+
 })(angular);

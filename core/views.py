@@ -30,7 +30,7 @@ from .serializers import (CourseSerializer, CourseProfessorSerializer,
                           CourseStudentSerializer, ClassSerializer,
                           FlatpageSerializer, CourseAuthorPictureSerializer,
                           CourseAuthorSerializer, ClassSimpleSerializer,
-                          CourseCertificationSerializer, MessageAnswerSerializer,
+                          CourseCertificationSerializer, MessageAnswerSerializer, MessageToCoordSerializer,
                           CertificationProcessSerializer, UserMessageSerializer,
                           EvaluationSerializer, ProfileSerializer, ProfessorMessageUserDetailsSerializer,
                           IfCertificateTemplateSerializer, CertificateTemplateImageSerializer, LessonThumbSerializer)
@@ -590,6 +590,13 @@ class MessageAnswerViewSet(viewsets.ModelViewSet):
         answer = serializer.instance
         answer.message.users_that_read.clear()
         answer.message.users_that_read.add(answer.user)
+
+
+class MessageToCoordViewSet(viewsets.ModelViewSet):
+    model = ProfessorMessage
+    serializer_class = MessageToCoordSerializer
+    queryset = ProfessorMessage.objects.all()
+    permission_classes = (MessageAnswerPermission, )
 
 
 class CourseViewSet(viewsets.ModelViewSet):
