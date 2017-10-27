@@ -24,6 +24,22 @@ class MessageAnswerSerializer(serializers.ModelSerializer):
         fields = ('message', 'user', 'text', 'date', 'user_fullname', 'user_id', 'user_username')
 
 
+class MessageToCoordSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = ProfessorMessage
+        fields = ('professor', 'subject', 'message', 'course')
+
+    def create(self, *args, **kwargs):
+        new_message = super(MessageToCoordSerializer, self).create(*args, **kwargs)
+        for course_professor in new_message.course.course_professors.all():
+            new_message.users.add(course_professor.user)
+        new_message.users.add(new_message.professor)
+        new_message.users_that_read.add(new_message.professor)
+        new_message.save()
+        return new_message
+
+
 class ProfessorMessageSerializer(serializers.ModelSerializer):
 
     professor = TimtecUserSerializer(read_only=True)

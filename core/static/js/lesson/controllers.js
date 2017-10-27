@@ -3,8 +3,8 @@
 
     var app = angular.module('lesson.controllers', ['ngSanitize']);
 
-    app.controller('MainCtrl', ['$scope', '$sce', 'LessonData', 'Answer', 'Progress', '$location', 'youtubePlayerApi', 'resolveActivityTemplate', '$uibModal', 'Student',
-        function ($scope, $sce, LessonData, Answer, Progress, $location, youtubePlayerApi, resolveActivityTemplate, $uibModal, Student) {
+    app.controller('MainCtrl', ['$scope', '$sce', 'LessonData', 'Answer', 'Progress', '$location', 'youtubePlayerApi', 'resolveActivityTemplate', '$uibModal', 'Student', 'MessageToCoord',
+        function ($scope, $sce, LessonData, Answer, Progress, $location, youtubePlayerApi, resolveActivityTemplate, $uibModal, Student, MessageToCoord) {
 
             youtubePlayerApi.events.onStateChange = function(event){
                 window.onPlayerStateChange.call($scope.currentUnit, event);
@@ -247,6 +247,30 @@
                     $scope.courseComplete();
                 }
             });
+
+            $scope.new_message_to_coord = function(){
+                var modalInstance = $uibModal.open({
+                    templateUrl: 'messageToCoord.html',
+                    controller: MessageToCoordModalInstanceCtrl
+                });
+
+            };
+
+            var MessageToCoordModalInstanceCtrl = function($scope, $uibModalInstance){
+                $scope.new_message = new MessageToCoord();
+                $scope.new_message.course = $scope.lesson.course;
+                $scope.new_message.professor = window.USER_ID;
+
+                $scope.cancel = function () {
+                    $uibModalInstance.dismiss();
+                };
+
+                $scope.send = function(){
+                    $scope.new_message.$save(function(){
+                        $uibModalInstance.close();
+                    });
+                };
+            };
 
             $scope.courseComplete = function () {
                 var modalInstance = $uibModal.open({
