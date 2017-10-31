@@ -15,6 +15,7 @@
         'notes',
         'header',
         'directives.layout',
+        'ui.bootstrap',
     ]);
 
 })(angular);

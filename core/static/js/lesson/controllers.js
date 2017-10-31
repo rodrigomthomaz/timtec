@@ -1,7 +1,7 @@
 (function(angular){
     'use strict';
 
-    var app = angular.module('lesson.controllers', ['ngSanitize']);
+    var app = angular.module('lesson.controllers', ['ngSanitize', 'ui.tinymce', 'ui.bootstrap']);
 
     app.controller('MainCtrl', ['$scope', '$sce', 'LessonData', 'Answer', 'Progress', '$location', 'youtubePlayerApi', 'resolveActivityTemplate', '$uibModal', 'Student', 'MessageToCoord',
         function ($scope, $sce, LessonData, Answer, Progress, $location, youtubePlayerApi, resolveActivityTemplate, $uibModal, Student, MessageToCoord) {
@@ -257,6 +257,16 @@
             };
 
             var MessageToCoordModalInstanceCtrl = function($scope, $uibModalInstance){
+
+                $scope.tinymceOptions = {
+                    resize: false,
+                    menubar:false,
+                    statusbar: false,
+
+                    plugins: 'textcolor link',
+                    toolbar: "undo redo styleselect bold italic forecolor backcolor link",
+                };
+
                 $scope.new_message = new MessageToCoord();
                 $scope.new_message.course = $scope.lesson.course;
                 $scope.new_message.professor = window.USER_ID;
