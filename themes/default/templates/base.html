@@ -183,28 +183,33 @@
     </div>
     {% include 'footer.html' %}
 
-{% if user.is_authenticated %}
-    <!-- <script type="text/javascript">
-    ga('set', 'dimension1', '{{ user.id }}');
-    ga('set', 'dimension2', '{{ user.get_user_type }}');
-    ga('set', 'dimension3', '{{ user.is_pilot }}');
-    </script> -->
-{% else %}
-    {% include 'account/login_modal.html' %}
-    <script type="text/javascript" charset="utf-8">
-        $(document).ready(function() {
-            var $modal = $("#login-modal");
-            var $next = $modal.find('input[name=next]');
-            $('a.js-login-required').click(function(e){
-                $next.val($(this).attr('href'));
-                $modal.modal();
-                return false;
+{% if not user.is_authenticated %}
+    {% if site.integration_login_url %}
+        <script type="text/javascript" charset="utf-8">
+            $(document).ready(function() {
+                $('a.js-login-required').click(function(e){
+                    window.href = {{ site.integration_login_url }};
+                });
             });
-            $('.dropdown-menu form').click(function(e) {
-                e.stopPropagation();
+        </script>
+        <li><a href="{{ site.integration_login_url }}">{% trans 'Sign In' %}</a></li>
+    {% else %}
+        {% include 'account/login_modal.html' %}
+        <script type="text/javascript" charset="utf-8">
+            $(document).ready(function() {
+                var $modal = $("#login-modal");
+                var $next = $modal.find('input[name=next]');
+                $('a.js-login-required').click(function(e){
+                    $next.val($(this).attr('href'));
+                    $modal.modal();
+                    return false;
+                });
+                $('.dropdown-menu form').click(function(e) {
+                    e.stopPropagation();
+                });
             });
-        });
-    </script>
+        </script>
+    {% endif %}
 {% endif %}
 
 </body>
