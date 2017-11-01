@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+ -*- coding: utf-8 -*-
 # https://docs.djangoproject.com/en/dev/ref/settings/
 
 # TODO: you NEED to change this to your domain name ######
@@ -16,9 +16,9 @@ INSTALLED_APPS += (
   # 'timtec_theme',  # Use this to Timtec theme
 )
 
-# TODO: Clone into /themes/themes_custom your theme and change this 
+# TODO: Clone into /themes/themes_custom your theme and change this
 # path name to the your theme
-# TIMTEC_THEME = 'themes_custom/path-to-theme1/path-to-theme1'  
+# TIMTEC_THEME = 'themes_custom/path-to-theme1/path-to-theme1'
 TIMTEC_THEME = 'timtec_theme'  # Use this to Timtec theme
 
 COMPRESS_PRECOMPILERS = (
@@ -70,6 +70,7 @@ if DEBUG:
     INSTALLED_APPS += (
         'debug_toolbar',
     )
+    MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware',)
 
 LOGGING = {
     'version': 1,
