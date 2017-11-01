@@ -4,7 +4,7 @@
 
 > **ATENÇÃO 2:** quando o comando precisar ser executado como **root** ele virá precedido desta indicação **root@server#**. Quando o comando precisar ser executado como **usuário da aplicação** ele virá precedido desta indicação **user@server$**. 
 
-> **ATENÇÃO 3:** se tiver dúvidas, assista ao vídeo-log do processo de instalação aqui: https://www.youtube.com/watch?v=TJJZKfTYojg
+> **ATENÇÃO 3:** se tiver dúvidas, assista ao vídeo-log do processo de instalação aqui: https://youtu.be/Xg_YwDmCwVs
 
 ## Prepare o servidor
 
