@@ -1,4 +1,4 @@
- -*- coding: utf-8 -*-
+#-*- coding: utf-8 -*-
 # https://docs.djangoproject.com/en/dev/ref/settings/
 
 # TODO: you NEED to change this to your domain name ######
