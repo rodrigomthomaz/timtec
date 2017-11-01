@@ -113,11 +113,11 @@ root@server# passwd timtec-production
 timtec-production@server$ git clone https://github.com/institutotim/timtec.git
 ```
 
-* Faça checkout para versão atual (4.1.9)
+* Faça checkout para versão atual (4.1.10)
 
 ```
 timtec-production@server$ cd timtec
-timtec-production@server$ git checkout 4.1.9
+timtec-production@server$ git checkout 4.1.10
 ```
 
 ## Criando Banco de dados
