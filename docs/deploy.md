@@ -10,7 +10,6 @@
 
 Você precisa de um servidor com algum dos seguintes sistemas operacionais:
 
-* Ubuntu 14.04
 * Ubuntu 16.04 
 * Debian 9.0
 
@@ -114,11 +113,11 @@ root@server# passwd timtec-production
 timtec-production@server$ git clone https://github.com/institutotim/timtec.git
 ```
 
-* Faça checkout para versão atual (4.1.5)
+* Faça checkout para versão atual (4.1.8)
 
 ```
 timtec-production@server$ cd timtec
-timtec-production@server$ git checkout 4.1.5
+timtec-production@server$ git checkout 4.1.8
 ```
 
 ## Criando Banco de dados
@@ -253,4 +252,4 @@ root@server# service nginx start
 
 A instalação não terminou ainda! Precisamos criar o usuário inicial, configurar o domínio do django, o envio de email e a API do youtube.
 
-Proceda a página de [Configurações](Configurações.md) para continuar.
+Proceda a página de [Configurações](config.md) para continuar.
