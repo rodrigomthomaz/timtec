@@ -253,4 +253,4 @@ root@server# service nginx start
 
 A instalação não terminou ainda! Precisamos criar o usuário inicial, configurar o domínio do django, o envio de email e a API do youtube.
 
-Proceda a página de [Configurações](Configurações.md) para continuar.
+Proceda a página de [Configurações](config.md) para continuar.
