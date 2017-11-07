@@ -1,13 +1,15 @@
 (function(angular){
     'use strict';
-    var app = angular.module('header.controllers', []);
+    var app = angular.module('header.controllers', ['ngCookies']);
 
     app.controller('HeaderCtrl', [
         '$scope',
         '$rootScope',
         '$interval',
+        '$uibModal',
+        '$cookieStore',
         'UserMessage',
-        function ($scope, $rootScope, $interval, UserMessage) {
+        function ($scope, $rootScope, $interval, $uibModal, $cookieStore, UserMessage) {
 
             $scope.load_messages = function(){
                 $scope.theres_new_messages = false;
@@ -34,6 +36,22 @@
                     $scope.load_messages();
                 });
             };
+
+            if(window.LOAD_BANNER){
+                var banner_showed = $cookieStore.get('banner_showed_' + window.USER_ID);
+                if (!banner_showed){
+                    var modalInstance = $uibModal.open({
+                        templateUrl: 'banner.html',
+                        controller: function($scope, $uibModalInstance){
+                            $scope.cancel = function () {
+                                $uibModalInstance.dismiss();
+                            };
+                        }
+                    });
+                    $cookieStore.put('banner_showed_' + window.USER_ID, true);
+                }
+            }
+
         }
     ]);
 

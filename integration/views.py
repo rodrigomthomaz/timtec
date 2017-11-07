@@ -45,11 +45,17 @@ class IntegrationController(View):
         if not user:
             return JsonResponse({'error': 'connect_failed'})
 
+        logout_user_id = False
         if request.user.is_authenticated:
+            logout_user_id = request.user.id
             logout(request)
 
         user.backend = 'django.contrib.auth.backends.ModelBackend'
 
         login(request, user)
+        response = redirect('home_view')
 
-        return redirect('home_view')
+        if logout_user_id:
+            response.delete_cookie('banner_showed_' + str(logout_user_id))
+
+        return response

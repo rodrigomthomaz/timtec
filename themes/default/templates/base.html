@@ -188,7 +188,7 @@
         <script type="text/javascript" charset="utf-8">
             $(document).ready(function() {
                 $('a.js-login-required').click(function(e){
-                    window.href = {{ site.integration_login_url }};
+                    window.href = "{{ site.integration_login_url }}";
                 });
             });
         </script>
@@ -211,6 +211,6 @@
         </script>
     {% endif %}
 {% endif %}
-
+    {% block modals %}{% endblock %}
 </body>
 </html>
