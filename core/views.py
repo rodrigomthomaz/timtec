@@ -3,6 +3,7 @@ import json
 import time
 import datetime
 
+from django.db.models import Q
 from django.db import IntegrityError
 from django.core.urlresolvers import reverse_lazy
 from django.core.exceptions import PermissionDenied, ObjectDoesNotExist
@@ -992,4 +993,17 @@ class FlatpageViewSet(viewsets.ModelViewSet):
         url_prefix = self.request.query_params.get('url_prefix')
         if url_prefix:
             queryset = queryset.filter(url__startswith=url_prefix)
+        return queryset
+
+
+class UserAllMessagesViewSet(LoginRequiredMixin, viewsets.ModelViewSet):
+
+    model = ProfessorMessage
+    queryset = ProfessorMessage.objects.get(is_system_message=False)
+    serializer_class = ProfessorMessageSerializer
+
+    def get_queryset(self):
+        queryset = super(UserAllMessagesViewSet, self).get_queryset()
+        user = self.request.user
+        queryset = queryset.filter(Q(user=user) | Q(users_in=[user]))
         return queryset

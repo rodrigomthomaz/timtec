@@ -193,6 +193,7 @@ urlpatterns = patterns(
     url(r'^djangular.js',
         TemplateView.as_view(template_name='djangular.js', content_type='text/javascript'),
         name='djangular'),
+    url(r'messages', TemplateView.as_view(template_name='user_messages.html'), name='user_all_messages'),
 
 )
 

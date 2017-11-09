@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% load compress %}
+{% load static %}
+{% load i18n %}
+
+{% block js %}
+    {{ block.super }}
+    <script type="text/javascript" src="{% static 'js/messages/app.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/messages/controllers.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/messages/services.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+    <section id="messages-content" class="container">
+        <header class="secondary-header" ng-controller="AllMessageController">
+            <div class="row">
+                <div class="col-xs-12">
+                    <a class="new-message btn btn-lg btn-danger uppercase" ng-click="new_message()">{% trans "Messages" %}</a>
+                </div>
+            </div>
+    </section>
+{% endblock %}
