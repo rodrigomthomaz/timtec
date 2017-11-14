@@ -78,10 +78,19 @@ class UserMessageSerializer(serializers.ModelSerializer):
 class UserAllMessagesSerializer(serializers.ModelSerializer):
 
     answers = MessageAnswerSerializer(many=True)
+    professor = serializers.SerializerMethodField()
+    message_clean = serializers.SerializerMethodField()
 
     class Meta:
         model = ProfessorMessage
-        fields = ('id', 'subject', 'message', 'date', 'professor', 'answers')
+        fields = ('id', 'subject', 'message', 'message_clean', 'date', 'professor', 'answers')
+
+    def get_professor(self, obj):
+        # todo: verify if user need to see "tutor"
+        return obj.professor.get_full_name()
+
+    def get_message_clean(self, obj):
+        return obj.message
 
 
 class ProfessorMessageUserDetailsSerializer(serializers.ModelSerializer):

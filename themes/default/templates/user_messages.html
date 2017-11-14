@@ -18,6 +18,63 @@
     {% endcompress %}
 {% endblock %}
 
+{% block css %}
+    {% compress css %}
+        <link rel="stylesheet" href="{% static 'tinymce-dist/skins/lightgray/skin.min.css' %}" type="text/css" />
+        <link rel="stylesheet" href="{% static 'tinymce-dist/skins/lightgray/skin.ie7.min.css' %}" type="text/css" />
+        <link rel="stylesheet" href="{% static 'tinymce-dist/skins/lightgray/content.min.css' %}" type="text/css" />
+    {% endcompress %}
+    <style>
+        .nav-tabs .glyphicon:not(.no-margin) { margin-right:10px; }
+        .tab-pane .list-group-item:first-child {border-top-right-radius: 0px;border-top-left-radius: 0px;}
+        .tab-pane .list-group-item:last-child {border-bottom-right-radius: 0px;border-bottom-left-radius: 0px;}
+        .tab-pane .list-group .checkbox { display: inline-block;margin: 0px; }
+        .tab-pane .list-group .glyphicon { margin-right:5px; }
+        .tab-pane .list-group .glyphicon:hover { color:#FFBC00; }
+        .message-actions label, .message-actions input[type="checkbox"] {margin: 0;}
+
+.dropdown.dropdown-lg .dropdown-menu {
+    margin-top: -1px;
+    padding: 6px 20px;
+}
+.input-group-btn .btn-group {
+    display: flex !important;
+}
+.btn-group .btn {
+    border-radius: 0;
+    margin-left: -1px;
+}
+.btn-group .btn:last-child {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+.btn-group .form-horizontal .btn[type="submit"] {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+.form-horizontal .form-group {
+    margin-left: 0;
+    margin-right: 0;
+}
+.form-group .form-control:last-child {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+@media screen and (min-width: 768px) {
+    /*#adv-search {
+        width: 500px;
+    }
+    .dropdown.dropdown-lg {
+        position: static !important;
+    }*/
+    .dropdown.dropdown-lg .dropdown-menu {
+        width: 100%;
+    }
+}
+    </style>
+{% endblock %}
+
 {% block body_attrs %}ng-app='messages'{% endblock %}
 
 {% block content %}
@@ -29,15 +86,109 @@
                 </div>
             </div>
         </header>
+<div class="row">
+    <div class="col-sm-12 col-md-6">
+        <div class="input-group" id="adv-search">
+            <input type="text" class="form-control" placeholder="Search for snippets" />
+            <div class="input-group-btn">
+                <div class="btn-group" role="group">
+                    <div class="dropdown dropdown-lg">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></button>
+                        <div class="dropdown-menu dropdown-menu-right" role="menu">
+                            <form class="form-horizontal" role="form">
+                              <div class="form-group">
+                                <label for="filter">Filter by</label>
+                                <select class="form-control">
+                                    <option value="0" selected>All Snippets</option>
+                                    <option value="1">Featured</option>
+                                    <option value="2">Most popular</option>
+                                    <option value="3">Top rated</option>
+                                    <option value="4">Most commented</option>
+                                </select>
+                              </div>
+                              <div class="form-group">
+                                <label for="contain">Author</label>
+                                <input class="form-control" type="text" />
+                              </div>
+                              <div class="form-group">
+                                <label for="contain">Contains the words</label>
+                                <input class="form-control" type="text" />
+                              </div>
+                              <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                            </form>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12 col-md-6">
+        <div class="btn-group">
+            <button type="button" class="btn btn-default message-actions">
+                <label>
+                    <input type="checkbox">
+                </label>
+            </button>
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                <span class="caret"></span><span class="sr-only">Toggle Dropdown</span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+                <li><a href="#">All</a></li>
+                <li><a href="#">None</a></li>
+                <li><a href="#">Read</a></li>
+                <li><a href="#">Unread</a></li>
+                <li><a href="#">Starred</a></li>
+                <li><a href="#">Unstarred</a></li>
+            </ul>
+        </div>
+        <button type="button" class="btn btn-default" data-toggle="tooltip" title="Refresh">
+            &nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-refresh"></span>&nbsp;&nbsp;&nbsp;</button>
+        <div class="pull-right">
+            <span class="text-muted"><b>1</b>–<b>50</b> of <b>160</b></span>
+            <div class="btn-group btn-group-sm">
+                <button type="button" class="btn btn-default">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </button>
+                <button type="button" class="btn btn-default">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<hr>
+
         <div class="row">
             <div class="col-xs-12" ng-show="loading_messages">
                 <p>{% trans 'Loading messages' %}...   <i class="loading fa fa-refresh fa-spin"></i></p>
             </div>
-            <div class="col-xs-12" ng-show="!loading_messages" ng-repeat="message in messages">
-                {% verbatim %}
-                    {{ message }}
-                {% endverbatim %}
+
+        </div>
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="tab-content">
+            <div class="tab-pane active">
+                <div class="list-group">
+                    {% verbatim %}
+                        <a href="#" class="list-group-item" ng-repeat="message in messages">
+                            <label>
+                                <input type="checkbox">
+                            </label>
+                            <span class="name" style="min-width: 120px; display: inline-block;">{{ message.professor }}</span>
+                            <span class="">{{ message.subject }}</span>
+                            <span class="text-muted" style="font-size: 11px;" >{{message.message_clean}}</span>
+                            <span class="badge">{{ message.date|date:'dd/MM/yy HH:mm' }}</span>
+                            </span>
+                        </a>
+                    {% endverbatim %}
+                </div>
             </div>
         </div>
+
+    </div>
+</div>
+
     </section>
 {% endblock %}
