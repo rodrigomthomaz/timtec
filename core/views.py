@@ -27,7 +27,7 @@ from notes.models import Note
 from .serializers import (CourseSerializer, CourseProfessorSerializer,
                           CourseThumbSerializer, LessonSerializer,
                           StudentProgressSerializer, CourseNoteSerializer,
-                          LessonNoteSerializer, ProfessorMessageSerializer,
+                          LessonNoteSerializer, ProfessorMessageSerializer, UserAllMessagesSerializer,
                           CourseStudentSerializer, ClassSerializer,
                           FlatpageSerializer, CourseAuthorPictureSerializer,
                           CourseAuthorSerializer, ClassSimpleSerializer,
@@ -999,11 +999,12 @@ class FlatpageViewSet(viewsets.ModelViewSet):
 class UserAllMessagesViewSet(LoginRequiredMixin, viewsets.ModelViewSet):
 
     model = ProfessorMessage
-    queryset = ProfessorMessage.objects.get(is_system_message=False)
-    serializer_class = ProfessorMessageSerializer
+    queryset = ProfessorMessage.objects.filter(is_system_message=False)
+    serializer_class = UserAllMessagesSerializer
 
     def get_queryset(self):
         queryset = super(UserAllMessagesViewSet, self).get_queryset()
         user = self.request.user
-        queryset = queryset.filter(Q(user=user) | Q(users_in=[user]))
+        queryset = queryset.filter(Q(professor=user) | Q(users=user)).exclude(users_that_delete=user) \
+            .distinct().order_by('-date')
         return queryset

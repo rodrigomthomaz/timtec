@@ -196,4 +196,15 @@
             };
         }
     ]);
+
+    module.controller('AllMessagesController', ['$scope', 'UserAllMessages',
+        function($scope, UserAllMessages) {
+            $scope.loading_messages = true;
+            $scope.messages = UserAllMessages.query({}, function(msgs){
+                $scope.loading_messages = false;
+                console.log('a', msgs)
+            });
+        }
+    ]);
+
 })(angular);

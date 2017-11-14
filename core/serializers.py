@@ -75,6 +75,15 @@ class UserMessageSerializer(serializers.ModelSerializer):
         return Truncator(obj.subject).chars(45)
 
 
+class UserAllMessagesSerializer(serializers.ModelSerializer):
+
+    answers = MessageAnswerSerializer(many=True)
+
+    class Meta:
+        model = ProfessorMessage
+        fields = ('id', 'subject', 'message', 'date', 'professor', 'answers')
+
+
 class ProfessorMessageUserDetailsSerializer(serializers.ModelSerializer):
 
     professor = TimtecUserSerializer(read_only=True)

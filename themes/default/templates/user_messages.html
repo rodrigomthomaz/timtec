@@ -6,18 +6,38 @@
 
 {% block js %}
     {{ block.super }}
-    <script type="text/javascript" src="{% static 'js/messages/app.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/messages/controllers.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/messages/services.js' %}"></script>
+    {% compress js %}
+        <script type="text/javascript" src="{% static 'js/messages/app.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/messages/controllers.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/messages/services.js' %}"></script>
+        <script type="text/javascript" src="{% static 'angular-ui-tinymce/src/tinymce.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/factories/timtec-models.js' %}"></script>
+        <script type="text/javascript" src="{% static 'checklist-model/checklist-model.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/markdown/app.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/markdown/filters.js' %}"></script>
+    {% endcompress %}
 {% endblock %}
 
+{% block body_attrs %}ng-app='messages'{% endblock %}
+
 {% block content %}
-    <section id="messages-content" class="container">
-        <header class="secondary-header" ng-controller="AllMessageController">
+    <section id="user-all-messages-content" class="container" ng-controller="AllMessagesController">
+        <header class="secondary-header">
             <div class="row">
                 <div class="col-xs-12">
-                    <a class="new-message btn btn-lg btn-danger uppercase" ng-click="new_message()">{% trans "Messages" %}</a>
+                    <h1>{% trans "Messages" %}</h1>
                 </div>
             </div>
+        </header>
+        <div class="row">
+            <div class="col-xs-12" ng-show="loading_messages">
+                <p>{% trans 'Loading messages' %}...   <i class="loading fa fa-refresh fa-spin"></i></p>
+            </div>
+            <div class="col-xs-12" ng-show="!loading_messages" ng-repeat="message in messages">
+                {% verbatim %}
+                    {{ message }}
+                {% endverbatim %}
+            </div>
+        </div>
     </section>
 {% endblock %}
