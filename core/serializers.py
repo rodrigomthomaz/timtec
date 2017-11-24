@@ -1,4 +1,5 @@
 from django.contrib.flatpages.models import FlatPage
+from django.utils.html import strip_tags
 from django.contrib.auth import get_user_model
 from core.models import (Course, CourseProfessor, CourseStudent, Lesson,
                          Video, StudentProgress, Unit, ProfessorMessage,
@@ -90,7 +91,7 @@ class UserAllMessagesSerializer(serializers.ModelSerializer):
         return obj.professor.get_full_name()
 
     def get_message_clean(self, obj):
-        return obj.message
+        return strip_tags(obj.message)
 
 
 class ProfessorMessageUserDetailsSerializer(serializers.ModelSerializer):

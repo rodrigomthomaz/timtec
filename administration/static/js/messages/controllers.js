@@ -200,10 +200,28 @@
     module.controller('AllMessagesController', ['$scope', 'UserAllMessages',
         function($scope, UserAllMessages) {
             $scope.loading_messages = true;
-            $scope.messages = UserAllMessages.query({}, function(msgs){
-                $scope.loading_messages = false;
-                console.log('a', msgs)
-            });
+
+
+            $scope.load_messages = function(){
+                $scope.messages = UserAllMessages.query({}, function(msgs){
+                    $scope.loading_messages = false;
+                });
+            };
+
+            $scope.load_messages();
+
+            $scope.show_message = function(msg) {
+                console.log(msg);
+                $scope.showing_message = msg;
+            };
+
+            $scope.hide_message = function() {
+                delete $scope.showing_message;
+            };
+
+            $scope.answer_message = function(){
+                console.log(answering_message);
+            };
         }
     ]);
 
