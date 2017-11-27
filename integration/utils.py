@@ -46,13 +46,13 @@ def save_integration_data(user, json):
     if not hasattr(user, 'integration_data'):
         user.integration_data = IntegrationData()
 
-    user.integration_data.city = json.get('city')
+    user.integration_data.city = json.get('city').get('name')
     user.integration_data.edition = json.get('edition')
     user.integration_data.formation_type = json.get('formation_type')
     user.integration_data.participation_type = json.get('participation_type')
-    user.integration_data.region = json.get('region')
+    user.integration_data.region = json.get('region').get('name')
     user.integration_data.rf = json.get('rf')
-    user.integration_data.school = json.get('school')
-    user.integration_data.track = json.get('track')
+    user.integration_data.school = json.get('school').get('name')
+    user.integration_data.track = json.get('track').get('name')
 
     user.integration_data.save()
