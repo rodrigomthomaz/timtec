@@ -197,10 +197,9 @@
         }
     ]);
 
-    module.controller('AllMessagesController', ['$scope', 'UserAllMessages',
-        function($scope, UserAllMessages) {
+    module.controller('AllMessagesController', ['$scope', 'UserAllMessages', 'Message', 'AnswerMessage',
+        function($scope, UserAllMessages, Message, AnswerMessage) {
             $scope.loading_messages = true;
-
 
             $scope.load_messages = function(){
                 $scope.messages = UserAllMessages.query({}, function(msgs){
@@ -211,7 +210,6 @@
             $scope.load_messages();
 
             $scope.show_message = function(msg) {
-                console.log(msg);
                 $scope.showing_message = msg;
             };
 
@@ -220,7 +218,46 @@
             };
 
             $scope.answer_message = function(){
-                console.log(answering_message);
+
+                var answer_message = new AnswerMessage({
+                    user: window.USER_ID,
+                    message: $scope.showing_message.id,
+                    text: $scope.new_answer
+                });
+
+                answer_message.$save(function(m){
+                    $scope.showing_message.answers.push(m);
+                    $scope.new_answer = '';
+                }, function (e){
+                    console.log(e);
+                });
+
+            };
+
+            $scope.answer_as_new_message = function(){
+                if (window.USER_ID == $scope.showing_message.professor.id){
+                    $scope.answer_message();
+                    return;
+                }
+                var msg_date = new Date($scope.showing_message.date);
+                msg_date = msg_date.getDate() + '/' + (msg_date.getMonth() + 1) + '/' + msg_date.getFullYear() + ' ' + msg_date.getHours() + ':' + msg_date.getMinutes();
+                var answer_as_new_message = new Message({
+                    course: null,
+                    users: [$scope.showing_message.professor.id, window.USER_ID],
+                    subject: 'RE: '+ $scope.showing_message.subject,
+                    message: '<blockquote>'
+                                + $scope.showing_message.message
+                                + '<p>'
+                                + 'Enviado em ' + msg_date
+                                + '</p>'
+                            + '</blockquote><br />' + $scope.new_answer
+                });
+                answer_as_new_message.$save(
+                    function(m){
+                        $scope.messsages.push(m);
+                        $scope.show_message(m);
+                    }
+                );
             };
         }
     ]);

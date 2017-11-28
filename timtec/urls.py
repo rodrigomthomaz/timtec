@@ -3,6 +3,7 @@ from django.conf import settings
 from django.conf.urls import patterns, include, url
 from django.conf.urls.static import static
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.decorators import login_required
 
 from django.views.generic import TemplateView
 from accounts.views import (ProfileEditView, ProfileView, UserSearchView,
@@ -194,7 +195,7 @@ urlpatterns = patterns(
     url(r'^djangular.js',
         TemplateView.as_view(template_name='djangular.js', content_type='text/javascript'),
         name='djangular'),
-    url(r'messages', TemplateView.as_view(template_name='user_messages.html'), name='user_all_messages'),
+    url(r'messages', login_required(TemplateView.as_view(template_name='user_messages.html')), name='user_all_messages'),
 
 )
 
