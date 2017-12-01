@@ -131,6 +131,12 @@ class ExportCourseView(views.SuperuserRequiredMixin, View):
     def add_files_to_export(tar_file, short_file_path):
         full_file_path = settings.MEDIA_ROOT + '/' + short_file_path
         if os.path.isfile(full_file_path):
+            tar_file.add(full_file_path,
+                         arcname=short_file_path)
+        elif short_file_path[0:6] == '/media':
+            short_file_path = short_file_path.replace('/media', '')
+            full_file_path = settings.MEDIA_ROOT + '/' + short_file_path
+            if os.path.isfile(full_file_path):
                 tar_file.add(full_file_path,
                              arcname=short_file_path)
 
