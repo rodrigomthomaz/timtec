@@ -2,7 +2,7 @@
 
 # TIM Tec
 
-A plataforma de cursos online TIM Tec é um software livre desenvolvido pelo Instituto TIM que utiliza o conceito de MOOC (Massive Open Online Courses), cursos abertos e livres que podem ser feitos simultaneamente por muitas pessoas.
+A plataforma de cursos online TIM Tec é um software livre que utiliza o conceito de MOOC (Massive Open Online Courses), cursos abertos e livres que podem ser feitos simultaneamente por muitas pessoas.
 
 O sistema pode hospedar múltiplos cursos que utilizam videoaulas, além de materiais de apoio e outros links. A ferramenta permite a criação de testes e o uso de emuladores desenvolvidos para que alunos exercitem os conhecimentos abordados. Alunos podem fazer e responder perguntas, ver respostas e favoritar as perguntas dos colegas em um fórum, além de fazer anotações em seu caderno virtual. Gestores podem gerar relatórios de acompanhamento dos cursos, turmas e alunos, acompanhar o progresso de cada participante e habilitar professores tutores quando necessário.
 
@@ -20,6 +20,12 @@ A tecnologia e os conteúdos da plataforma TIM Tec estão sendo compartilhados c
 * Instituto Federal Farroupilha http://mooc.iffarroupilha.edu.br/
 * Instituto Federal do Tocantins http://mooc.ifto.edu.br/
 * Instituto Federal Baiano http://mooc.ifbaiano.edu.br/
+
+Algumas outras iniciativas fora do universo dos IFs:
+
+* http://tecsaladeaula.com.br (consultoria de cursos de gestão na área de educação)
+* http://escoladejornalismo.org (agência de comunicação que usou a ferramenta para ofertar cursos gratuitos sobre jornalismo)
+* http://ead.nutrirnasescolas.com.br (Iniciativa da Fundação Nestle para o projeto "Nutrir Crianças Saudáveis")
 
 ## Instalação e configurações
 Para acessar a documentação completa, veja a pasta [docs](docs) na raiz da aplicação.
