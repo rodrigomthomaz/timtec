@@ -35,7 +35,9 @@ def load_profile_all():
             for profile in r.json().get('profiles'):
                 try:
                     user = user_model.objects.get(id=profile.get('sub_id'))
+                    print "Added"
                 except user_model.DoesNotExist:
+                    print "Skipped"
                     continue
 
                 save_integration_data(user, profile)
@@ -54,5 +56,9 @@ def save_integration_data(user, json):
     user.integration_data.rf = json.get('rf')
     user.integration_data.school = json.get('school').get('name')
     user.integration_data.track = json.get('track').get('name')
+    user.integration_data.num_stories_total = json.get('num_stories_total')
+    user.integration_data.num_stories_started = json.get('num_stories_started')
+    user.integration_data.num_stories_pending = json.get('num_stories_pending')
+    user.integration_data.num_stories_published = json.get('num_stories_published')
 
     user.integration_data.save()

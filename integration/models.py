@@ -13,3 +13,7 @@ class IntegrationData(models.Model):
     rf = models.CharField(_('RF'), max_length=100, null=True, blank=True)
     school = models.CharField(_('School'), max_length=100, null=True, blank=True)
     track = models.CharField(_('Track'), max_length=100, null=True, blank=True)
+    num_stories_total = models.CharField(_('Stories Total'), max_length=10, null=True, blank=True)
+    num_stories_started = models.CharField(_('Stories Started'), max_length=10, null=True, blank=True)
+    num_stories_pending = models.CharField(_('Stories Pending'), max_length=10, null=True, blank=True)
+    num_stories_published = models.CharField(_('Stories Publised'), max_length=10, null=True, blank=True)
