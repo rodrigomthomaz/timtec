@@ -202,7 +202,7 @@
             $scope.loading_messages = true;
 
             $scope.load_messages = function(){
-                $scope.messages = UserAllMessages.query({}, function(msgs){
+                $scope.messages = UserAllMessages.query({'q': $scope.query}, function(msgs){
                     $scope.loading_messages = false;
                 });
             };
@@ -211,10 +211,21 @@
 
             $scope.show_message = function(msg) {
                 $scope.showing_message = msg;
+                Message.get({messageId: msg.id}, function() {
+                    msg.is_read = true;
+                });
             };
 
             $scope.hide_message = function() {
                 delete $scope.showing_message;
+            };
+
+            $scope.delete_message = function(){
+                console.log($scope.showing_message);
+                Message.delete({messageId: $scope.showing_message.id}, function(){
+                    $scope.messages.splice($scope.messages.indexOf($scope.showing_message), 1);
+                    $scope.hide_message();
+                });
             };
 
             $scope.answer_message = function(){
@@ -259,6 +270,9 @@
                     }
                 );
             };
+
+
+
         }
     ]);
 

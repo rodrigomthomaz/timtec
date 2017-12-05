@@ -38,42 +38,44 @@
             </div>
         </header>
         <div class="row" ng-show="!showing_message">
-            <div class="col-sm-12 col-md-6" >
-                <div class="input-group" id="adv-search">
-                    <input type="text" class="form-control" placeholder="Search for snippets" />
-                    <div class="input-group-btn search-box">
-                        <div class="btn-group" role="group">
-                            <div class="dropdown dropdown-lg">
-                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></button>
-                                <div class="dropdown-menu dropdown-menu-right" role="menu">
-                                    <form class="form-horizontal" role="form">
-                                      <div class="form-group">
-                                        <label for="filter">Filter by</label>
-                                        <select class="form-control">
-                                            <option value="0" selected>All Snippets</option>
-                                            <option value="1">Featured</option>
-                                            <option value="2">Most popular</option>
-                                            <option value="3">Top rated</option>
-                                            <option value="4">Most commented</option>
-                                        </select>
-                                      </div>
-                                      <div class="form-group">
-                                        <label for="contain">Author</label>
-                                        <input class="form-control" type="text" />
-                                      </div>
-                                      <div class="form-group">
-                                        <label for="contain">Contains the words</label>
-                                        <input class="form-control" type="text" />
-                                      </div>
-                                      <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
-                                    </form>
-                                </div>
+            <form ng-submit="load_messages()">
+                <div class="col-sm-12 col-md-6" >
+                    <div class="input-group" id="adv-search">
+                        <input type="text" class="form-control" placeholder="{% trans 'Search' %}..." ng-model="query" />
+                        <div class="input-group-btn search-box">
+                            <div class="btn-group" role="group">
+                                <!-- <div class="dropdown dropdown-lg">
+                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></button>
+                                    <div class="dropdown-menu dropdown-menu-right" role="menu">
+                                        <form class="form-horizontal" role="form">
+                                          <div class="form-group">
+                                            <label for="filter">Filter by</label>
+                                            <select class="form-control">
+                                                <option value="0" selected>All Snippets</option>
+                                                <option value="1">Featured</option>
+                                                <option value="2">Most popular</option>
+                                                <option value="3">Top rated</option>
+                                                <option value="4">Most commented</option>
+                                            </select>
+                                          </div>
+                                          <div class="form-group">
+                                            <label for="contain">Author</label>
+                                            <input class="form-control" type="text" />
+                                          </div>
+                                          <div class="form-group">
+                                            <label for="contain">Contains the words</label>
+                                            <input class="form-control" type="text" />
+                                          </div>
+                                          <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                                        </form>
+                                    </div>
+                                </div> -->
+                                <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
                             </div>
-                            <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
                         </div>
                     </div>
                 </div>
-            </div>
+            </form>
             <div class="col-sm-12 col-md-6">
                 <div class="btn-group">
                     <button type="button" class="btn btn-default message-actions">
@@ -85,12 +87,9 @@
                         <span class="caret"></span><span class="sr-only">Toggle Dropdown</span>
                     </button>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="#">All</a></li>
-                        <li><a href="#">None</a></li>
-                        <li><a href="#">Read</a></li>
-                        <li><a href="#">Unread</a></li>
-                        <li><a href="#">Starred</a></li>
-                        <li><a href="#">Unstarred</a></li>
+                        <li><a href="#" ng-click="select_all()">{% trans 'All' %}</a></li>
+                        <li><a href="#" ng-click="select_read()">{% trans 'Read' %}</a></li>
+                        <li><a href="#" ng-click="select_unread()">{% trans 'Unread' %}</a></li>
                     </ul>
                 </div>
                 <button type="button" class="btn btn-default" data-toggle="tooltip" title="Atualizar" ng-click="load_messages()">
@@ -112,6 +111,9 @@
         <div class="row" ng-show="showing_message">
             <button type="button" class="btn btn-default" data-toggle="tooltip" title="Voltar" ng-click="hide_message()">
                     &nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-undo"></span>&nbsp;&nbsp;&nbsp;</button>
+
+            <button type="button" class="btn btn-default" data-toggle="tooltip" title="Voltar" ng-click="delete_message()">
+                    &nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-trash"></span>&nbsp;&nbsp;&nbsp;</button>
         </div>
         <hr>
 
@@ -129,16 +131,18 @@
                     <div class="tab-pane" ng-class="{'active': !showing_message}">
                         <div class="list-group">
                             {% verbatim %}
-                                <a href="#" ng-click="show_message(message)" class="list-group-item" ng-repeat="message in messages">
+                                <a href="#" class="list-group-item" ng-repeat="message in messages" ng-class="{'read': !message.is_read}">
                                     <label>
-                                        <input type="checkbox">
+                                        <input type="checkbox" ng-model="message.selected">
                                     </label>
-                                    <span class="name" style="min-width: 120px; display: inline-block;">{{ message.professor }}</span>
-                                    <span class="subject" ng-bind-html="message.subject"></span> -
-                                    <span class="text-muted" style="font-size: 11px;" ng-bind-html="message.message_clean|words:15"></span>
-                                    <span class="badge">{{ message.date|date:'dd/MM/yy HH:mm' }}</span>
+                                    <span class="name" ng-click="show_message(message)" style="min-width: 120px; display: inline-block;">{{ message.professor }}</span>
+                                    <span ng-click="show_message(message)" class="subject" ng-bind-html="message.subject"></span> -
+                                    <span ng-click="show_message(message)" class="text-muted" style="font-size: 11px;" ng-bind-html="message.message_clean|words:15"></span>
+                                    <span ng-click="show_message(message)" ng-title="message.date|date:'dd/MM/yy HH:mm'" class="badge">{{ message.date|date:'dd/MM/yy' }}</span>
                                 </a>
                             {% endverbatim %}
+                            <div ng-show="!messages.length && !query">{% trans 'There are no messages' %}</div>
+                            <div ng-show="!messages.length && query">{% trans 'No results found' %}</div>
                         </div>
                     </div>
 

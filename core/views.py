@@ -527,6 +527,7 @@ class UserMessageViewSet(LoginRequiredMixin, viewsets.ModelViewSet):
     model = ProfessorMessage
     lookup_field = 'id'
     serializer_class = UserMessageSerializer
+    permission_classes = (MessageAnswerPermission, )
 
     def get_queryset(self, *args, **kwargs):
         """Some tricks to show first unread, after reads."""
@@ -1007,4 +1008,19 @@ class UserAllMessagesViewSet(LoginRequiredMixin, viewsets.ModelViewSet):
         user = self.request.user
         queryset = queryset.filter(Q(professor=user) | Q(users=user)).exclude(users_that_delete=user) \
             .distinct().order_by('-date')
+
+        course = self.request.query_params.get('course', None)
+        if course:
+            queryset = queryset.filter(course__id=course)
+
+        q = self.request.query_params.get('q', None)
+        if q:
+            queryset = queryset.filter(Q(subject__contains=q) |
+                                       Q(message__contains=q) |
+                                       Q(answers__text__contains=q) |
+                                       Q(answers__user__first_name__contains=q) |
+                                       Q(answers__user__last_name__contains=q) |
+                                       Q(answers__user__email__contains=q) |
+                                       Q(answers__user__username__contains=q))
+
         return queryset

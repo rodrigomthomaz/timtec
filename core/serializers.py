@@ -81,10 +81,12 @@ class UserAllMessagesSerializer(serializers.ModelSerializer):
     answers = MessageAnswerSerializer(many=True)
     professor = serializers.SerializerMethodField()
     message_clean = serializers.SerializerMethodField()
+    course = serializers.CharField(source='course.name')
+    is_read = serializers.SerializerMethodField()
 
     class Meta:
         model = ProfessorMessage
-        fields = ('id', 'subject', 'message', 'message_clean', 'date', 'professor', 'answers')
+        fields = ('id', 'subject', 'message', 'message_clean', 'date', 'professor', 'answers', 'course', 'is_read')
 
     def get_professor(self, obj):
         # todo: verify if user need to see "tutor"
@@ -92,6 +94,12 @@ class UserAllMessagesSerializer(serializers.ModelSerializer):
 
     def get_message_clean(self, obj):
         return strip_tags(obj.message)
+
+    def get_is_read(self, obj):
+        current_user = self.context.get("request").user
+        if obj.users_that_read.filter(id=current_user.id):
+            return True
+        return False
 
 
 class ProfessorMessageUserDetailsSerializer(serializers.ModelSerializer):
