@@ -80,7 +80,7 @@
                 <div class="btn-group">
                     <button type="button" class="btn btn-default message-actions">
                         <label>
-                            <input type="checkbox">
+                            <input type="checkbox" ng-model="checked_all" ng-click="toggle_all()">
                         </label>
                     </button>
                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
@@ -94,6 +94,8 @@
                 </div>
                 <button type="button" class="btn btn-default" data-toggle="tooltip" title="Atualizar" ng-click="load_messages()">
                     &nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-refresh"></span>&nbsp;&nbsp;&nbsp;</button>
+                <button type="button" class="btn btn-default" data-toggle="tooltip" title="Deletar mensagens selecionadas" ng-show="checked_all" ng-click="delete_selected()">
+                    &nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-trash"></span>&nbsp;&nbsp;&nbsp;</button>
                 <div class="pull-right">
                     <span class="text-muted"><b>1</b>–<b>50</b> of <b>160</b></span>
                     <div class="btn-group btn-group-sm">
@@ -133,7 +135,7 @@
                             {% verbatim %}
                                 <a href="#" class="list-group-item" ng-repeat="message in messages" ng-class="{'read': !message.is_read}">
                                     <label>
-                                        <input type="checkbox" ng-model="message.selected">
+                                        <input type="checkbox" ng-model="message.checked" ng-click="select_message(message.checked)">
                                     </label>
                                     <span class="name" ng-click="show_message(message)" style="min-width: 120px; display: inline-block;">{{ message.professor }}</span>
                                     <span ng-click="show_message(message)" class="subject" ng-bind-html="message.subject"></span> -

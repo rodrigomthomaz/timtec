@@ -221,7 +221,6 @@
             };
 
             $scope.delete_message = function(){
-                console.log($scope.showing_message);
                 Message.delete({messageId: $scope.showing_message.id}, function(){
                     $scope.messages.splice($scope.messages.indexOf($scope.showing_message), 1);
                     $scope.hide_message();
@@ -271,7 +270,64 @@
                 );
             };
 
+            $scope.toggle_message = function(msg){
+                msg.checked = !msg.checked;
+            };
 
+            $scope.toggle_all = function(){
+                $scope.messages = $scope.messages.map(function(message){
+                    message.checked = $scope.checked_all;
+                    return message;
+                });
+            };
+
+            $scope.select_all = function(){
+                $scope.checked_all = true;
+                $scope.toggle_all();
+            };
+
+            $scope.select_read = function(){
+                $scope.checked_all = true;
+                $scope.messages = $scope.messages.map(function(message){
+                    message.checked = message.is_read;
+                    return message;
+                });
+            };
+
+            $scope.select_unread = function(){
+                $scope.checked_all = true;
+                $scope.messages = $scope.messages.map(function(message){
+                    message.checked = !message.is_read;
+                    return message;
+                });
+            };
+
+            $scope.select_message = function(checked){
+                if (checked)
+                    $scope.checked_all = true;
+                else {
+                    var checked = false;
+                    angular.forEach($scope.messages, function(message){
+                        if (!checked && message.checked)
+                            checked = true;
+                    });
+                    if (!checked)
+                        $scope.checked_all = false;
+                }
+
+            };
+
+            $scope.delete_selected = function() {
+                angular.forEach($scope.messages, function(message){
+                    if (message.checked)
+                        Message.delete({messageId: message.id});
+
+                });
+                $scope.messages = $scope.messages.filter(function(message) {
+                    return !message.checked;
+                });
+                $scope.checked_all = false;
+            };
 
         }
     ]);
