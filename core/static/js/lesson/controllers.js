@@ -62,9 +62,9 @@
                     $scope.section = 'video';
 
                     youtubePlayerApi.loadPlayer().then(function(player){
-                            if(player.getVideoData() &&
-                                player.getVideoData().video_id === youtube_id) return;
-                            player.cueVideoById(youtube_id);
+                        if(player.getVideoData && player.getVideoData() &&
+                            player.getVideoData().video_id === youtube_id) return;
+                        player.cueVideoById(youtube_id);
                     });
                 } else {
                     if($scope.currentUnit.content) {
@@ -346,7 +346,6 @@
     var lastState = -1;
 
     function  onPlayerStateChange (event) {
-        var video_id = event.target.getVideoData().video_id;
 
         if (event.data == YT.PlayerState.ENDED){
             if(! (lastState === YT.PlayerState.PAUSED ||   // workaround, YT in html5 mode will fire

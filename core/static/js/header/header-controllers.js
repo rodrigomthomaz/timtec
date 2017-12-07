@@ -1,6 +1,6 @@
 (function(angular){
     'use strict';
-    var app = angular.module('header.controllers', ['ngCookies']);
+    var app = angular.module('header.controllers', ['ngCookies', 'ui.bootstrap']);
 
     app.controller('HeaderCtrl', [
         '$scope',
