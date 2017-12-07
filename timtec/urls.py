@@ -40,6 +40,9 @@ from reports.views import UserCourseStats, CourseStatsByLessonViewSet, UserCours
 from rest_framework import routers
 from django_markdown import flatpages
 
+#add to try allauth
+from django.contrib.auth.views import (password_reset, password_reset_done, password_reset_confirm)
+
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin as django_admin
 django_admin.autodiscover()
@@ -163,7 +166,10 @@ urlpatterns = patterns(
 
     # Authentication
     url(r'^accounts/login/', CustomLoginView.as_view(), name='account_login'),
-    url(r'^accounts/password/reset/', CustomPasswordResetView.as_view(), name='account_reset_password'),
+    url(r'^accounts/password/reset/$', CustomPasswordResetView.as_view(), name='account_reset_password'),
+#    url(r'^accounts/password/reset/done/$', password_reset_done, name='password_reset_done'),
+    url(r'^accounts/password/reset/done/$', password_reset_done(template_name="account/email/password_reset_done.html"), name='password_reset_done'),
+    url(r'^accounts/password/reset/confirm/(?P<uidb64>[0-9A-Za-z]+)-(?P<token>,+)/$', password_reset_confirm, name='password_reset_confirm'),
     url(r'^logout/', 'django.contrib.auth.views.logout', {'next_page': '/'}, name='timtec_logout'),
 
     url(r'^dashboard/', TemplateView.as_view(template_name="dashboard.html")),
