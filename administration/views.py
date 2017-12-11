@@ -138,7 +138,7 @@ class ExportCourseView(views.SuperuserRequiredMixin, View):
             full_file_path = settings.MEDIA_ROOT + '/' + short_file_path
             if os.path.isfile(full_file_path):
                 tar_file.add(full_file_path,
-                             arcname=short_file_path)
+                             arcname=urllib.quote(short_file_path.encode('utf8')))
 
     def get(self, request, *args, **kwargs):
 
