@@ -148,11 +148,7 @@
 
             $scope.show_recipients = false;
             $scope.toggle_recipient_list = function(){
-                if($scope.show_recipients) {
-                    $scope.show_recipients = false;
-                } else {
-                    $scope.show_recipients = true;
-                }
+                $scope.show_recipients = !$scope.show_recipients;
             };
 
             $scope.answer_message = function(){
@@ -327,6 +323,31 @@
                     return !message.checked;
                 });
                 $scope.checked_all = false;
+            };
+
+            $scope.filter_inbox = function(){
+                if($scope.inbox_filter) return;
+                $scope.inbox_filter = true;
+                $scope.sent_filter = false;
+                $scope.trash_filter = false;
+                $scope.load_messages();
+            };
+
+            $scope.filter_sent = function(){
+                if($scope.sent_filter) return;
+                $scope.inbox_filter = false;
+                $scope.sent_filter = true;
+                $scope.trash_filter = false;
+                $scope.messages = $scope.messages.filter(function(message){
+
+                });
+            };
+
+            $scope.filter_trash = function(){
+                if($scope.trash_filter) return;
+                $scope.inbox_filter = false;
+                $scope.sent_filter = false;
+                $scope.trash_filter = true;
             };
 
         }
