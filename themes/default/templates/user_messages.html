@@ -88,11 +88,13 @@
         </div>
 
         <div class="row" ng-show="showing_message">
-            <button type="button" class="btn btn-default" data-toggle="tooltip" title="Voltar" ng-click="hide_message()">
-                    &nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-undo"></span>&nbsp;&nbsp;&nbsp;</button>
+            <div class="col-sm-9 col-md-10  col-sm-offset3 col-md-offset-2">
+                <button type="button" class="btn btn-default" data-toggle="tooltip" title="Voltar" ng-click="hide_message()">
+                        &nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-undo"></span>&nbsp;&nbsp;&nbsp;</button>
 
-            <button type="button" class="btn btn-default" data-toggle="tooltip" title="Voltar" ng-click="delete_message()">
-                    &nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-trash"></span>&nbsp;&nbsp;&nbsp;</button>
+                <button type="button" class="btn btn-default" data-toggle="tooltip" title="Voltar" ng-click="delete_message()">
+                        &nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-trash"></span>&nbsp;&nbsp;&nbsp;</button>
+            </div>
         </div>
         <hr>
         <div class="row">
@@ -107,7 +109,7 @@
                 <ul class="nav nav-pills nav-stacked">
                     <li ng-class="{'active': inbox_filter}"><a href="#" ng-click="filter_inbox()"><span class="badge pull-right" ng-show="inbox_count > 0" ng-bind-html="inbox_count"></span>{% trans 'Inbox' %} </a></li>
                     <li ng-class="{'active': sent_filter}"><a href="#" ng-click="filter_sent()">{% trans 'Sent' %}</a></li>
-                    <li ng-class="{'active': trash_filter}"><a href="#" ng-click="filter_trash()"><span class="badge pull-right" ng-show="trash_count > 0" ng-bind-html="trash_count"></span>{% trans 'Trash' %}</a></li>
+                    <li ng-class="{'active': trash_filter}"><a href="#" ng-click="filter_trash()">{% trans 'Trash' %}</a></li>
                 </ul>
             </div>
             <div class="col-sm-9 col-md-10">
@@ -154,7 +156,7 @@
                         <hr />
 
                         <!-- answer panel -->
-                        <div class="message-answer">
+                        <div class="message-answer" ng-show="!showing_message.is_system_message && !trash_filter ">
                             <h2>{% trans 'RESPONDER' %}</h2>
                             <div class="alert alert-danger" role="alert" ng-if="new_answer_validation_error">
                                 <ul>

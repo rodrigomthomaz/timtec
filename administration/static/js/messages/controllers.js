@@ -217,7 +217,11 @@
             };
 
             $scope.delete_message = function(){
-                Message.delete({messageId: $scope.showing_message.id}, function(){
+                var params = {messageId: $scope.showing_message.id};
+                // permanent delete, because is deleting from trash
+                if ($scope.filter_trash)
+                    params.perma = '1';
+                Message.delete(params, function(){
                     $scope.messages.splice($scope.messages.indexOf($scope.showing_message), 1);
                     $scope.hide_message();
                 });
@@ -314,19 +318,27 @@
             };
 
             $scope.delete_selected = function() {
+                var params = {messageId: message.id};
+                // permanent delete, because is deleting from trash
+                if ($scope.filter_trash)
+                    params.perma = '1';
+
                 angular.forEach($scope.messages, function(message){
                     if (message.checked)
-                        Message.delete({messageId: message.id});
+                        Message.delete(params);
 
                 });
+
                 $scope.messages = $scope.messages.filter(function(message) {
                     return !message.checked;
                 });
+
                 $scope.checked_all = false;
             };
 
             $scope.filter_inbox = function(){
                 if($scope.inbox_filter) return;
+                $scope.hide_message();
                 $scope.inbox_filter = true;
                 $scope.sent_filter = false;
                 $scope.trash_filter = false;
@@ -335,6 +347,7 @@
 
             $scope.filter_sent = function(){
                 if($scope.sent_filter) return;
+                $scope.hide_message();
                 $scope.inbox_filter = false;
                 $scope.sent_filter = true;
                 $scope.trash_filter = false;
@@ -345,9 +358,14 @@
 
             $scope.filter_trash = function(){
                 if($scope.trash_filter) return;
+                $scope.hide_message();
                 $scope.inbox_filter = false;
                 $scope.sent_filter = false;
                 $scope.trash_filter = true;
+                $scope.loading_messages = true;
+                $scope.messages = UserAllMessages.query({'q': $scope.query, 'trash': '1'}, function(msgs){
+                    $scope.loading_messages = false;
+                });
             };
 
         }
