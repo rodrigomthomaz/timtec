@@ -107,9 +107,9 @@
         <div class="row">
             <div class="col-sm-3 col-md-2">
                 <ul class="nav nav-pills nav-stacked">
-                    <li ng-class="{'active': inbox_filter}"><a href="#" ng-click="filter_inbox()"><span class="badge pull-right" ng-show="inbox_count > 0" ng-bind-html="inbox_count"></span>{% trans 'Inbox' %} </a></li>
-                    <li ng-class="{'active': sent_filter}"><a href="#" ng-click="filter_sent()">{% trans 'Sent' %}</a></li>
-                    <li ng-class="{'active': trash_filter}"><a href="#" ng-click="filter_trash()">{% trans 'Trash' %}</a></li>
+                    <li ng-class="{'active': showing_inbox}"><a href="#" ng-click="show_inbox()"><span class="badge pull-right" ng-show="inbox_count > 0" ng-bind-html="inbox_count"></span>{% trans 'Inbox' %} </a></li>
+                    <li ng-class="{'active': showing_sent}"><a href="#" ng-click="show_sent()">{% trans 'Sent' %}</a></li>
+                    <li ng-class="{'active': showing_trash}"><a href="#" ng-click="show_trash()">{% trans 'Trash' %}</a></li>
                 </ul>
             </div>
             <div class="col-sm-9 col-md-10">
@@ -156,7 +156,7 @@
                         <hr />
 
                         <!-- answer panel -->
-                        <div class="message-answer" ng-show="!showing_message.is_system_message && !trash_filter ">
+                        <div class="message-answer" ng-show="!showing_message.is_system_message && !showing_trash ">
                             <h2>{% trans 'RESPONDER' %}</h2>
                             <div class="alert alert-danger" role="alert" ng-if="new_answer_validation_error">
                                 <ul>

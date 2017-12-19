@@ -542,12 +542,6 @@ class UserMessageViewSet(LoginRequiredMixin, viewsets.ModelViewSet):
 
         return ProfessorMessage.objects.filter(id__in=total_ids).order_by('-date')
 
-    # Don't delete the message, just mark that user has deleted this message
-    def destroy(self, request, id=None):
-        msg = self.get_object()
-        msg.users_that_delete.add(request.user)
-        return Response(status=status.HTTP_204_NO_CONTENT)
-
 
 class ProfessorMessageViewSet(viewsets.ModelViewSet):
     model = ProfessorMessage
@@ -579,6 +573,15 @@ class ProfessorMessageViewSet(viewsets.ModelViewSet):
         if not self.request.user.is_superuser:
             queryset = queryset.filter(users=self.request.user)
         return queryset
+
+    # Don't delete the message, just mark that user has deleted this message
+    def destroy(self, request, id=None):
+        msg = self.get_object()
+        msg.users_that_delete.add(request.user)
+        perma = request.query_params.get('perma', None)
+        if perma:
+            msg.users.remove(request.user)
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 
 class MessageAnswerViewSet(viewsets.ModelViewSet):
@@ -1006,8 +1009,15 @@ class UserAllMessagesViewSet(LoginRequiredMixin, viewsets.ModelViewSet):
     def get_queryset(self):
         queryset = super(UserAllMessagesViewSet, self).get_queryset()
         user = self.request.user
-        queryset = queryset.filter(Q(professor=user) | Q(users=user)).exclude(users_that_delete=user) \
-            .distinct().order_by('-date')
+        queryset = queryset.filter(Q(professor=user) | Q(users=user))
+
+        trash = self.request.query_params.get('trash', None)
+        if trash:
+            queryset = queryset.filter(users_that_delete=user)
+        else:
+            queryset = queryset.exclude(users_that_delete=user)
+
+        queryset = queryset.distinct().order_by('-date')
 
         course = self.request.query_params.get('course', None)
         if course:

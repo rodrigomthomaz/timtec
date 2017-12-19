@@ -193,22 +193,43 @@
         }
     ]);
 
-    module.controller('AllMessagesController', ['$scope', 'UserAllMessages', 'Message', 'AnswerMessage',
-        function($scope, UserAllMessages, Message, AnswerMessage) {
+    module.controller('AllMessagesController', ['$scope', '$parse', 'UserAllMessages', 'Message', 'AnswerMessage',
+        function($scope, $parse, UserAllMessages, Message, AnswerMessage) {
             $scope.loading_messages = true;
 
-            $scope.load_messages = function(){
-                $scope.messages = UserAllMessages.query({'q': $scope.query}, function(msgs){
-                    $scope.loading_messages = false;
+
+            var count_messages = function(){
+                $scope.inbox_count = 0;
+                angular.forEach($scope.messages, function(msg){
+                    if (!msg.is_read)
+                        $scope.inbox_count++;
                 });
             };
 
-            $scope.load_messages();
+            $scope.load_messages = function(){
 
+                var params = {};
+
+                if ($scope.query !== '')
+                    params.q = $scope.query;
+
+                if ($scope.showing_trash)
+                    params.trash = '1';
+
+                $scope.messages = UserAllMessages.query(params, function(){
+                    $scope.loading_messages = false;
+                    count_messages();
+                });
+
+            };
+
+            // show/hide message
+            // @todo: implement single message with URLs
             $scope.show_message = function(msg) {
                 $scope.showing_message = msg;
                 Message.get({messageId: msg.id}, function() {
                     msg.is_read = true;
+                    count_messages();
                 });
             };
 
@@ -216,10 +237,11 @@
                 delete $scope.showing_message;
             };
 
+            // actions with single messages
             $scope.delete_message = function(){
                 var params = {messageId: $scope.showing_message.id};
                 // permanent delete, because is deleting from trash
-                if ($scope.filter_trash)
+                if ($scope.showing_trash)
                     params.perma = '1';
                 Message.delete(params, function(){
                     $scope.messages.splice($scope.messages.indexOf($scope.showing_message), 1);
@@ -227,8 +249,11 @@
                 });
             };
 
-            $scope.answer_message = function(){
+            // $scope.retore_message = function(){
+            //     // @todo: implements restore
+            // };
 
+           $scope.answer_message = function(){
                 var answer_message = new AnswerMessage({
                     user: window.USER_ID,
                     message: $scope.showing_message.id,
@@ -270,6 +295,34 @@
                 );
             };
 
+
+            // actions to multiple selections
+            $scope.delete_selected = function() {
+                var params = {};
+
+                // permanent delete, because is deleting from trash
+                if ($scope.showing_trash)
+                    params.perma = '1';
+
+                angular.forEach($scope.messages, function(message){
+                    if (message.checked){
+                        params.messageId = message.id;
+                        Message.delete(params);
+                    }
+
+                });
+
+                $scope.messages = $scope.messages.filter(function(message) {
+                    return !message.checked;
+                });
+                $scope.checked_all = false;
+            };
+
+            // $scope.retore_selected = function(){
+            //     // @todo: restore selected messages in trash
+            // };
+
+            // Actions to select multiple messages
             $scope.toggle_message = function(msg){
                 msg.checked = !msg.checked;
             };
@@ -317,56 +370,42 @@
 
             };
 
-            $scope.delete_selected = function() {
-                var params = {messageId: message.id};
-                // permanent delete, because is deleting from trash
-                if ($scope.filter_trash)
-                    params.perma = '1';
-
-                angular.forEach($scope.messages, function(message){
-                    if (message.checked)
-                        Message.delete(params);
-
-                });
-
-                $scope.messages = $scope.messages.filter(function(message) {
-                    return !message.checked;
-                });
-
+            // filter inbox/sent/trash
+            // @todo: insert inbox/sent/trash in URL
+            var reset_page = function(filter_to_show){
+                $scope.hide_message();
                 $scope.checked_all = false;
+                $scope.showing_inbox = false;
+                $scope.showing_sent = false;
+                $scope.showing_trash = false;
+                $scope.toggle_all();
+
+                var filter =  $parse(filter_to_show);
+                filter.assign($scope, true);
+
             };
 
-            $scope.filter_inbox = function(){
-                if($scope.inbox_filter) return;
-                $scope.hide_message();
-                $scope.inbox_filter = true;
-                $scope.sent_filter = false;
-                $scope.trash_filter = false;
+            $scope.show_inbox = function(){
+                if($scope.showing_inbox) return;
+                reset_page('showing_inbox');
                 $scope.load_messages();
             };
 
-            $scope.filter_sent = function(){
-                if($scope.sent_filter) return;
-                $scope.hide_message();
-                $scope.inbox_filter = false;
-                $scope.sent_filter = true;
-                $scope.trash_filter = false;
+            $scope.show_sent = function(){
+                if($scope.showing_sent) return;
+                reset_page('showing_sent');
                 $scope.messages = $scope.messages.filter(function(message){
-
+                    // @todo
                 });
             };
 
-            $scope.filter_trash = function(){
-                if($scope.trash_filter) return;
-                $scope.hide_message();
-                $scope.inbox_filter = false;
-                $scope.sent_filter = false;
-                $scope.trash_filter = true;
-                $scope.loading_messages = true;
-                $scope.messages = UserAllMessages.query({'q': $scope.query, 'trash': '1'}, function(msgs){
-                    $scope.loading_messages = false;
-                });
+            $scope.show_trash = function(){
+                if($scope.showing_trash) return;
+                reset_page('showing_trash');
+                $scope.load_messages();
             };
+
+            $scope.load_messages();
 
         }
     ]);
