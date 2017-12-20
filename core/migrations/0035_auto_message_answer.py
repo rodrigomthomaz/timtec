@@ -22,11 +22,6 @@ class Migration(migrations.Migration):
             ],
         ),
         migrations.AddField(
-            model_name='professormessage',
-            name='receive_answer',
-            field=models.BooleanField(default=False, verbose_name='Receive Answer'),
-        ),
-        migrations.AddField(
             model_name='messageanswer',
             name='message',
             field=models.ForeignKey(related_name='answers', verbose_name='Message', to='core.ProfessorMessage'),

@@ -5,7 +5,7 @@ from .utils import IntegrationUtils
 
 def load_banner(request):
     context = {}
-    if request.user.is_authenticated() and hasattr(settings, 'LOAD_BANNER_FORMATIONS') and settings.LOAD_BANNER_FORMATIONS:
+    if hasattr(settings, 'INTEGRATION_LOGIN_URL') and request.user.is_authenticated() and hasattr(settings, 'LOAD_BANNER_FORMATIONS') and settings.LOAD_BANNER_FORMATIONS:
         u = IntegrationUtils.getNNEProfile(request.user.id)
         try:
             if u.get('profile', {}).get('current', {}).get('formation', {}).get('id', {}) in settings.LOAD_BANNER_FORMATIONS:

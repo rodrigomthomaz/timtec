@@ -1,4 +1,5 @@
 from django.contrib.flatpages.models import FlatPage
+from django.utils.html import strip_tags
 from django.contrib.auth import get_user_model
 from core.models import (Course, CourseProfessor, CourseStudent, Lesson,
                          Video, StudentProgress, Unit, ProfessorMessage,
@@ -73,6 +74,32 @@ class UserMessageSerializer(serializers.ModelSerializer):
     def get_subject(self, obj):
         from django.utils.text import Truncator
         return Truncator(obj.subject).chars(45)
+
+
+class UserAllMessagesSerializer(serializers.ModelSerializer):
+
+    answers = MessageAnswerSerializer(many=True)
+    professor = serializers.SerializerMethodField()
+    message_clean = serializers.SerializerMethodField()
+    course = serializers.CharField(source='course.name')
+    is_read = serializers.SerializerMethodField()
+
+    class Meta:
+        model = ProfessorMessage
+        fields = ('id', 'subject', 'message', 'message_clean', 'date', 'professor', 'answers', 'course', 'is_read')
+
+    def get_professor(self, obj):
+        # todo: verify if user need to see "tutor"
+        return obj.professor.get_full_name()
+
+    def get_message_clean(self, obj):
+        return strip_tags(obj.message)
+
+    def get_is_read(self, obj):
+        current_user = self.context.get("request").user
+        if obj.users_that_read.filter(id=current_user.id):
+            return True
+        return False
 
 
 class ProfessorMessageUserDetailsSerializer(serializers.ModelSerializer):

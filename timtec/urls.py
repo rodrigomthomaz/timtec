@@ -3,6 +3,7 @@ from django.conf import settings
 from django.conf.urls import patterns, include, url
 from django.conf.urls.static import static
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.decorators import login_required
 
 from django.views.generic import TemplateView
 from accounts.views import (ProfileEditView, ProfileView, UserSearchView,
@@ -15,7 +16,7 @@ from core.views import (CourseView, GenericCourseView, CourseViewSet,
                         UserCoursesView, ContactView, LessonDetailView,
                         LessonViewSet, StudentProgressViewSet,
                         UserNotesViewSet, CoursesView, CourseThumbViewSet,
-                        ProfessorMessageViewSet, MessageAnswerViewSet, MessageToCoordViewSet,
+                        ProfessorMessageViewSet, MessageAnswerViewSet, MessageToCoordViewSet, UserAllMessagesViewSet,
                         CourseStudentViewSet, CarouselCourseView, ClassListView,
                         ClassCreateView, ClassUpdateView, ClassDeleteView,
                         ClassRemoveUserView, ClassViewSet, GoOutCourseView,
@@ -62,6 +63,7 @@ router.register(r'course_student', CourseStudentViewSet, base_name='course_stude
 router.register(r'professor_message', ProfessorMessageViewSet, base_name='professor_message')
 router.register(r'message_answer', MessageAnswerViewSet, base_name='message_answer')
 router.register(r'message_to_coord', MessageToCoordViewSet, base_name='message_to_coord')
+router.register(r'user_all_messages', UserAllMessagesViewSet, base_name='user_all_messages')
 router.register(r'user_message', UserMessageViewSet, base_name='user_message')
 router.register(r'coursethumbs', CourseThumbViewSet, base_name='coursethumbs')
 router.register(r'lessonthumbs', LessonThumbViewSet, base_name='lessonthumbs')
@@ -199,6 +201,7 @@ urlpatterns = patterns(
     url(r'^djangular.js',
         TemplateView.as_view(template_name='djangular.js', content_type='text/javascript'),
         name='djangular'),
+    url(r'messages', login_required(TemplateView.as_view(template_name='user_messages.html')), name='user_all_messages'),
 
 )
 

@@ -582,7 +582,7 @@ class ProfessorMessage(models.Model):
     course = models.ForeignKey(Course, verbose_name=_('Course'), null=True)
     users_that_read = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='read_messages')
     users_that_delete = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='delete_messages')
-    # answer_to = models.ForeignKey('ProfessorMessage', blank=True, null=True)
+    is_system_message = models.BooleanField(_('System Messsage'), default=False)
 
     def __unicode__(self):
         return unicode(self.subject)
