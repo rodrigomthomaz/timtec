@@ -22,4 +22,8 @@
         return $resource('/api/message_answer', {}, {});
     });
 
+    module.factory('UserAllMessages', function($resource){
+        return $resource('/api/user_all_messages', {}, {});
+    });
+
 })(angular);

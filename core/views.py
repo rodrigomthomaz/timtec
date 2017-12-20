@@ -3,6 +3,7 @@ import json
 import time
 import datetime
 
+from django.db.models import Q
 from django.db import IntegrityError
 from django.core.urlresolvers import reverse_lazy
 from django.core.exceptions import PermissionDenied, ObjectDoesNotExist
@@ -26,7 +27,7 @@ from notes.models import Note
 from .serializers import (CourseSerializer, CourseProfessorSerializer,
                           CourseThumbSerializer, LessonSerializer,
                           StudentProgressSerializer, CourseNoteSerializer,
-                          LessonNoteSerializer, ProfessorMessageSerializer,
+                          LessonNoteSerializer, ProfessorMessageSerializer, UserAllMessagesSerializer,
                           CourseStudentSerializer, ClassSerializer,
                           FlatpageSerializer, CourseAuthorPictureSerializer,
                           CourseAuthorSerializer, ClassSimpleSerializer,
@@ -526,6 +527,7 @@ class UserMessageViewSet(LoginRequiredMixin, viewsets.ModelViewSet):
     model = ProfessorMessage
     lookup_field = 'id'
     serializer_class = UserMessageSerializer
+    permission_classes = (MessageAnswerPermission, )
 
     def get_queryset(self, *args, **kwargs):
         """Some tricks to show first unread, after reads."""
@@ -539,12 +541,6 @@ class UserMessageViewSet(LoginRequiredMixin, viewsets.ModelViewSet):
         print total_ids
 
         return ProfessorMessage.objects.filter(id__in=total_ids).order_by('-date')
-
-    # Don't delete the message, just mark that user has deleted this message
-    def destroy(self, request, id=None):
-        msg = self.get_object()
-        msg.users_that_delete.add(request.user)
-        return Response(status=status.HTTP_204_NO_CONTENT)
 
 
 class ProfessorMessageViewSet(viewsets.ModelViewSet):
@@ -577,6 +573,15 @@ class ProfessorMessageViewSet(viewsets.ModelViewSet):
         if not self.request.user.is_superuser:
             queryset = queryset.filter(users=self.request.user)
         return queryset
+
+    # Don't delete the message, just mark that user has deleted this message
+    def destroy(self, request, id=None):
+        msg = self.get_object()
+        msg.users_that_delete.add(request.user)
+        perma = request.query_params.get('perma', None)
+        if perma:
+            msg.users.remove(request.user)
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 
 class MessageAnswerViewSet(viewsets.ModelViewSet):
@@ -992,4 +997,40 @@ class FlatpageViewSet(viewsets.ModelViewSet):
         url_prefix = self.request.query_params.get('url_prefix')
         if url_prefix:
             queryset = queryset.filter(url__startswith=url_prefix)
+        return queryset
+
+
+class UserAllMessagesViewSet(LoginRequiredMixin, viewsets.ModelViewSet):
+
+    model = ProfessorMessage
+    queryset = ProfessorMessage.objects.filter(is_system_message=False)
+    serializer_class = UserAllMessagesSerializer
+
+    def get_queryset(self):
+        queryset = super(UserAllMessagesViewSet, self).get_queryset()
+        user = self.request.user
+        queryset = queryset.filter(Q(professor=user) | Q(users=user))
+
+        trash = self.request.query_params.get('trash', None)
+        if trash:
+            queryset = queryset.filter(users_that_delete=user)
+        else:
+            queryset = queryset.exclude(users_that_delete=user)
+
+        queryset = queryset.distinct().order_by('-date')
+
+        course = self.request.query_params.get('course', None)
+        if course:
+            queryset = queryset.filter(course__id=course)
+
+        q = self.request.query_params.get('q', None)
+        if q:
+            queryset = queryset.filter(Q(subject__contains=q) |
+                                       Q(message__contains=q) |
+                                       Q(answers__text__contains=q) |
+                                       Q(answers__user__first_name__contains=q) |
+                                       Q(answers__user__last_name__contains=q) |
+                                       Q(answers__user__email__contains=q) |
+                                       Q(answers__user__username__contains=q))
+
         return queryset
