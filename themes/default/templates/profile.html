@@ -83,7 +83,7 @@ wrapper-course-lesson
 
         <div class="block course col-sm-4" ng-repeat="certificate in user_profile.certificates">
 
-            <div class="course-card">
+            <div id="course-complete" class="course-card ">
                 <div class="thumb-wrapper">
                     {% verbatim %}
                     <img class="img-responsive" ng-src="{{ certificate.course.home_thumbnail_url }}" />
@@ -101,11 +101,11 @@ wrapper-course-lesson
                             {{ professor }}<span ng-if="!$last">, </span>
                             {% endverbatim %}
                         </span>
-                    </p>.
+                    </p>
                 </div>
                 <div class="conclusion">
                     <p>
-                        {% trans 'Finished at' %} {% verbatim %}{{ certificate.created_date|date:"dd/MM/yyyy" }}{% endverbatim %}.
+                        {% trans 'Finished at' %} {% verbatim %}{{ certificate.created_date|date:"dd/MM/yyyy" }}{% endverbatim %}
                     </p>
                     {% block profile-certificate %}
                         {% verbatim %}
@@ -149,7 +149,7 @@ wrapper-course-lesson
                             {{ professor }}<span ng-if="!$last">, </span>
                             {% endverbatim %}
                         </span>
-                    </p>.
+                    </p>
                 </div>
             </div>
         </div>
