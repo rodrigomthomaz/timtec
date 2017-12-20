@@ -518,7 +518,7 @@ wrapper-course-intro
                                                     <!-- END FOR -->
                                                 </tr>
                                                 <tr>
-                                                    <td><p>
+                                                    <td colspan="{{ lesson.units.count }}"><p>
                                                         <i class="fa fa-youtube-play"></i> <small>{{ lesson.video_count }} {% trans 'videos' %}</small> |
                                                         <i class="fa fa-list"></i> <small>{{ lesson.activity_count }} {% trans 'activities' %}</small>
                                                         {% if lesson.content_count > 0 %}
