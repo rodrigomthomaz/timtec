@@ -456,7 +456,7 @@ wrapper-course-intro
                         </div>
                     </section>
                     {% else %}
-                        {% if user.is_authenticated and course.has_started %}
+                        {% if user.is_authenticated and course.has_started and course.public_lessons %}
                         <section class="lessons" id="lesson-list">
                             <!-- PAGE-HEADER-DOUBLE -->
                             <div class="page-header-double">
