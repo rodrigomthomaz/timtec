@@ -690,6 +690,9 @@ class Lesson(PositionedModel):
     def video_count(self):
         return self.units.exclude(video=None).count()
 
+    def content_count(self):
+        return self.units.exclude(content=None).count()
+
     def is_ready(self):
         return self.status == 'published' and self.units.exists()
 

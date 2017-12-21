@@ -437,11 +437,11 @@ wrapper-course-intro
                                 </div>
                                 <!--  END HIDDEN-XS  -->
 
-                                        <p>
-                                            <i class="fa fa-youtube-play"></i> <small>{% verbatim %}{{ lesson.countVideos() }}{% endverbatim %} {% trans 'videos' %}</small> |
-                                            <i class="fa fa-list"></i> <small>{% verbatim %}{{ lesson.countActivities() }}{% endverbatim %} {% trans 'activities' %}</small> |
-                                            <i class="fa fa-file-text-o"></i> <small>{% verbatim %}{{ lesson.countContent() }}{% endverbatim %} {% trans 'text/image' %}</small>
-                                        </p>
+                                <p>
+                                    <i class="fa fa-youtube-play"></i> <small>{% verbatim %}{{ lesson.countVideos() }}{% endverbatim %} {% trans 'videos' %}</small> |
+                                    <i class="fa fa-list"></i> <small>{% verbatim %}{{ lesson.countActivities() }}{% endverbatim %} {% trans 'activities' %}</small> |
+                                    <i class="fa fa-file-text-o"></i> <small>{% verbatim %}{{ lesson.countContent() }}{% endverbatim %} {% trans 'text/image' %}</small>
+                                </p>
 
                             </div>
                             <!--  END COL-LG-9  -->
@@ -489,7 +489,6 @@ wrapper-course-intro
                                         <div class="hidden-xs">
                                             <!-- TABLE -->
                                             <table class="units table ">
-                                                <!-- TR -->
                                                 <tr>
                                                     <!-- FOR UNIT IN UNITS -->
                                                     {% for unit in lesson.units.all %}
@@ -518,7 +517,16 @@ wrapper-course-intro
                                                     {% endfor %}
                                                     <!-- END FOR -->
                                                 </tr>
-                                                <!-- END TR -->
+                                                <tr>
+                                                    <td colspan="{{ lesson.units.count }}"><p>
+                                                        <i class="fa fa-youtube-play"></i> <small>{{ lesson.video_count }} {% trans 'videos' %}</small> |
+                                                        <i class="fa fa-list"></i> <small>{{ lesson.activity_count }} {% trans 'activities' %}</small>
+                                                        {% if lesson.content_count > 0 %}
+                                                            | <i class="fa fa-file-text-o"></i> <small>{{ lesson.content_count }} {% trans 'text/image' %}</small>
+                                                        {% endif %}
+                                                    </p></td>
+                                                </tr>
+
                                             </table>
                                             <!-- END TABLE -->
                                         </div>
