@@ -66,4 +66,4 @@ PyJWT==1.5.2
 # Selenium
 selenium==3.0.2
 
-
+python-docx==0.8.6
