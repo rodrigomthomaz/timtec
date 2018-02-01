@@ -5,7 +5,7 @@ import datetime
 
 from django.db import models
 from django.db.models.signals import m2m_changed
-from django.db.models import Count
+from django.db.models import Count, Max
 from django.core.mail import EmailMessage
 from django.core.urlresolvers import reverse
 from django.utils.translation import ugettext_lazy as _
@@ -332,6 +332,13 @@ class CourseStudent(models.Model):
                                           type=CourseCertification.TYPES[0][0],
                                           is_valid=True, link_hash=h)
             receipt.save()
+
+        self.verifify_completed()
+
+    def verifify_completed(self):
+        if self.course_finished and self.certificate.created_date.date() == self.certificate.modified_date.date():
+            self.certificate.modified_date = self.units_done.aggregate(Max('complete'))['complete__max']
+            self.certificate.save()
 
     def send_welcome_email(self):
         if not self.course.welcome_email:
@@ -740,6 +747,11 @@ class StudentProgress(models.Model):
         return u'%s @ %s c: %s la: %s' % (
             self.user, self.unit, self.complete, self.last_access)
 
+    def save(self, *args, **kwargs):
+        super(StudentProgress, self).save(*args, **kwargs)
+        cs = CourseStudent.objects.get(user=self.user, course=self.unit.lesson.course)
+        cs.verifify_completed()
+
 
 class CourseCertification(models.Model):
     TYPES = (
@@ -751,7 +763,7 @@ class CourseCertification(models.Model):
                             max_length=127)
     course_student = models.OneToOneField(CourseStudent, verbose_name=_('Enrollment'), related_name='certificate')
     created_date = models.DateTimeField(_('Created'), auto_now_add=True)
-    modified_date = models.DateTimeField(_('Last modified'), auto_now=True)
+    modified_date = models.DateTimeField(_('Last modified'), auto_now_add=True)
 
     is_valid = models.BooleanField(_('Certificate is valid'), default=False)
 
