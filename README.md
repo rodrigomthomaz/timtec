@@ -38,22 +38,6 @@ Para acessar a documentação completa, veja a pasta [docs](docs) na raiz da apl
 * [Configurações (Versão 3.0.10 e inferiores)](docs/config_under_3.0.10_and_less.md)
 
 
-## Licença - AGPLV3
-
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU Affero General Public License as
-    published by the Free Software Foundation, either version 3 of the
-    License, or (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU Affero General Public License for more details.
-
-    You should have received a copy of the GNU Affero General Public License
-    along with this program.  If not, see LICENSE file here or
-    [AGPLv3](http://www.gnu.org/licenses).
-
 ## Requisitos de instalação
 
 * Operating system: Debian (8, 9) or Ubuntu (16.04);
