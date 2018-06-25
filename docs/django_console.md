@@ -1,10 +1,12 @@
 ## Contando quantos usuários cadastrados:
-
+```
 python manage.py shell_plus
 user_list = TimtecUser.objects.all()
 len(user_list)
+```
 
 ## Filtrando por `last_login`
+```
 total = 0
 for user in TimtecUser.objects.all():
     if user.last_login.year == 2018:
@@ -12,9 +14,10 @@ for user in TimtecUser.objects.all():
 
 
 print total
+```
 
 ## Filtrando por `date_joined` e obtendo inscritos por mes do ano
-
+```
 jan = fev = mar = abr = mai = jun = 0
 users = TimtecUser.objects.all()
 
@@ -38,3 +41,4 @@ print "março : " + str(mar)
 print "abril : " + str(abr)
 print "maio : " + str(mai)
 print "junho : " + str(jun)
+```
