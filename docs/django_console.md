@@ -65,3 +65,85 @@ print "novembro : " + str(nov)
 print "dezembro : " + str(dez)
 
 ```
+
+
+
+
+## Quantos alunos estão matriculados no curso com id=1
+
+```
+Course(pk=1).coursestudent_set.all().count()
+```
+
+## Quantos alunos matriculados em cada curso
+
+```
+from django.core.exceptions import ObjectDoesNotExist
+ids=range(1, 32)
+for index in ids:
+    curso = False
+    try:
+        curso  = Course.objects.get(id=index)
+    except ObjectDoesNotExist:
+        curso = False
+
+    if (curso==False):
+        print "O id não existe"
+    else:
+        print Course.objects.get(id=index)
+        print Course(id=index).coursestudent_set.all().count()
+```
+
+## Quantas lições tem num curso
+```
+Course(pk=1).lessons.all().count()
+User(pk=1).StudentProgress.objects.exclude(complete=None).filter(unit__lesson=lesson)
+```
+
+
+
+```
+select
+    email,
+    c_name,
+    l_name,
+    tot_done,
+    tot_len,
+    course_id,
+    (100 * (tot_done::float / tot_len)) as percent
+from (
+    select
+        us.email,
+        c.name as c_name,
+        l.name as l_name,
+        l.position,
+        us.id as user_id,
+	c.id as course_id,
+        count(DISTINCT un.id) as tot_len,
+        count(DISTINCT sp.id) as tot_done
+    from
+        core_unit un
+            join core_lesson l
+                on l.id = un.lesson_id
+            join core_course c
+                on c.id = l.course_id
+            join core_class cl
+                on cl.course_id = c.id
+            join core_class_students cs
+                on cl.id = cs.class_id
+            join accounts_timtecuser us
+                on us.id = cs.timtecuser_id
+            left join core_studentprogress sp
+                on un.id = sp.unit_id
+                and us.id = sp.user_id
+	    where c.id=1
+    group by
+        l.id,
+        us.id,
+	c.id,
+        us.first_name
+
+) t
+order by
+    tot_done DESC;
+```
