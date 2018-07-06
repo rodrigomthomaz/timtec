@@ -11,9 +11,11 @@ total = 0
 for user in TimtecUser.objects.all():
     if user.last_login.year == 2018:
         total = total + 1
-```
 
 print total
+```
+
+
 
 ## Filtrando por `date_joined` e obtendo inscritos por mes do ano
 
