@@ -36,12 +36,6 @@ estudante_buscado.start_date
 Caso queira descobrir algum dado, vc pode tentar verificar os campos disponíveis no model.py da classe CourseEstudent (https://github.com/institutotim/timtec/blob/master/core/models.py)
 
 
-```
-In []: user_var.id
-In []: 546
-In []: user_var.course
-In []: <CourseStudent: Edição e tratamento de imagens - Clauber N. Silva>
-```
 
 ## Contando quantos usuários cadastrados:
 ```
