@@ -4,6 +4,45 @@ python manage.py shell_plus
 user = TimtecUser.objects.get(email='meuemail@email.com.br')
 ```
 
+## Obtendo a data que um determinado usuário iniciou um curso
+
+1. Descubra algum dado único do usuário. Pode ser o email ou o id. Use esse dado para buscar o usuário na base com shell_plus
+```
+python manage.py shell_plus
+user_var = TimtecUser.objects.get(email='nome-do-usuario@email.com')
+```
+
+ou
+```
+python manage.py shell_plus
+user_var = TimtecUser.objects.get(id=546)
+```
+
+2. Obtenha os cursos que o participante está inserido usando o id para o campo `user`
+
+```
+estudante_buscado = CourseStudent.objects.get(user=66419)
+estudante_buscado
+<CourseStudent: Edição e tratamento de imagens - Estudante Buscado>
+```
+
+3. Pegue a data
+
+```
+estudante_buscado.start_date
+ datetime.datetime(2018, 8, 23, 17, 38, 46, 416902, tzinfo=<UTC>)
+```
+
+Caso queira descobrir algum dado, vc pode tentar verificar os campos disponíveis no model.py da classe CourseEstudent (https://github.com/institutotim/timtec/blob/master/core/models.py)
+
+
+```
+In []: user_var.id
+In []: 546
+In []: user_var.course
+In []: <CourseStudent: Edição e tratamento de imagens - Clauber N. Silva>
+```
+
 ## Contando quantos usuários cadastrados:
 ```
 python manage.py shell_plus
