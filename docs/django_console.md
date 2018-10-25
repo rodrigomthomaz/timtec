@@ -1,3 +1,9 @@
+## Obtendo dados de um usuário
+```
+python manage.py shell_plus
+user = TimtecUser.objects.get(email='meuemail@email.com.br')
+```
+
 ## Contando quantos usuários cadastrados:
 ```
 python manage.py shell_plus
