@@ -1,4 +1,4 @@
-FROM debian:jessie
+FROM debian:stretch
 MAINTAINER Fabio Montefuscolo <fabio.montefuscolo@hacklab.com.br>
 MAINTAINER Bruno Martin <bruno@hacklab.com.br>
 
